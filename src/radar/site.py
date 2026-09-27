@@ -13,7 +13,7 @@ import html
 import io
 import json
 import math
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from typing import Any, Callable
 
 import yaml
@@ -53,7 +53,7 @@ PLACES = {  # where each input is made, and two big US data center markets
     "virginia": ("N. Virginia", 39.04, -77.49),
 }
 INDEX = [
-    ("Overview", [("call", "This month's call"), ("picks", "Picks and tracking")]),
+    ("Overview", [("call", "This month's call"), ("picks", "Picks and tracking"), ("predictions", "Predictions")]),
     ("Demand", [("physical", "What the capex buys"), ("capex", "Capex by company")]),
     ("Supply", [("memory", "Memory chips"), ("taiwan", "Taiwan export orders"), ("turbines", "Gas turbines"), ("grid", "Grid connections")]),
     ("Positioning", [("book", "The fund's book")]),
@@ -555,6 +555,178 @@ def picks_section(perf: dict[str, Any] | None) -> str:
     return block("picks", f"Picks · updated each US trading day", "The picks", e(lead), listing + tracking)
 
 
+STATUS = {  # reserved for prediction results, apart from the series colors
+    "right": ("#138a5e", "Came true", "✓"),
+    "wrong": ("#cf3a2f", "Missed", "✗"),
+    "void": (OTHER, "Void, no data", ""),
+    "open": (CONTEXT, "Open", ""),
+}
+QUESTIONS = {
+    "memory": "Is memory still short?",
+    "buildout": "Is the buildout still growing?",
+    "power": "Is power the next squeeze?",
+    "call": "Do the call and the fund stay on memory?",
+    "picks": "Do the picks pay?",
+}
+
+
+def fmt_prediction(unit: str, value: Any) -> str:
+    if value is None:
+        return ""
+    if unit == "pct":
+        return ret(value, 1 if abs(value) < 0.1 else 0)
+    if unit == "points":
+        return f"{value * 100:+.1f} pts".replace("-", "−")
+    if unit == "usd":
+        return f"${value:,.2f}"
+    if unit == "usd_b":
+        return usd(value)
+    if unit == "gw":
+        return f"{value:g} GW"
+    if unit == "share":
+        return f"{value:.0%}"
+    return INPUT_LABELS.get(value, str(value))
+
+
+def utc_label(stamp: str) -> str:
+    moment = datetime.strptime(stamp, "%Y-%m-%dT%H:%M:%SZ")
+    return f"{moment:%H:%M} UTC on {moment:%b %-d, %Y}"
+
+
+def prediction_timeline(numbered: list[tuple[int, dict[str, Any]]], results: dict[str, Any], start: str, today: str) -> str:
+    """Each prediction as a numbered dot on its due date, filled in once it's checked."""
+    first = date.fromisoformat(start)
+    last = max(date.fromisoformat(p["due"]) for _, p in numbered) + timedelta(days=6)
+    span = (last - first).days
+
+    def left(day: date) -> str:
+        return f"{(day - first).days / span * 100:.2f}%"
+
+    levels: list[date] = []  # the latest due date placed on each row, so close dates stack instead of overlapping
+    dots = []
+    for n, p in numbered:
+        due = date.fromisoformat(p["due"])
+        level = next((i for i, d in enumerate(levels) if (due - d).days >= 4), len(levels))
+        if level == len(levels):
+            levels.append(due)
+        levels[level] = due
+        status = results.get(p["id"], {}).get("status", "open")
+        color, label, _ = STATUS[status]
+        tip = {"title": f"{n}. Due {day_label(p['due'])}", "rows": [[f"{p['confidence']:.0%}", p["statement"], color], ["", label, "transparent"]]}
+        dots.append(
+            f'<span class="pt-dot {status}" style="left:{left(due)};bottom:{level * 24}px;--c:{color}" tabindex="0" '
+            f'data-tip="{e(json.dumps(tip))}">{n}</span>'
+        )
+    months = []
+    day = date(first.year, first.month, 1)
+    while day <= last:
+        if day >= first:
+            months.append(f'<span style="left:{left(day)}">{day:%b}</span>')
+        day = date(day.year + day.month // 12, day.month % 12 + 1, 1)
+    now_mark = ""
+    t = date.fromisoformat(today)
+    if first <= t <= last:
+        now_mark = f'<span class="pt-now" style="left:{left(t)}"><b>Today</b></span>'
+    height = len(levels) * 24 + 8
+    return (
+        f'<div class="pt-wrap"><div class="pt" role="img" aria-label="Due dates of the predictions">'
+        f'<div class="pt-plot" style="height:{height}px">{now_mark}{"".join(dots)}</div>'
+        f'<div class="pt-axis">{"".join(months)}</div></div></div>'
+    )
+
+
+def predictions_section(preds: dict[str, Any] | None) -> str:
+    """The dated predictions, when each comes due, and how many have come true against how many were expected to."""
+    if not preds or not preds.get("sets"):
+        return ""
+    sets, checked = preds["sets"], preds.get("results") or {}
+    results, summary = checked.get("results", {}), checked.get("summary") or {}
+    numbered = list(enumerate([p for s in sets for p in s["predictions"]], start=1))
+    total = len(numbered)
+    first = sets[0]
+    made = utc_label(first["made_at"])
+    lead = (f"Each of these {total} predictions has a due date and a stated chance of coming true, and they were made at {made}, "
+            "before any of them could be checked. The code checks each one against the data when it comes due and stamps the result "
+            "with the time. A result never changes once it's recorded.")
+
+    resolved, right = summary.get("resolved") or 0, summary.get("right") or 0
+    open_ones = sorted((p["due"], p["id"]) for _, p in numbered if results.get(p["id"], {}).get("status", "open") == "open")
+    if open_ones:
+        next_due = open_ones[0][0]
+        same = sum(1 for d, _ in open_ones if d == next_due)
+        next_note = f"Next: {COUNT_WORDS[same] if same < len(COUNT_WORDS) else same} due {day_label(next_due)}"
+    else:
+        next_note = "All checked"
+    confidence_sum = sum(p["confidence"] for _, p in numbered)
+    tiles = '<div class="tiles three">' + "".join([
+        tile("Checked", f"{resolved} of {total}", next_note),
+        tile("Came true", f"{right} of {resolved}" if resolved else "None yet",
+             f"About {summary['expected_right']:.1f} should have, going by the chances" if resolved
+             else f"About {confidence_sum:.1f} of {total} should, going by the chances"),
+        tile("Brier score", f"{summary['brier']:.2f}" if resolved else "None yet",
+             "0 is perfect. Saying 50% every time scores 0.25."),
+    ]) + "</div>"
+
+    today = (checked.get("checked_at") or first["made_at"])[:10]
+    legend_html = ('<div class="legend">' + "".join(
+        f'<span><i class="pt-key {k}" style="--c:{STATUS[k][0]}"></i>{e(STATUS[k][1])}</span>' for k in ("open", "right", "wrong", "void")
+    ) + "</div>")
+    timeline = sub_block(
+        "prediction-dates", "When each one comes due",
+        "Each dot is a prediction, numbered as in the table below, placed on the day its data is due. It fills in once the code has checked it.",
+        legend_html + prediction_timeline(numbered, results, first["made_at"][:10], today),
+    )
+
+    rows_html = []
+    for group, question in QUESTIONS.items():
+        members = [(n, p) for n, p in numbered if p["group"] == group]
+        if not members:
+            continue
+        rows_html.append(f'<tr class="grp"><th colspan="5" scope="colgroup">{e(question)}</th></tr>')
+        for n, p in members:
+            r = results.get(p["id"], {"status": "open"})
+            status = r["status"]
+            color, label, mark = STATUS[status]
+            if status in ("right", "wrong"):
+                detail = fmt_prediction(p["unit"], r.get("value"))
+                when = f", {day_label(r['observed'])}" if r.get("observed") else ""
+                result = f'<b class="res" style="color:{color}">{mark} {e(label)}</b><span class="why">{e(detail + when)}</span>'
+            elif status == "void":
+                result = f'<span class="muted">{e(label)}</span><span class="why">{e(r.get("note", ""))}</span>'
+            elif r.get("so_far") is not None:
+                result = f'<span class="muted">Open</span><span class="why">{e(fmt_prediction(p["unit"], r["so_far"]))} so far</span>'
+            else:
+                result = '<span class="muted">Open</span>'
+            rows_html.append(
+                f'<tr><td class="num">{n}</td><td>{e(p["statement"])}<span class="why">{e(p["why"])}</span></td>'
+                f'<td class="num nowrap">{e(day_label(p["due"]))}</td><td class="num">{p["confidence"]:.0%}</td><td>{result}</td></tr>'
+            )
+    head = '<tr><th class="num">#</th><th>Prediction</th><th class="num">Due</th><th class="num">Chance</th><th>Result</th></tr>'
+    listing_table = f'<div class="table-wrap"><table class="preds"><thead>{head}</thead><tbody>{"".join(rows_html)}</tbody></table></div>'
+
+    csv_rows = [[n, p["id"], p["group"], p["due"], p["confidence"], results.get(p["id"], {}).get("status", "open"),
+                 results.get(p["id"], {}).get("value", ""), results.get(p["id"], {}).get("resolved_at", ""), p["statement"]] for n, p in numbered]
+    set_notes = []
+    for s in sets:
+        path = f"data/predictions/{s['set']}.json"
+        intact = next((x.get("intact", True) for x in checked.get("sets", []) if x["set"] == s["set"]), True)
+        warning = "" if intact else " <b>The file no longer matches this fingerprint, so it was edited after it was frozen.</b>"
+        set_notes.append(
+            f"Set {e(s['set'])} was made by {e(s['made_by'])} at {e(utc_label(s['made_at']))}. {e(s.get('note', ''))} "
+            f"SHA-256 {e(s['sha256'][:16])}: the checker recomputes it on every run, and the {link(f'{REPO}/commits/main/{path}', 'file history')} "
+            f"on GitHub shows when it was committed.{warning}"
+        )
+    last_check = f" Last checked at {e(utc_label(checked['checked_at']))}." if checked.get("checked_at") else ""
+    listing = sub_block(
+        "prediction-list", "The predictions",
+        "Chance is how likely each one looked when it was made. A good forecaster's 70% calls come true about 70% of the time, "
+        "so the score to watch is how the count that came true compares with the count expected. Research notes only. Nothing here is investment advice.",
+        listing_table + prov(" ".join(set_notes) + last_check,
+                             csv_text(["n", "id", "group", "due", "confidence", "status", "value", "resolved_at", "statement"], csv_rows)),
+    )
+    return block("predictions", "Predictions · checked each US trading day", "Predictions", e(lead), tiles + timeline + listing)
+
+
 def demand_section(demand: dict[str, Any]) -> str:
     total, companies = demand["total"], demand["companies"]
     p, added = demand["physical"]["ttm"], demand["physical"]["added_vs_prior_ttm"]
@@ -899,6 +1071,19 @@ td i.key{display:inline-block;width:12px;height:2px;margin-right:8px;vertical-al
 .hb-value{font:400 12px/1 var(--mono);color:var(--slate);white-space:nowrap;font-variant-numeric:tabular-nums}
 .stack{display:flex;gap:2px;height:20px;margin:4px 0 10px}.stack span:last-child{border-radius:0 4px 4px 0}
 h3.gap{margin-top:36px}
+.tiles.three{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.pt-wrap{overflow-x:auto;margin:6px 0 4px}.pt{min-width:640px;padding:0 14px}
+.pt-plot{position:relative;box-sizing:content-box;padding-top:22px;border-bottom:1px solid #d5deea}
+.pt-dot{position:absolute;width:20px;height:20px;margin:0 0 4px -10px;border-radius:50%;display:grid;place-items:center;font:500 10.5px/1 var(--mono);
+background:var(--c);color:#fff;box-shadow:0 0 0 2px #fff;cursor:default}
+.pt-dot.open{background:#fff;color:var(--slate);border:1.5px solid var(--c)}.pt-dot.void{color:var(--ink)}
+.pt-now{position:absolute;top:0;bottom:0;border-left:1px dashed #9aabbf}.pt-now b{position:absolute;top:0;left:6px;font:500 11px/1.4 var(--mono);color:var(--slate);white-space:nowrap}
+.pt-axis{position:relative;height:22px;font:400 11px/1 var(--mono);color:var(--muted)}.pt-axis span{position:absolute;top:7px;padding-left:4px;border-left:1px solid #d5deea;height:15px}
+.legend i.pt-key{width:10px;height:10px;border-radius:50%;background:var(--c)}.legend i.pt-key.open{background:#fff;border:1.5px solid var(--c)}
+table.preds tr.grp th{padding-top:26px;font:500 15px/1.4 var(--sans);letter-spacing:0;text-transform:none;color:var(--ink)}
+table.preds tbody tr:first-child.grp th{padding-top:10px}
+td .res{font-weight:500;white-space:nowrap}td.nowrap{white-space:nowrap}
+.tip{max-width:320px}
 .prov{display:flex;justify-content:space-between;align-items:flex-start;gap:16px 24px;flex-wrap:wrap;border-top:1px solid var(--rule);margin-top:18px;padding-top:12px;font-size:13px;line-height:1.55;color:var(--slate)}
 .prov p{margin:0;max-width:640px}.prov-end{display:flex;align-items:center;gap:14px;margin-left:auto}
 .copy{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--rule);background:#fff;color:var(--ink);border-radius:4px;padding:7px 9px;cursor:pointer;transition:border-color .24s}
@@ -994,16 +1179,20 @@ if(panel){'requestIdleCallback' in window?requestIdleCallback(loadGlobe,{timeout
 """
 
 
-def render(month: str, demand: dict, supply: dict, book: dict | None, call: dict | None, owners: dict, perf: dict | None = None) -> str:
+def render(month: str, demand: dict, supply: dict, book: dict | None, call: dict | None, owners: dict, perf: dict | None = None,
+           preds: dict | None = None) -> str:
     updated = supply.get("generated") or date.today().isoformat()
     picks_html = picks_section(perf)
-    sections = [picks_html, demand_section(demand), supply_section(supply)]
+    preds_html = predictions_section(preds)
+    sections = [picks_html, preds_html, demand_section(demand), supply_section(supply)]
     if book:
         sections.append(book_section(book, owners))
     sections.append(method_section(demand))
     description = "A monthly read on where AI data center demand is outrunning supply, built from SEC filings and Asian trade data."
-    links = [("call", "The call"), ("picks", "Picks"), ("demand", "Demand"), ("supply", "Supply"), ("book", "Book"), ("method", "Method")]
-    nav_links = "".join(f'<a href="#{a}">{e(t)}</a>' for a, t in links if a != "picks" or picks_html)
+    links = [("call", "The call"), ("picks", "Picks"), ("predictions", "Predictions"), ("demand", "Demand"), ("supply", "Supply"),
+             ("book", "Book"), ("method", "Method")]
+    shown = {"picks": bool(picks_html), "predictions": bool(preds_html)}
+    nav_links = "".join(f'<a href="#{a}">{e(t)}</a>' for a, t in links if shown.get(a, True))
     hero_html = hero(demand, supply, call, month).replace('id="globe-panel"', f'id="globe-panel" data-src="{GLOBE_JS}"', 1)
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -1021,7 +1210,7 @@ def render(month: str, demand: dict, supply: dict, book: dict | None, call: dict
 {hero_html}
 <div class="frame">
 {call_section(call, owners)}
-<div class="body">{index_rail(set() if picks_html else {"picks"})}<div class="content">{"".join(sections)}</div></div>
+<div class="body">{index_rail({a for a, on in shown.items() if not on})}<div class="content">{"".join(sections)}</div></div>
 </div>
 </main>
 <footer class="foot"><div class="frame"><p>Research notes only. Nothing here is investment advice. Data updated {e(updated)}{f", prices to the {e(day_label(perf['as_of']))} close" if perf else ""}; built with {link(REPO, "bottleneck-radar")}.</p>
@@ -1039,6 +1228,8 @@ def run() -> None:
     books = sorted(DATA.glob("13f/*/*.json"))
     call_path = folder / "bottleneck.json"
     perf_path = DATA / "performance.json"
+    pred_sets = [read_json(p) for p in sorted((DATA / "predictions").glob("20[0-9][0-9]-[01][0-9].json"))]
+    pred_results = DATA / "prediction-results.json"
     owners = yaml.safe_load((CONFIG / "owners.yaml").read_text())
     geo.ensure_land_dots(SITE / "land-dots.json")
     page = render(
@@ -1049,6 +1240,7 @@ def run() -> None:
         read_json(call_path) if call_path.exists() else None,
         owners,
         read_json(perf_path) if perf_path.exists() else None,
+        {"sets": pred_sets, "results": read_json(pred_results) if pred_results.exists() else None} if pred_sets else None,
     )
     path = write_text(SITE / "index.html", page)
     print(f"Dashboard for {month_name(month)}: {path.relative_to(ROOT)} ({len(page) / 1024:.0f} KB)")

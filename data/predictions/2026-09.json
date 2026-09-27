@@ -1,0 +1,257 @@
+{
+  "set": "2026-09",
+  "made_at": "2026-09-27T22:05:37Z",
+  "made_by": "claude-opus-5-5",
+  "note": "Made from the data in data/2026-09 and prices to the Sep 25 close, before any of them could be checked. Confidence is the chance each one comes true.",
+  "sha256": "1871c606ccb4d7a1915ababd646798c11d4752f15493798dda726689b4be2dcf",
+  "predictions": [
+    {
+      "id": "ddr5-price-holds",
+      "group": "memory",
+      "confidence": 0.8,
+      "due": "2026-10-01",
+      "unit": "usd",
+      "statement": "The DDR5 memory contract price in Korea's September release is $46.50 or higher, where it was in August.",
+      "why": "Chipmakers would only cut prices once they'd caught up with orders.",
+      "check": {
+        "metric": "korea",
+        "field": "ddr5_16gb_contract_usd",
+        "period": "2026-09",
+        "op": ">=",
+        "value": 46.5
+      }
+    },
+    {
+      "id": "korea-memory-double",
+      "group": "memory",
+      "confidence": 0.92,
+      "due": "2026-10-01",
+      "unit": "pct",
+      "statement": "Korea's memory chip exports for September are at least double what they were in September 2025.",
+      "why": "This is the September call's first test. Less than double would mean the shortage is easing fast.",
+      "check": {
+        "metric": "korea",
+        "field": "memory_yoy",
+        "period": "2026-09",
+        "op": ">=",
+        "value": 1.0
+      }
+    },
+    {
+      "id": "nand-price-holds",
+      "group": "memory",
+      "confidence": 0.8,
+      "due": "2026-10-01",
+      "unit": "usd",
+      "statement": "The NAND flash contract price in the same release is $30.48 or higher, where it was in August.",
+      "why": "Flash is most of what Sandisk and Kioxia sell.",
+      "check": {
+        "metric": "korea",
+        "field": "nand_128gb_contract_usd",
+        "period": "2026-09",
+        "op": ">=",
+        "value": 30.48
+      }
+    },
+    {
+      "id": "taiwan-orders-60",
+      "group": "buildout",
+      "confidence": 0.75,
+      "due": "2026-10-23",
+      "unit": "pct",
+      "statement": "Taiwan's electronics export orders for September are up at least 60% on September 2025.",
+      "why": "They were up 84% in August. Growth under 60% would be a real slowdown in chip demand.",
+      "check": {
+        "metric": "taiwan",
+        "series": "electronics",
+        "period": "2026-09",
+        "op": ">=",
+        "value": 0.6
+      }
+    },
+    {
+      "id": "ge-backlog-q3",
+      "group": "power",
+      "confidence": 0.85,
+      "due": "2026-10-28",
+      "unit": "gw",
+      "statement": "GE Vernova reports more than 116 GW of gas turbine backlog and reservations for the third quarter.",
+      "why": "That was the June figure. A longer queue means power for data centers stays scarce.",
+      "check": {
+        "metric": "ge_vernova",
+        "quarter": "2026-Q3",
+        "field": "backlog_and_slots_gw",
+        "op": ">",
+        "value": 116
+      }
+    },
+    {
+      "id": "october-call-memory",
+      "group": "call",
+      "confidence": 0.8,
+      "due": "2026-10-31",
+      "unit": "text",
+      "statement": "The October call names memory as the tightest input again.",
+      "why": "A call that flips every month wouldn't be worth much.",
+      "check": {
+        "metric": "call",
+        "month": "2026-10",
+        "field": "bottleneck",
+        "op": "==",
+        "value": "memory"
+      }
+    },
+    {
+      "id": "capex-q3-up",
+      "group": "buildout",
+      "confidence": 0.88,
+      "due": "2026-11-06",
+      "unit": "usd_b",
+      "statement": "Microsoft, Amazon, Alphabet and Meta spend more on capex in July through September than the $165.1B they spent in April through June.",
+      "why": "Every shortage in the call depends on this spending growing.",
+      "check": {
+        "metric": "capex",
+        "companies": [
+          "MSFT",
+          "AMZN",
+          "GOOGL",
+          "META"
+        ],
+        "quarter_end": "2026-09-30",
+        "op": ">",
+        "value": 165050000000
+      }
+    },
+    {
+      "id": "fund-memory-40",
+      "group": "call",
+      "confidence": 0.65,
+      "due": "2026-11-16",
+      "unit": "share",
+      "statement": "Situational Awareness still has at least 40% of its stock book in Sandisk and Micron on September 30.",
+      "why": "It had 56% in June, and its filings moved into memory before the biggest part of the rally.",
+      "check": {
+        "metric": "fund",
+        "cik": "0002045724",
+        "period": "2026-09-30",
+        "tickers": [
+          "SNDK",
+          "MU"
+        ],
+        "op": ">=",
+        "value": 0.4
+      }
+    },
+    {
+      "id": "gev-beats-sp500",
+      "group": "power",
+      "confidence": 0.55,
+      "due": "2026-12-31",
+      "unit": "points",
+      "statement": "GE Vernova's stock beats the S&P 500 between the Sep 28 and Dec 31 closes.",
+      "why": "If power is the next squeeze, the biggest US turbine maker should gain from it.",
+      "check": {
+        "metric": "prices.beat",
+        "a": [
+          "GEV"
+        ],
+        "b": [
+          "SPY"
+        ],
+        "start": "2026-09-28",
+        "end": "2026-12-31"
+      }
+    },
+    {
+      "id": "picks-beat-consensus",
+      "group": "picks",
+      "confidence": 0.55,
+      "due": "2026-12-31",
+      "unit": "points",
+      "statement": "The five September memory picks beat the consensus AI basket between the Sep 28 and Dec 31 closes.",
+      "why": "The method's main claim is that the companies that own the bottleneck do better than the obvious AI names.",
+      "check": {
+        "metric": "prices.beat",
+        "a": [
+          "000660.KS",
+          "MU",
+          "SNDK",
+          "005930.KS",
+          "285A.T"
+        ],
+        "b": [
+          "NVDA",
+          "AVGO",
+          "MSFT",
+          "GOOGL",
+          "AMZN",
+          "META"
+        ],
+        "start": "2026-09-28",
+        "end": "2026-12-31"
+      }
+    },
+    {
+      "id": "picks-beat-sp500",
+      "group": "picks",
+      "confidence": 0.55,
+      "due": "2026-12-31",
+      "unit": "points",
+      "statement": "The same five picks beat the S&P 500 over the same stretch.",
+      "why": "An index fund is what most people would own instead.",
+      "check": {
+        "metric": "prices.beat",
+        "a": [
+          "000660.KS",
+          "MU",
+          "SNDK",
+          "005930.KS",
+          "285A.T"
+        ],
+        "b": [
+          "SPY"
+        ],
+        "start": "2026-09-28",
+        "end": "2026-12-31"
+      }
+    },
+    {
+      "id": "picks-fall-25",
+      "group": "picks",
+      "confidence": 0.7,
+      "due": "2026-12-31",
+      "unit": "pct",
+      "statement": "Before Dec 31, the five picks fall at least 25% from their high since Sep 28.",
+      "why": "They fell 54% in five weeks this summer. This tests whether swings that size keep happening.",
+      "check": {
+        "metric": "prices.drawdown",
+        "basket": [
+          "000660.KS",
+          "MU",
+          "SNDK",
+          "005930.KS",
+          "285A.T"
+        ],
+        "start": "2026-09-28",
+        "end": "2026-12-31",
+        "value": -0.25
+      }
+    },
+    {
+      "id": "ge-backlog-125",
+      "group": "power",
+      "confidence": 0.7,
+      "due": "2027-02-05",
+      "unit": "gw",
+      "statement": "GE Vernova ends 2026 with at least 125 GW of backlog and reservations, the target it set in July.",
+      "why": "Missing its own target would mean turbine demand is cooling.",
+      "check": {
+        "metric": "ge_vernova",
+        "quarter": "2026-Q4",
+        "field": "backlog_and_slots_gw",
+        "op": ">=",
+        "value": 125
+      }
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "checked_at": "2026-09-27T22:05:37Z",
+  "sets": [
+    {
+      "set": "2026-09",
+      "made_at": "2026-09-27T22:05:37Z",
+      "made_by": "claude-opus-5-5",
+      "sha256": "1871c606ccb4d7a1915ababd646798c11d4752f15493798dda726689b4be2dcf",
+      "intact": true,
+      "summary": {
+        "right": 0,
+        "wrong": 0,
+        "open": 13,
+        "void": 0,
+        "total": 13,
+        "resolved": 0,
+        "hit_rate": null,
+        "expected_right": null,
+        "brier": null,
+        "mean_confidence": 0.7308
+      }
+    }
+  ],
+  "summary": {
+    "right": 0,
+    "wrong": 0,
+    "open": 13,
+    "void": 0,
+    "total": 13,
+    "resolved": 0,
+    "hit_rate": null,
+    "expected_right": null,
+    "brier": null,
+    "mean_confidence": 0.7308
+  },
+  "waiting": {},
+  "results": {
+    "ddr5-price-holds": {
+      "id": "ddr5-price-holds",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    },
+    "korea-memory-double": {
+      "id": "korea-memory-double",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    },
+    "nand-price-holds": {
+      "id": "nand-price-holds",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    },
+    "taiwan-orders-60": {
+      "id": "taiwan-orders-60",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    },
+    "ge-backlog-q3": {
+      "id": "ge-backlog-q3",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    },
+    "october-call-memory": {
+      "id": "october-call-memory",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    },
+    "capex-q3-up": {
+      "id": "capex-q3-up",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    },
+    "fund-memory-40": {
+      "id": "fund-memory-40",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    },
+    "gev-beats-sp500": {
+      "id": "gev-beats-sp500",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    },
+    "picks-beat-consensus": {
+      "id": "picks-beat-consensus",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    },
+    "picks-beat-sp500": {
+      "id": "picks-beat-sp500",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    },
+    "picks-fall-25": {
+      "id": "picks-fall-25",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    },
+    "ge-backlog-125": {
+      "id": "ge-backlog-125",
+      "checked_at": "2026-09-27T22:05:37Z",
+      "status": "open"
+    }
+  }
+}

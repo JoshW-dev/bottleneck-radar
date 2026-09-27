@@ -24,6 +24,11 @@ def main(argv: list[str] | None = None) -> None:
     picks = sub.add_parser("picks", help="freeze the call's owners into this month's equal-weight picks")
     picks.add_argument("--force", action="store_true", help="rewrite a month's picks that were already frozen")
     sub.add_parser("performance", help="price the picks, the 13F clone and benchmarks for the year so far")
+    predict = sub.add_parser("predict", help="freeze a new set of dated predictions from a JSON file")
+    predict.add_argument("--import", dest="import_path", metavar="FILE", required=True, help="the predictions, as JSON")
+    predict.add_argument("--made-by", required=True, help="who made them, for the record (a person or a model name)")
+    predict.add_argument("--name", help="the set's name (default: this month, like 2026-09)")
+    sub.add_parser("predictions", help="check every open prediction against the data and record the results")
     sub.add_parser("ibkr", help="pull positions from your IBKR Flex query into private/")
     sub.add_parser("exposure", help="Stage 4: your exposure to the bottleneck vs the consensus trade")
     sub.add_parser("site", help="render the public outputs in data/ into site/index.html")
@@ -33,7 +38,7 @@ def main(argv: list[str] | None = None) -> None:
     args = parser.parse_args(argv)
     from . import bottleneck as bottleneck_stage
     from . import clone as clone_stage
-    from . import demand, exposure, ibkr_flex, performance, site, supply
+    from . import demand, exposure, ibkr_flex, performance, predictions, site, supply
     from . import picks as picks_stage
 
     if args.command == "clone":
@@ -48,6 +53,10 @@ def main(argv: list[str] | None = None) -> None:
         picks_stage.run(force=args.force)
     elif args.command == "performance":
         performance.run()
+    elif args.command == "predict":
+        predictions.freeze(args.import_path, args.made_by, args.name)
+    elif args.command == "predictions":
+        predictions.run()
     elif args.command == "ibkr":
         ibkr_flex.run()
     elif args.command == "exposure":
@@ -68,6 +77,7 @@ def main(argv: list[str] | None = None) -> None:
             performance.run()
         except Exception as err:  # prices are a nice-to-have on the monthly run; the daily job retries them
             print(f"Performance skipped: {err}")
+        predictions.run()
         if flex_ready and call:
             exposure.run()
         site.run()

@@ -1,5 +1,7 @@
-# Updates the picks tracker and the dashboard after each US trading day. It only reads public
-# prices from Yahoo's chart endpoint, so it needs no secrets. Vercel redeploys on the commit.
+# Updates the picks tracker, checks the open predictions and redraws the dashboard after each US
+# trading day. It reads public prices from Yahoo and public releases from Korea, Taiwan and SEC
+# EDGAR, so it needs no secrets. The SEC checks wait until the SEC_USER_AGENT variable is set.
+# Vercel redeploys on the commit.
 name: daily prices
 on:
   schedule:
@@ -20,13 +22,15 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
       - run: uv sync
-      - name: Price the picks and render the site
-        run: uv run radar performance && uv run radar site
+      - name: Price the picks, check the predictions and render the site
+        env:
+          SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+        run: uv run radar performance && uv run radar predictions && uv run radar site
       - name: Commit the new prices
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/performance.json site
+          git add data/performance.json data/prediction-results.json data/13f site
           if git diff --cached --quiet; then
             echo "No changes"
           else

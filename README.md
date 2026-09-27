@@ -19,6 +19,7 @@ The dashboard is live at [bottleneck-radar-two.vercel.app](https://bottleneck-ra
 | 4. Exposure | `radar ibkr`, `radar exposure` | Reads your positions through an IBKR Flex query and splits them into bottleneck owners, the consensus AI trade and everything else | none |
 | Picks | `radar picks` | Freezes the call's owners as that month's picks at equal weight, with the consensus trade kept as the comparison. A month's picks are never rewritten. | none |
 | Tracking | `radar performance` | Prices the picks, a point-in-time copy of the fund's 13F filings, the consensus basket and the S&P 500 for the year so far, in dollars | none |
+| Predictions | `radar predict`, `radar predictions` | Freezes a set of dated predictions with a timestamp and a SHA-256, then checks each one against the data when it comes due | none |
 | Dashboard | `radar site` | Renders the latest month in `data/` into `site/index.html` | none |
 
 `radar run` does all of it in order. A month's call is made once: rerunning `radar bottleneck` keeps it unless you pass `--force`.
@@ -54,7 +55,7 @@ A Flex Web Service token can only download reports, so Stage 4 can't trade.
 
 ## Where things go
 
-- `data/` holds the public outputs and is committed: `13f/<cik>/<period>.json`, `picks/<month>.json`, `performance.json`, plus `demand.json`, `supply.json`, `bottleneck.json` and `memo.md` for each month.
+- `data/` holds the public outputs and is committed: `13f/<cik>/<period>.json`, `picks/<month>.json`, `performance.json`, `predictions/<set>.json`, `prediction-results.json`, plus `demand.json`, `supply.json`, `bottleneck.json` and `memo.md` for each month.
 - `private/` holds anything about your account: positions, the order list and exposure. Git ignores it.
 - `config/` holds the inputs you maintain by hand:
   - `assumptions.yaml` has every factor that turns dollars into physical units, each with a source. Entries marked `unverified` still need one.
@@ -96,11 +97,21 @@ The dashboard shows the picks from January 1, even though September 2026 was the
 
 The September 2026 call was made before the pipeline had an API key: claude-opus-5-5 read the saved prompt outside the API run, and `radar bottleneck --import` put its answer through the same checks as an API call. The call records who made it.
 
+## Predictions
+
+Each prediction has a due date, a stated chance of coming true and a check the code can run by itself. A check reads one number: a figure from Korea's trade release or Taiwan's export orders, GE Vernova's backlog, the hyperscalers' quarterly capex, the fund's 13F, the next monthly call, or how one basket of stocks did against another. `radar predict --import FILE --made-by NAME` freezes a set into `data/predictions/<month>.json` with the UTC time it was made and a SHA-256 of the predictions, and it won't overwrite a set that already exists.
+
+`radar predictions` checks every open prediction and writes `data/prediction-results.json`. It reads the committed data first and fetches what's missing once a prediction is due, so most results land within a day of the release. Each result records the value found, the day that value became public and the UTC time of the check. Once a prediction is settled its result stays put, even if the source later revises the figure. If there's still no data 30 days after the due date, the prediction is marked void and left out of the score.
+
+The score compares how many came true with how many the stated chances say should have (the sum of the chances). The Brier score is the average squared gap between each chance and the outcome: 0 is perfect, and saying 50% every time scores 0.25. The checker recomputes each set's SHA-256 on every run, and the commit history on GitHub shows when each set was frozen.
+
+The first set has 13 predictions due between October 2026 and February 2027. claude-opus-5-5 made them from the September data on Sep 27, 2026.
+
 ## Running it monthly
 
 GitHub Actions runs the public stages on the 24th of each month, after Taiwan publishes its export orders (`.github/workflows/monthly.yml`). The workflow commits `data/` and `site/`, and Vercel redeploys from that commit. It needs a repository variable named `SEC_USER_AGENT`, plus an `ANTHROPIC_API_KEY` secret for the memo. You can also start it by hand from the Actions tab.
 
-A second workflow (`.github/workflows/prices.yml`) updates the tracker and the dashboard after each US trading day. It only reads public prices, so it needs no secrets.
+A second workflow (`.github/workflows/prices.yml`) updates the tracker, checks the open predictions and redraws the dashboard after each US trading day. It reads only public data, so it needs no secrets, though predictions that read SEC filings wait for `SEC_USER_AGENT`.
 
 Stage 4 reads your brokerage account, so it never runs on GitHub, where Actions logs are public. `scripts/monthly.sh` pulls the refresh and runs it locally. This cron entry runs it two hours after the workflow:
 
@@ -116,6 +127,7 @@ Stage 4 reads your brokerage account, so it never runs on GitHub, where Actions 
 - Taiwan's export orders measure demand for Taiwanese electronics. Leading-edge chips have no direct supply series yet.
 - A pick's return for the year includes the months before the call that picked it. Judge the picks from the call date on.
 - The picks rebalance only when a new call arrives, and the tracker ignores trading costs and taxes.
+- Thirteen predictions are too few to judge calibration. The score means something after a few dozen.
 
 ## Tests
 
