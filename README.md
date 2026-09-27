@@ -6,6 +6,8 @@ The idea comes from a TikTok by [Angus the Nontechnical](https://www.tiktok.com/
 
 It's for research. It doesn't give investment advice or place orders.
 
+The dashboard is live at [bottleneck-radar-two.vercel.app](https://bottleneck-radar-two.vercel.app).
+
 ## The four stages
 
 | Stage | Command | What it does | Model |
