@@ -1,0 +1,286 @@
+{
+  "source": "https://stripe.com",
+  "tokens": {
+    "spacing": {
+      "scale": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        16,
+        24,
+        32,
+        64,
+        160
+      ],
+      "base_unit": 4
+    },
+    "typography": {
+      "families": [
+        "sohne-var",
+        "SourceCodePro"
+      ],
+      "scale": [
+        {
+          "role": "hero h1, two tones in one block",
+          "size": "48px",
+          "weight": "300",
+          "family": "sohne-var",
+          "line_height": "55.2px",
+          "letter_spacing": "-0.96px"
+        },
+        {
+          "role": "stat figure",
+          "size": "48px",
+          "weight": "300",
+          "family": "sohne-var"
+        },
+        {
+          "role": "section h2, two tones in one block",
+          "size": "32px",
+          "weight": "300",
+          "family": "sohne-var",
+          "line_height": "35.2px",
+          "letter_spacing": "-0.64px"
+        },
+        {
+          "role": "section and tile h3",
+          "size": "26px",
+          "weight": "300",
+          "family": "sohne-var",
+          "line_height": "29.12px",
+          "letter_spacing": "-0.26px"
+        },
+        {
+          "role": "lead paragraph",
+          "size": "18px",
+          "weight": "300",
+          "family": "sohne-var",
+          "line_height": "25.2px"
+        },
+        {
+          "role": "body, buttons, stat labels, h4",
+          "size": "16px",
+          "weight": "400",
+          "family": "sohne-var",
+          "line_height": "22.4px"
+        },
+        {
+          "role": "footer links",
+          "size": "16px",
+          "weight": "300",
+          "family": "sohne-var",
+          "line_height": "24px"
+        },
+        {
+          "role": "nav triggers, eyebrow, live GDP figure",
+          "size": "14px",
+          "weight": "400",
+          "family": "sohne-var"
+        },
+        {
+          "role": "code lines in product mockups",
+          "size": "~10px",
+          "weight": "400",
+          "family": "SourceCodePro"
+        }
+      ]
+    },
+    "colors": [
+      {
+        "role": "background",
+        "value": "#FFFFFF"
+      },
+      {
+        "role": "background-alt (bento section, footer)",
+        "value": "#F8FAFD"
+      },
+      {
+        "role": "hairline, rails, card border",
+        "value": "#E5EDF5"
+      },
+      {
+        "role": "text-primary",
+        "value": "#061B31"
+      },
+      {
+        "role": "text-secondary (body, footer links)",
+        "value": "#50617A"
+      },
+      {
+        "role": "text-tertiary (two-tone h2 continuation, GDP figure)",
+        "value": "#64748D"
+      },
+      {
+        "role": "hero h1 continuation (sampled)",
+        "value": "#41607F"
+      },
+      {
+        "role": "accent",
+        "value": "#533AFD"
+      },
+      {
+        "role": "accent-tint (idle icon button)",
+        "value": "#F5F5FD"
+      },
+      {
+        "role": "stats band gradient top",
+        "value": "#1B1F5E"
+      },
+      {
+        "role": "stats band gradient middle",
+        "value": "#28227A"
+      },
+      {
+        "role": "stats band gradient bottom",
+        "value": "#4239AE"
+      },
+      {
+        "role": "stats band glow",
+        "value": "#8A84F2"
+      },
+      {
+        "role": "stats band glow core",
+        "value": "#E0E0FB"
+      },
+      {
+        "role": "stat figure active (on band)",
+        "value": "#FFFFFF"
+      },
+      {
+        "role": "stat figure idle (on band, sampled)",
+        "value": "#6980B7"
+      },
+      {
+        "role": "art ramp sky",
+        "value": "#C0DAFD"
+      },
+      {
+        "role": "art ramp lavender",
+        "value": "#C2C2FF"
+      },
+      {
+        "role": "art ramp orange",
+        "value": "#FF9016"
+      },
+      {
+        "role": "art ramp coral",
+        "value": "#FF5F85"
+      },
+      {
+        "role": "art ramp magenta",
+        "value": "#FC6EC4"
+      }
+    ],
+    "radius": [
+      "4px",
+      "6px",
+      "8px",
+      "16px",
+      "100%"
+    ],
+    "shadows": [
+      "0 30px 45px -30px rgba(50,50,93,0.25), 0 18px 36px -18px rgba(0,0,0,0.1)",
+      "0 14.088px 21.132px -14.088px rgba(3,3,39,0.25), 0 8.453px 16.906px -8.453px rgba(0,0,0,0.1)",
+      "0 16px 32px 0 rgba(50,50,93,0.12)",
+      "0 15px 35px 0 rgba(23,23,23,0.08)",
+      "0 4px 24px 0 rgba(0,0,0,0.06)"
+    ],
+    "image_ratios": [
+      {
+        "usage": "hero wave fallback image, 1392x975 (live wave is a canvas)",
+        "ratio": "1.43:1"
+      },
+      {
+        "usage": "full-width section art at 1232px",
+        "ratio": "2.74:1"
+      },
+      {
+        "usage": "full-width section art at 1232px",
+        "ratio": "3.08:1"
+      },
+      {
+        "usage": "full-width section art at 1232px",
+        "ratio": "2.32:1"
+      },
+      {
+        "usage": "feature art at 860px",
+        "ratio": "1.21:1"
+      },
+      {
+        "usage": "bento tile holding globe, card or chat art, 400x678",
+        "ratio": "0.59:1"
+      },
+      {
+        "usage": "thumbnail at 92px",
+        "ratio": "1:1"
+      }
+    ],
+    "grid": {
+      "max_width": "1232px",
+      "columns": 12,
+      "gutter": "16px",
+      "column_width": "88px",
+      "frame": "1264px, 1px #E5EDF5 rails at x=88 and x=1352 in a 1440px viewport"
+    }
+  },
+  "taste": [
+    {
+      "name": "Color lives in the art layer (restraint)",
+      "trigger": "When the designers had a saturated brand ramp (sky blue, lavender, orange, coral, magenta) and a 14,617px page to carry it",
+      "decision": "Chose to keep that ramp inside canvas art (hero wave, globe dots, tile illustrations) and run all chrome in blue-tinted neutrals with one accent, #533AFD, over tinting section grounds, icons, headings and figures in brand colors",
+      "reason": "Because readers find the next action by its color. With #533AFD reserved for buttons and links, a reader spots the action at once, and the wave can run at full saturation without pulling focus from the controls",
+      "evidence": [
+        "Saturated pixels cover 28.9% of the first screen (nearly all of it the wave) and 0.1% of the footer",
+        "#533AFD appears as 12 fills (0.2% of background area) and 43 text nodes, on buttons, links and icon controls in the captures",
+        "Neutrals #061B31, #50617A, #64748D, #E5EDF5, #F8FAFD sit at hue 210-217 degrees",
+        "The one full-bleed color band is a darkened accent (hue 236-245 degrees against 248)",
+        "Type picks up the ramp only where it overlaps the wave: h1 words ~#784CE3, nav 'Sign in' ~#BB7D69"
+      ]
+    },
+    {
+      "name": "Stat figures at headline size, weight 300, lit one at a time",
+      "trigger": "When the designers had four proof numbers (135+, US$1.9tn, 99.999%, 200m+) to fit in one row",
+      "decision": "Chose to set the figures at the h1's 48px in weight 300 and light one at a time (active #FFFFFF, the other three #6980B7, a glow on the hairlines above and below the active cell) over four bold, equally bright KPI tiles",
+      "reason": "Because four equally bright numbers read as one block that readers skim past. Lighting one figure gives the eye an order to read them in, and at weight 300 a figure can match the h1's size without looking heavier than it",
+      "evidence": [
+        "'135+' cap height 35px equals the hero 'F' at 35px (48px type)",
+        "Weight 300 on 445 nodes, 700 on 1",
+        "Stat 1 #FFFFFF against stats 2-4 at #6980B7",
+        "Hairline luminance 150 at x=250 against 51 elsewhere",
+        "16px centered two-line labels at 22px pitch; cells at 320px pitch",
+        "The live figure (Global GDP running on Stripe: 1.72240141%) sits at 14px above the h1 with 8 decimals",
+        "One-at-a-time sequence inferred from a single frame"
+      ]
+    },
+    {
+      "name": "Globe as sparse dots, cropped, with one arc (restraint)",
+      "trigger": "When the designers needed a globe to stand for cross-border money movement in the stablecoin tile",
+      "decision": "Chose a sparse particle sphere in the page's violet, pink and coral, running off the edge of its 400x678px tile and carrying one thin arc with two pulse markers, over a textured or outlined earth shown whole and centered with many arcs and city labels",
+      "reason": "Because the globe only has to tell a reader 'this works across borders', and a dotted sphere says that without asking anyone to read a map. One arc gives the eye a single path to follow, and a sphere cut off by the tile edge reads as larger than the frame",
+      "evidence": [
+        "Dots cover 1.8% of the globe region; land shows only as dot density, with no borders, graticule or labels",
+        "Dot hue runs violet ~#ACA2D8 (lower left) through pink ~#EBAFC9 to coral ~#EBA4B3 (top right)",
+        "One ~1.5px arc from magenta ~#E0A9E4 to lavender ~#CEC1EE in the captured frame",
+        "Pulse marker ~#F09DE6 with a halo; second marker ~#C6DAF5",
+        "The sphere runs off the tile's right edge",
+        "The globe is one of three equal 4-column tiles, under a 26px/300 title"
+      ]
+    },
+    {
+      "name": "Drafted frame, shadows only for product",
+      "trigger": "When the designers had to hold a long page of mixed bands together: hero, logo strip, bento tiles, dark stats band, footer",
+      "decision": "Chose to draw the layout itself (1px rails at x=88 and x=1352 down the whole page, hairlines between bands, dashed footer dividers) and give structural cards only a 1px border, saving two-layer navy-tinted shadows for floating product objects, over shadow-lifted cards in an invisible container",
+      "reason": "Because on a 14,617px scroll the lines tell readers which band they're in and where it ends. When only product UI casts a shadow, readers can pick the product out from the page around it",
+      "evidence": [
+        "Rails at x=88 and x=1352 bound a 1264px frame (1232px content plus 2 x 16px) and stay visible through the dark band (#342B94 on #28227A)",
+        "Hero copy starts one column in and spans columns 2-10 (x=208 to 1128)",
+        "Bento tiles: 1px border, 6px radius, no visible shadow",
+        "The float shadow and its 0.47x copy appear on 9 elements; the visible ones are floating mockup panels and the card illustration",
+        "Footer columns split by 1px dashed dividers"
+      ]
+    }
+  ]
+}

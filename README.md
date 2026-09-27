@@ -74,7 +74,9 @@ A Flex Web Service token can only download reports, so Stage 4 can't trade.
 
 ## Dashboard
 
-`radar site` renders one static page from `data/`: the monthly call, the four inputs, demand, supply and the fund's book, with a table view under every chart. Vercel serves `site/` as it is (see `vercel.json`), so there's no build step, and every push to `main` redeploys it. The page only reads `data/`, so account data can't reach it.
+`radar site` renders one static page from `data/`: the monthly call, the four inputs, demand, supply and the fund's book, with a table view and a copy-data button under every chart. Vercel serves `site/` as it is (see `vercel.json`), so there's no build step, and every push to `main` redeploys it. The page only reads `data/`, so account data can't reach it.
+
+The design follows the two `/taste` studies in `docs/taste/`, of Stripe's homepage and Ramp's AI Index. Color is reserved for data, the four input figures light up one at a time, and the globe in the hero draws arcs from where each input is made to two US data center markets. The globe uses [globe.gl](https://github.com/vasturiano/globe.gl), and its land dots come from [Natural Earth](https://www.naturalearthdata.com/) (public domain). Motion switches off for readers who ask their system for reduced motion.
 
 ## Running it monthly
 

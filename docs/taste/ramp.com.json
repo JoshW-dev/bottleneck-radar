@@ -1,0 +1,253 @@
+{
+  "source": "https://ramp.com/data/ai-index",
+  "tokens": {
+    "spacing": {
+      "scale": [
+        4,
+        8,
+        12,
+        16,
+        24,
+        32,
+        64,
+        128
+      ],
+      "base_unit": 4
+    },
+    "typography": {
+      "families": [
+        "Lausanne",
+        "IBM Plex Mono",
+        "DM Mono"
+      ],
+      "scale": [
+        {
+          "role": "page-title",
+          "size": "48px",
+          "weight": "300",
+          "family": "Lausanne"
+        },
+        {
+          "role": "chart-title",
+          "size": "31.68px",
+          "weight": "600",
+          "family": "Lausanne"
+        },
+        {
+          "role": "section-heading",
+          "size": "28px",
+          "weight": "300",
+          "family": "Lausanne"
+        },
+        {
+          "role": "methodology-heading",
+          "size": "24px",
+          "weight": "300",
+          "family": "Lausanne"
+        },
+        {
+          "role": "methodology-body",
+          "size": "18px",
+          "weight": "300",
+          "family": "Lausanne"
+        },
+        {
+          "role": "dek-and-chart-subtitle",
+          "size": "16px",
+          "weight": "300",
+          "family": "Lausanne"
+        },
+        {
+          "role": "nav-tabs-buttons",
+          "size": "14px",
+          "weight": "400",
+          "family": "Lausanne"
+        },
+        {
+          "role": "chart-source-line",
+          "size": "13px",
+          "weight": "300",
+          "family": "Lausanne"
+        },
+        {
+          "role": "indicator-subtab",
+          "size": "12.48px",
+          "weight": "400",
+          "family": "Lausanne"
+        },
+        {
+          "role": "mono-label-eyebrow-y-tick-tooltip",
+          "size": "11.52px",
+          "weight": "500",
+          "family": "IBM Plex Mono"
+        },
+        {
+          "role": "chart-end-label",
+          "size": "11px",
+          "weight": "600",
+          "family": "DM Mono"
+        },
+        {
+          "role": "chart-x-tick",
+          "size": "11px",
+          "weight": "400",
+          "family": "DM Mono"
+        }
+      ]
+    },
+    "colors": [
+      {
+        "role": "background",
+        "value": "#FFFFFF"
+      },
+      {
+        "role": "surface-dark",
+        "value": "#1A1919"
+      },
+      {
+        "role": "text-primary",
+        "value": "#0C0A08"
+      },
+      {
+        "role": "chart-text",
+        "value": "#1A1A1A"
+      },
+      {
+        "role": "text-source",
+        "value": "#444444"
+      },
+      {
+        "role": "text-muted",
+        "value": "#666666"
+      },
+      {
+        "role": "text-faint",
+        "value": "#999999"
+      },
+      {
+        "role": "text-hushed",
+        "value": "#0C0A0899"
+      },
+      {
+        "role": "accent-data",
+        "value": "#4F72E8"
+      },
+      {
+        "role": "benchmark-series",
+        "value": "#8B8479"
+      },
+      {
+        "role": "cta-solar",
+        "value": "#E4F222"
+      },
+      {
+        "role": "border",
+        "value": "#E0E0E0"
+      },
+      {
+        "role": "gridline",
+        "value": "#EEEEEE"
+      },
+      {
+        "role": "surface-active",
+        "value": "#F5F5F5"
+      },
+      {
+        "role": "surface-overlay",
+        "value": "#FFFFFFE0"
+      },
+      {
+        "role": "positive",
+        "value": "#168A4D"
+      },
+      {
+        "role": "negative",
+        "value": "#D23B3B"
+      },
+      {
+        "role": "sepia-background",
+        "value": "#F5F0E8"
+      }
+    ],
+    "radius": [
+      "0px",
+      "4px",
+      "6px",
+      "12px",
+      "9999px"
+    ],
+    "shadows": [
+      "0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1)",
+      "0 1px 3px #00000022"
+    ],
+    "image_ratios": [
+      {
+        "usage": "related-article card media",
+        "ratio": "2:1"
+      },
+      {
+        "usage": "author avatar",
+        "ratio": "1:1"
+      }
+    ],
+    "grid": {
+      "max_width": "1536px",
+      "columns": 2,
+      "gutter": "32px"
+    }
+  },
+  "taste": [
+    {
+      "name": "Name the line where it ends",
+      "trigger": "When a monthly index chart has to say which line is which and what the latest reading is.",
+      "decision": "Chose to print each series' name and latest value at its last data point, in the series color and 11px DM Mono at 600, over a legend box with values revealed on hover.",
+      "reason": "People open a monthly index to get the current number, and their eye already stops at the right end of the line. Monospaced digits make \"56.1%\" read as a measurement, and the label survives in a static screenshot where hover doesn't exist.",
+      "evidence": [
+        "\"Ramp Overall 56.1%\" in #4F72E8 and \"Census Estimate 22.1%\" in #8B8479, each 10px past the line's last point",
+        "No legend box in the chart",
+        "Colliding labels get a 1px dashed (2 2) leader at 0.5 opacity",
+        "Y-ticks 11.52px IBM Plex Mono #666, right-aligned in a 52px column; x-ticks 11px #999",
+        "Straight segments between monthly points"
+      ]
+    },
+    {
+      "name": "Spend color only on the headline series",
+      "trigger": "When one chart pairs Ramp's own series with a public benchmark, inside a brand whose signature color is chartreuse.",
+      "decision": "Chose one blue for Ramp's line and a thinner warm-gray dashed line for the Census benchmark, with all chart structure in gray, over a categorical palette or the brand chartreuse on the data.",
+      "reason": "Readers should know which line is the headline before they read a label, and a heavy solid blue line against a thin dashed gray one settles that at a glance. Chartreuse #E4F222 measures about 1.2:1 against white, so a 2.5px line in it would disappear; Ramp keeps it on one sales button.",
+      "evidence": [
+        "#4F72E8 (4.3:1 on white) at 2.5px and 0.9 opacity against #8B8479 at 1.75px, dashed 6 4, 0.72 opacity",
+        "#E4F222 covers 0.2% of the page",
+        "Gridlines #EEEEEE, horizontal only, no axis lines",
+        "Chart card has no border, fill, radius or shadow",
+        "Hovering one series fades the rest to 0.24 opacity"
+      ]
+    },
+    {
+      "name": "The whole index in one list",
+      "trigger": "When 6 indicators in two families, plus 5 breakdowns under Adoption, have to share one page.",
+      "decision": "Chose a sticky 240px sidebar that lists every indicator under 11.52px mono group labels and unfolds subtabs only under the active tab, over top tabs or a long scroll of stacked charts.",
+      "reason": "People return to a recurring index for one series and want to see what else it covers before they pick. One list answers \"what does this track?\" without a click, and the URL hash lets them send a colleague the exact view.",
+      "evidence": [
+        "Tabs 240 × 44px, 6px radius, 12px × 10px padding, 4px apart",
+        "Active tab #F5F5F5 fill, 1px #E0E0E0 border, ink text; inactive tabs #666 with a transparent border",
+        "Subtabs at 12.48px on a 1px #E0E0E0 rail, the active one in ink against #666",
+        "Sticky at 86px (62px nav plus 24px); #adoption#overall in the URL",
+        "Under 992px the list turns into two selects"
+      ]
+    },
+    {
+      "name": "Provenance rides inside the crop",
+      "trigger": "When deciding where sources and methodology go for charts that readers will crop and share.",
+      "decision": "Chose to end every chart with a source sentence, a \"Get the data.\" button that copies the rows, and the Ramp logo, with methodology published as signed long-form prose, over one footnote linking to a separate methodology page.",
+      "reason": "A shared chart travels as a crop, and anything outside the crop is lost. With the source line and logo inside the chart, attribution stays attached, and a named economist gives readers a person who answers for the numbers.",
+      "evidence": [
+        "Chart footer 13px/1.65 in #444, 8px 32px 12px padding, 3px underline offset",
+        "Ramp wordmark at the footer's right edge (x 1268 to 1343); a hairline closes each chart",
+        "\"Get the data.\" confirms with a \"Copied data to clipboard.\" status",
+        "Methodology in a 644px column at 18px/30px in #0C0A0899, 64px below the charts",
+        "40px avatar byline for Ramp's lead economist above the methodology"
+      ]
+    }
+  ]
+}

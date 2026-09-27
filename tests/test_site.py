@@ -70,10 +70,22 @@ def test_nice_ticks():
 
 def test_page_renders_every_section_with_a_call():
     page = site.render("2026-09", DEMAND, SUPPLY, BOOK, CALL, OWNERS)
-    for fragment in ("This month's call", "Memory chips", "Micron Technology", "$586B", "Taiwan export orders",
-                     "GE Vernova", "Example Fund LP", "What would prove this wrong"):
+    for fragment in ('id="call"', "Memory chips are this month", "Micron Technology", "$586B", "Taiwan export orders",
+                     "GE Vernova", "Example Fund LP", "What would prove this wrong", 'id="globe-panel"', "land-dots.json"):
         assert fragment in page
     assert "<SCRIPT>" not in page  # names from filings are escaped
+
+
+def test_globe_payload_ties_each_figure_to_its_arcs():
+    figures = site.stats(SUPPLY)
+    payload = site.globe_payload(SUPPLY, figures)
+    ids = {n["id"] for n in payload["nodes"]}
+    assert {"korea", "taiwan", "GE Vernova", "texas", "virginia"} <= ids
+    memory = payload["figures"][0]
+    assert memory["arcs"] and all(payload["arcs"][k]["from"] == "korea" for k in memory["arcs"])
+    grid = payload["figures"][-1]
+    assert grid["arcs"] and all(payload["arcs"][k]["to"] == "texas" for k in grid["arcs"])
+    assert [f["value"] for f in figures] == [40.94, 45.755, 116.0, pytest.approx(194.3)]
 
 
 def test_page_renders_without_a_call():
