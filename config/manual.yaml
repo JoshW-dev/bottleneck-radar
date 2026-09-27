@@ -1,0 +1,32 @@
+# Figures copied by hand from PDFs that don't have a parser yet.
+# Each entry needs the date it describes, a source link and the day it was entered.
+# The memo flags anything older than 120 days as stale.
+
+gas_turbines:
+  - company: Siemens Energy
+    as_of: 2026-06-30
+    backlog_gw: 69
+    slot_reservations_gw: 26
+    shipped_gw_quarter: 6
+    source: https://assets.siemens-energy.com/dam/3e846440-66dd-4a56-be75-b49d004e6741/2026-08-05_Q3_Analyst_presentation-pdf_Original%20file.pdf
+    entered: 2026-09-26
+  - company: Mitsubishi Heavy Industries
+    as_of: 2026-06-30
+    backlog_gw: 35
+    backlog_units: 80
+    source: https://www.mhi.com/finance/library/result/pdf/fy20261q/presentation.pdf
+    entered: 2026-09-26
+
+grid:
+  - name: ERCOT large loads qualified for Batch Zero
+    as_of: 2026-09-11
+    base_load_gw: 66.4
+    base_load_projects: 204
+    studied_load_gw: 127.9
+    studied_load_projects: 158
+    source: https://www.ercot.com/files/docs/2026/09/11/14-Batch-Zero-Update.pdf
+    note: >-
+      Batch Zero replaced ERCOT's legacy large-load study process in July 2026. A Governor's directive
+      on Aug 3, 2026 about data center and crypto-mining interconnections added a verification and
+      audit step, with a TBD effect on the Batch Zero timeline.
+    entered: 2026-09-26

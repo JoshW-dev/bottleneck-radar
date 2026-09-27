@@ -1,0 +1,46 @@
+# Who makes each input. Stage 3 can only name companies listed here, which keeps its answer
+# matchable against your positions in Stage 4. Add companies freely; ids are just labels.
+# tickers: every symbol the company trades under (US ticker, ADR, home listing as IBKR shows it).
+
+inputs:
+  memory:
+    label: Memory chips (HBM, DRAM, NAND)
+    owners: [sk_hynix, samsung, micron, sandisk, kioxia]
+  advanced_chips:
+    label: Leading-edge chips and packaging
+    owners: [tsmc, ase, amkor]
+  gas_turbines:
+    label: Large gas turbines
+    owners: [ge_vernova, siemens_energy, mhi]
+  grid_interconnection:
+    label: Grid connections (transformers, switchgear, transmission, on-site power)
+    owners: [ge_vernova, siemens_energy, hitachi, schneider, eaton, quanta, bloom]
+
+# The "obvious thing everyone else is buying" from the video's last prompt. The model picks from these.
+consensus_candidates: [nvidia, broadcom, amd, microsoft, alphabet, amazon, meta, oracle]
+
+companies:
+  sk_hynix: {name: SK Hynix, tickers: ["000660"]}
+  samsung: {name: Samsung Electronics, tickers: ["005930"]}
+  micron: {name: Micron Technology, tickers: [MU]}
+  sandisk: {name: Sandisk, tickers: [SNDK]}
+  kioxia: {name: Kioxia, tickers: ["285A"]}
+  tsmc: {name: TSMC, tickers: [TSM, "2330"]}
+  ase: {name: ASE Technology, tickers: [ASX, "3711"]}
+  amkor: {name: Amkor Technology, tickers: [AMKR]}
+  ge_vernova: {name: GE Vernova, tickers: [GEV]}
+  siemens_energy: {name: Siemens Energy, tickers: [ENR, SMNEY]}
+  mhi: {name: Mitsubishi Heavy Industries, tickers: ["7011", MHVYF]}
+  hitachi: {name: Hitachi, tickers: ["6501", HTHIY]}
+  schneider: {name: Schneider Electric, tickers: [SU, SBGSY]}
+  eaton: {name: Eaton, tickers: [ETN]}
+  quanta: {name: Quanta Services, tickers: [PWR]}
+  bloom: {name: Bloom Energy, tickers: [BE]}
+  nvidia: {name: Nvidia, tickers: [NVDA]}
+  broadcom: {name: Broadcom, tickers: [AVGO]}
+  amd: {name: AMD, tickers: [AMD]}
+  microsoft: {name: Microsoft, tickers: [MSFT]}
+  alphabet: {name: Alphabet, tickers: [GOOGL, GOOG]}
+  amazon: {name: Amazon, tickers: [AMZN]}
+  meta: {name: Meta Platforms, tickers: [META]}
+  oracle: {name: Oracle, tickers: [ORCL]}

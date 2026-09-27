@@ -1,0 +1,16 @@
+<FlexQueryResponse queryName="radar-positions" type="AF">
+  <FlexStatements count="1">
+    <FlexStatement accountId="U1234567" fromDate="20260925" toDate="20260925" period="LastBusinessDay" whenGenerated="20260926;101500">
+      <EquitySummaryInBase>
+        <EquitySummaryByReportDateInBase reportDate="20260925" cash="32354.40" stock="67645.60" total="100000" />
+      </EquitySummaryInBase>
+      <OpenPositions>
+        <OpenPosition accountId="U1234567" currency="USD" fxRateToBase="1" assetCategory="STK" symbol="MU" description="MICRON TECHNOLOGY INC" listingExchange="NASDAQ" position="20" markPrice="1082.28" positionValue="21645.6" levelOfDetail="SUMMARY" />
+        <OpenPosition accountId="U1234567" currency="USD" fxRateToBase="1" assetCategory="STK" symbol="MU" description="MICRON TECHNOLOGY INC" listingExchange="NASDAQ" position="10" markPrice="1082.28" positionValue="10822.8" levelOfDetail="LOT" />
+        <OpenPosition accountId="U1234567" currency="USD" fxRateToBase="1" assetCategory="OPT" symbol="MU    261218C01100000" underlyingSymbol="MU" description="MU 18DEC26 1100 C" listingExchange="CBOE" position="1" markPrice="50" positionValue="5000" levelOfDetail="SUMMARY" />
+        <OpenPosition accountId="U1234567" currency="USD" fxRateToBase="1" assetCategory="STK" symbol="NVDA" description="NVIDIA CORP" listingExchange="NASDAQ" position="100" markPrice="300" positionValue="30000" levelOfDetail="SUMMARY" />
+        <OpenPosition accountId="U1234567" currency="EUR" fxRateToBase="1.1" assetCategory="STK" symbol="ENR" description="SIEMENS ENERGY AG" listingExchange="IBIS" position="100" markPrice="100" positionValue="10000" levelOfDetail="SUMMARY" />
+      </OpenPositions>
+    </FlexStatement>
+  </FlexStatements>
+</FlexQueryResponse>

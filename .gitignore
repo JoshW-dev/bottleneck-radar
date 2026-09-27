@@ -1,0 +1,11 @@
+# Secrets and anything tied to your brokerage account stay local.
+.env
+private/
+
+.cache/
+data/*/bottleneck-prompt.md
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store

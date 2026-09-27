@@ -1,0 +1,101 @@
+{
+  "generated": "2026-09-26",
+  "memory": {
+    "period": "2026-08",
+    "chips_usd": 46650000000.0,
+    "chips_yoy": 2.09,
+    "memory_year_ago_usd": 10490000000.0,
+    "memory_usd": 40940000000.0,
+    "memory_yoy": 2.9019999999999997,
+    "system_chips_usd": 5130000000.0,
+    "system_chips_yoy": 0.244,
+    "ddr5_16gb_contract_usd": 46.5,
+    "ddr5_16gb_yoy": 7.862,
+    "nand_128gb_contract_usd": 30.48,
+    "nand_128gb_yoy": 7.925,
+    "title": "2026년 8월 수출입동향",
+    "source": "https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/172145/view?mno=&pageIndex=1",
+    "pdf": "https://www.motir.go.kr/attach/down/095a2dda9c864e1d90d751f7668a1117/52d327484928d19aff6c0de027275375/9a9db098b587ee18b321c826f3707a49"
+  },
+  "export_orders": {
+    "source": "Taiwan Ministry of Economic Affairs, Department of Statistics (data.gov.tw)",
+    "total": {
+      "period": "2026-08",
+      "usd_millions": 102955.0,
+      "yoy": 0.7135177418281073,
+      "yoy_3m": 0.6421363142369196,
+      "url": "https://service.moea.gov.tw/EE520/opendata/b.csv"
+    },
+    "electronics": {
+      "period": "2026-08",
+      "usd_millions": 45755.0,
+      "yoy": 0.8390273311897105,
+      "yoy_3m": 0.785314450446416,
+      "url": "https://service.moea.gov.tw/EE520/opendata/經濟部統計處_外銷訂單_電子產品.csv"
+    },
+    "ict": {
+      "period": "2026-08",
+      "usd_millions": 34210.0,
+      "yoy": 1.005157962604771,
+      "yoy_3m": 0.9036487600209786,
+      "url": "https://service.moea.gov.tw/EE520/opendata/經濟部統計處_外銷訂單_資訊通訊產品.csv"
+    }
+  },
+  "gas_turbines": [
+    {
+      "company": "GE Vernova",
+      "quarter": "2026-Q2",
+      "backlog_and_slots_gw": 116.0,
+      "backlog_gw": 53.0,
+      "slot_reservations_gw": 63.0,
+      "shipped_gw_quarter": 3.0,
+      "year_end_target_gw": 125.0,
+      "filed": "2026-07-22",
+      "source": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000147/gevpressrelease2q26.htm",
+      "method": "parsed",
+      "years_of_backlog": 9.7
+    },
+    {
+      "company": "Siemens Energy",
+      "as_of": "2026-06-30",
+      "backlog_gw": 69,
+      "slot_reservations_gw": 26,
+      "shipped_gw_quarter": 6,
+      "source": "https://assets.siemens-energy.com/dam/3e846440-66dd-4a56-be75-b49d004e6741/2026-08-05_Q3_Analyst_presentation-pdf_Original%20file.pdf",
+      "entered": "2026-09-26",
+      "age_days": 88,
+      "stale": false,
+      "method": "manual",
+      "years_of_backlog": 4.0
+    },
+    {
+      "company": "Mitsubishi Heavy Industries",
+      "as_of": "2026-06-30",
+      "backlog_gw": 35,
+      "backlog_units": 80,
+      "source": "https://www.mhi.com/finance/library/result/pdf/fy20261q/presentation.pdf",
+      "entered": "2026-09-26",
+      "age_days": 88,
+      "stale": false,
+      "method": "manual",
+      "years_of_backlog": null
+    }
+  ],
+  "grid": [
+    {
+      "name": "ERCOT large loads qualified for Batch Zero",
+      "as_of": "2026-09-11",
+      "base_load_gw": 66.4,
+      "base_load_projects": 204,
+      "studied_load_gw": 127.9,
+      "studied_load_projects": 158,
+      "source": "https://www.ercot.com/files/docs/2026/09/11/14-Batch-Zero-Update.pdf",
+      "note": "Batch Zero replaced ERCOT's legacy large-load study process in July 2026. A Governor's directive on Aug 3, 2026 about data center and crypto-mining interconnections added a verification and audit step, with a TBD effect on the Batch Zero timeline.",
+      "entered": "2026-09-26",
+      "age_days": 15,
+      "stale": false,
+      "method": "manual"
+    }
+  ],
+  "errors": []
+}

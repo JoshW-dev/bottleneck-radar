@@ -1,0 +1,231 @@
+{
+  "fund": "Situational Awareness LP",
+  "cik": "0002045724",
+  "accession": "0000935836-26-000418",
+  "filed": "2026-08-14",
+  "period": "2026-06-30",
+  "source": "https://www.sec.gov/Archives/edgar/data/2045724/000093583626000418/form13fInfoTable.xml",
+  "total_value": 20242292228,
+  "stock_value": 20169035068,
+  "stock_share": 0.996381,
+  "unmapped": [],
+  "options": [
+    {
+      "name": "BLOOM ENERGY CORP",
+      "title": "COM CL A",
+      "cusip": "093712107",
+      "value": 44133660,
+      "shares": 145800,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "BE"
+    },
+    {
+      "name": "TAIWAN SEMICONDUCTOR MANUFAC",
+      "title": "SPONSORED ADS",
+      "cusip": "874039100",
+      "value": 23878500,
+      "shares": 50000,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "TSM"
+    },
+    {
+      "name": "INFOSYS LTD",
+      "title": "SPONSORED ADR",
+      "cusip": "456788108",
+      "value": 5245000,
+      "shares": 500000,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "INFY"
+    }
+  ],
+  "amendments": [],
+  "weights": [
+    {
+      "ticker": "SNDK",
+      "name": "SANDISK CORP",
+      "cusip": "80004C200",
+      "value": 5673738513,
+      "shares": 2495344,
+      "weight": 0.281309
+    },
+    {
+      "ticker": "MU",
+      "name": "MICRON TECHNOLOGY INC",
+      "cusip": "595112103",
+      "value": 5573819392,
+      "shares": 4828786,
+      "weight": 0.276355
+    },
+    {
+      "ticker": "BE",
+      "name": "BLOOM ENERGY CORP",
+      "cusip": "093712107",
+      "value": 1898778982,
+      "shares": 6272808,
+      "weight": 0.094143
+    },
+    {
+      "ticker": "TSM",
+      "name": "TAIWAN SEMICONDUCTOR MANUFAC",
+      "cusip": "874039100",
+      "value": 1265099645,
+      "shares": 2649035,
+      "weight": 0.062725
+    },
+    {
+      "ticker": "NBIS",
+      "name": "NEBIUS GROUP N.V.",
+      "cusip": "N97284108",
+      "value": 1232894684,
+      "shares": 4464260,
+      "weight": 0.061128
+    },
+    {
+      "ticker": "CRWV",
+      "name": "COREWEAVE INC",
+      "cusip": "21873S108",
+      "value": 744515203,
+      "shares": 7479558,
+      "weight": 0.036914
+    },
+    {
+      "ticker": "CORZ",
+      "name": "CORE SCIENTIFIC INC NEW",
+      "cusip": "21874A106",
+      "value": 665556824,
+      "shares": 26008473,
+      "weight": 0.032999
+    },
+    {
+      "ticker": "STM",
+      "name": "STMICROELECTRONICS",
+      "cusip": "861012102",
+      "value": 584344203,
+      "shares": 7802700,
+      "weight": 0.028972
+    },
+    {
+      "ticker": "APLD",
+      "name": "APPLIED DIGITAL CORP",
+      "cusip": "038169207",
+      "value": 469022807,
+      "shares": 15384616,
+      "weight": 0.023255
+    },
+    {
+      "ticker": "RIOT",
+      "name": "RIOT PLATFORMS INC",
+      "cusip": "767292105",
+      "value": 468198000,
+      "shares": 17100000,
+      "weight": 0.023214
+    },
+    {
+      "ticker": "SHAZ",
+      "name": "SHARONAI HOLDINGS INC",
+      "cusip": "778920306",
+      "value": 456836112,
+      "shares": 5396127,
+      "weight": 0.02265
+    },
+    {
+      "ticker": "IREN",
+      "name": "IREN LIMITED",
+      "cusip": "Q4982L109",
+      "value": 433250547,
+      "shares": 9474099,
+      "weight": 0.021481
+    },
+    {
+      "ticker": "CLSK",
+      "name": "CLEANSPARK INC",
+      "cusip": "18452B209",
+      "value": 178617822,
+      "shares": 12276139,
+      "weight": 0.008856
+    },
+    {
+      "ticker": "KEEL",
+      "name": "KEEL INFRASTRUCTURE CORP",
+      "cusip": "486917107",
+      "value": 151830996,
+      "shares": 26451393,
+      "weight": 0.007528
+    },
+    {
+      "ticker": "SEI",
+      "name": "SOLARIS ENERGY INFRAS INC",
+      "cusip": "83418M103",
+      "value": 90889306,
+      "shares": 1129621,
+      "weight": 0.004506
+    },
+    {
+      "ticker": "WYFI",
+      "name": "WHITEFIBER INC",
+      "cusip": "G96115103",
+      "value": 68282760,
+      "shares": 1757600,
+      "weight": 0.003386
+    },
+    {
+      "ticker": "BTDR",
+      "name": "BITDEER TECHNOLOGIES GROUP",
+      "cusip": "G11448100",
+      "value": 54584072,
+      "shares": 3439450,
+      "weight": 0.002706
+    },
+    {
+      "ticker": "TE",
+      "name": "T1 ENERGY INC",
+      "cusip": "35834F104",
+      "value": 46452000,
+      "shares": 4900000,
+      "weight": 0.002303
+    },
+    {
+      "ticker": "HIVE",
+      "name": "HIVE DIGITAL TECHNOLOGIES LT",
+      "cusip": "433921103",
+      "value": 33246763,
+      "shares": 9133726,
+      "weight": 0.001648
+    },
+    {
+      "ticker": "BW",
+      "name": "BABCOCK & WILCOX ENTERPRISES",
+      "cusip": "05614L209",
+      "value": 28587059,
+      "shares": 2027451,
+      "weight": 0.001417
+    },
+    {
+      "ticker": "PUMP",
+      "name": "PROPETRO HLDG CORP",
+      "cusip": "74347M108",
+      "value": 28111878,
+      "shares": 1960382,
+      "weight": 0.001394
+    },
+    {
+      "ticker": "VSH",
+      "name": "VISHAY INTERTECHNOLOGY INC",
+      "cusip": "928298108",
+      "value": 20167500,
+      "shares": 375000,
+      "weight": 0.001
+    },
+    {
+      "ticker": "CBRS",
+      "name": "CEREBRAS SYSTEMS INC",
+      "cusip": "15675D103",
+      "value": 2210000,
+      "shares": 10000,
+      "weight": 0.00011
+    }
+  ]
+}

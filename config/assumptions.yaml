@@ -1,0 +1,45 @@
+# Every factor Stage 2 uses to turn capex dollars into physical things.
+# `status: unverified` marks a number not yet tied to a primary source.
+# Edit a value and the next run uses it. Keep the source lines honest.
+
+datacenter_share_of_capex:
+  value: 1.0
+  status: assumption
+  note: Upper bound. Treats all hyperscaler capex as AI data center spend. Lower it when a better split turns up.
+
+capex_per_gw:
+  value: 37900000000
+  unit: USD per GW of facility power
+  source: Epoch AI, AI data center cost breakdown (May 2026, GB200 build)
+  url: https://epoch.ai/data-insights/ai-datacenter-cost-breakdown
+  note: Epoch splits it 69% IT and 30% facility. Nvidia quotes $50-60B per GW all-in on Vera Rubin (Aug 26 2026 call), a useful high case.
+
+it_power_share:
+  value: 0.8
+  status: unverified
+  note: Share of facility power that reaches IT load, which is 1/PUE at a PUE of 1.25.
+
+kw_per_gpu:
+  value: 1.9
+  status: unverified
+  note: All-in IT power per GPU, from a GB300 NVL72 rack at about 135 kW over 72 GPUs, CPUs and networking included.
+
+hbm_gb_per_gpu:
+  value: 288
+  unit: GB of HBM per GPU
+  source: NVIDIA Blackwell Ultra (GB300) and Vera Rubin NVL72 specs
+  url: https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era/
+
+sqft_per_mw:
+  value: 3300
+  status: unverified
+  source: Derived from Crusoe's Abilene campus, about 4M sq ft for 1.2 GW
+  url: https://www.crusoe.ai/resources/newsroom/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts
+  note: One campus, gross building area over total power. No standard benchmark found.
+
+mw_per_turbine:
+  value: 430
+  unit: MW per GE 7HA.03 in simple cycle
+  source: GE Vernova 7HA.03 product sheet
+  url: https://www.gevernova.com/content/dam/gepower-new/global/en_US/downloads/gas-new-site/products/gas-turbines/7ha.03-takeaway.pdf
+  note: Turbine-equivalents if every new megawatt came from new simple-cycle units. An upper bound, since grid power and combined cycle need fewer turbines.

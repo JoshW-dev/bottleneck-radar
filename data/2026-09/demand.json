@@ -1,0 +1,454 @@
+{
+  "generated": "2026-09-26",
+  "companies": {
+    "MSFT": {
+      "name": "Microsoft",
+      "xbrl_tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "quarters": [
+        {
+          "start": "2024-07-01",
+          "end": "2024-09-30",
+          "value": 14923000000,
+          "derived": false
+        },
+        {
+          "start": "2024-10-01",
+          "end": "2024-12-31",
+          "value": 15804000000,
+          "derived": false
+        },
+        {
+          "start": "2025-01-01",
+          "end": "2025-03-31",
+          "value": 16745000000,
+          "derived": false
+        },
+        {
+          "start": "2025-04-01",
+          "end": "2025-06-30",
+          "value": 17079000000,
+          "derived": true
+        },
+        {
+          "start": "2025-07-01",
+          "end": "2025-09-30",
+          "value": 19394000000,
+          "derived": false
+        },
+        {
+          "start": "2025-10-01",
+          "end": "2025-12-31",
+          "value": 29876000000,
+          "derived": false
+        },
+        {
+          "start": "2026-01-01",
+          "end": "2026-03-31",
+          "value": 30876000000,
+          "derived": false
+        },
+        {
+          "start": "2026-04-01",
+          "end": "2026-06-30",
+          "value": 35802000000,
+          "derived": true
+        }
+      ],
+      "latest": {
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "value": 35802000000,
+        "derived": true
+      },
+      "qoq": 0.15954139137193946,
+      "yoy": 1.096258563147725,
+      "ttm": 115948000000,
+      "prior_ttm": 64551000000,
+      "ttm_growth": 0.7962231413920775,
+      "guidance": {
+        "filed": "2026-07-29",
+        "accession": "0001193125-26-323632",
+        "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323632/msft-ex99_1.htm",
+        "forward": [],
+        "other": []
+      }
+    },
+    "AMZN": {
+      "name": "Amazon",
+      "xbrl_tag": "PaymentsToAcquireProductiveAssets",
+      "quarters": [
+        {
+          "start": "2024-07-01",
+          "end": "2024-09-30",
+          "value": 22620000000,
+          "derived": false
+        },
+        {
+          "start": "2024-10-01",
+          "end": "2024-12-31",
+          "value": 27834000000,
+          "derived": true
+        },
+        {
+          "start": "2025-01-01",
+          "end": "2025-03-31",
+          "value": 25019000000,
+          "derived": false
+        },
+        {
+          "start": "2025-04-01",
+          "end": "2025-06-30",
+          "value": 32183000000,
+          "derived": false
+        },
+        {
+          "start": "2025-07-01",
+          "end": "2025-09-30",
+          "value": 35095000000,
+          "derived": false
+        },
+        {
+          "start": "2025-10-01",
+          "end": "2025-12-31",
+          "value": 39522000000,
+          "derived": true
+        },
+        {
+          "start": "2026-01-01",
+          "end": "2026-03-31",
+          "value": 44203000000,
+          "derived": false
+        },
+        {
+          "start": "2026-04-01",
+          "end": "2026-06-30",
+          "value": 54208000000,
+          "derived": false
+        }
+      ],
+      "latest": {
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "value": 54208000000,
+        "derived": false
+      },
+      "qoq": 0.22634210347713957,
+      "yoy": 0.6843675232265483,
+      "ttm": 173028000000,
+      "prior_ttm": 107656000000,
+      "ttm_growth": 0.6072304376904214,
+      "guidance": {
+        "filed": "2026-07-30",
+        "accession": "0001018724-26-000024",
+        "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm",
+        "forward": [],
+        "other": [
+          "Free cash flow decreased to an outflow of $7.6 billion for the trailing twelve months, driven primarily by a year-over-year increase of $66.1 billion in purchases of property and equipment, net of proceeds from sales and incentives."
+        ]
+      }
+    },
+    "GOOGL": {
+      "name": "Alphabet",
+      "xbrl_tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "quarters": [
+        {
+          "start": "2024-07-01",
+          "end": "2024-09-30",
+          "value": 13061000000,
+          "derived": true
+        },
+        {
+          "start": "2024-10-01",
+          "end": "2024-12-31",
+          "value": 14276000000,
+          "derived": true
+        },
+        {
+          "start": "2025-01-01",
+          "end": "2025-03-31",
+          "value": 17197000000,
+          "derived": false
+        },
+        {
+          "start": "2025-04-01",
+          "end": "2025-06-30",
+          "value": 22446000000,
+          "derived": true
+        },
+        {
+          "start": "2025-07-01",
+          "end": "2025-09-30",
+          "value": 23953000000,
+          "derived": true
+        },
+        {
+          "start": "2025-10-01",
+          "end": "2025-12-31",
+          "value": 27851000000,
+          "derived": true
+        },
+        {
+          "start": "2026-01-01",
+          "end": "2026-03-31",
+          "value": 35674000000,
+          "derived": false
+        },
+        {
+          "start": "2026-04-01",
+          "end": "2026-06-30",
+          "value": 44924000000,
+          "derived": true
+        }
+      ],
+      "latest": {
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "value": 44924000000,
+        "derived": true
+      },
+      "qoq": 0.2592924819196054,
+      "yoy": 1.0014256437672637,
+      "ttm": 132402000000,
+      "prior_ttm": 66980000000,
+      "ttm_growth": 0.9767393251716932,
+      "guidance": {
+        "filed": "2026-07-22",
+        "accession": "0001652044-26-000066",
+        "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000066/googexhibit991q22026.htm",
+        "forward": [],
+        "other": []
+      }
+    },
+    "META": {
+      "name": "Meta",
+      "xbrl_tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "quarters": [
+        {
+          "start": "2024-07-01",
+          "end": "2024-09-30",
+          "value": 8258000000,
+          "derived": true
+        },
+        {
+          "start": "2024-10-01",
+          "end": "2024-12-31",
+          "value": 14425000000,
+          "derived": true
+        },
+        {
+          "start": "2025-01-01",
+          "end": "2025-03-31",
+          "value": 12941000000,
+          "derived": false
+        },
+        {
+          "start": "2025-04-01",
+          "end": "2025-06-30",
+          "value": 16538000000,
+          "derived": true
+        },
+        {
+          "start": "2025-07-01",
+          "end": "2025-09-30",
+          "value": 18829000000,
+          "derived": true
+        },
+        {
+          "start": "2025-10-01",
+          "end": "2025-12-31",
+          "value": 21383000000,
+          "derived": true
+        },
+        {
+          "start": "2026-01-01",
+          "end": "2026-03-31",
+          "value": 18997000000,
+          "derived": false
+        },
+        {
+          "start": "2026-04-01",
+          "end": "2026-06-30",
+          "value": 30116000000,
+          "derived": true
+        }
+      ],
+      "latest": {
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "value": 30116000000,
+        "derived": true
+      },
+      "qoq": 0.5853029425698795,
+      "yoy": 0.821018260974725,
+      "ttm": 89325000000,
+      "prior_ttm": 52162000000,
+      "ttm_growth": 0.7124535102181664,
+      "guidance": {
+        "filed": "2026-07-29",
+        "accession": "0001628280-26-050596",
+        "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050596/meta-06302026xexhibit991.htm",
+        "forward": [
+          "We anticipate 2026 capital expenditures, including principal payments on finance leases, to be in the range of $130-145 billion, narrowed from our prior outlook of $125-145 billion."
+        ],
+        "other": [
+          "Capital expenditures – Capital expenditures, including principal payments on finance leases, were $31.08 billion."
+        ]
+      }
+    },
+    "ORCL": {
+      "name": "Oracle",
+      "xbrl_tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "quarters": [
+        {
+          "start": "2024-09-01",
+          "end": "2024-11-30",
+          "value": 3970000000,
+          "derived": true
+        },
+        {
+          "start": "2024-12-01",
+          "end": "2025-02-28",
+          "value": 5862000000,
+          "derived": true
+        },
+        {
+          "start": "2025-03-01",
+          "end": "2025-05-31",
+          "value": 9080000000,
+          "derived": true
+        },
+        {
+          "start": "2025-06-01",
+          "end": "2025-08-31",
+          "value": 8502000000,
+          "derived": false
+        },
+        {
+          "start": "2025-09-01",
+          "end": "2025-11-30",
+          "value": 12033000000,
+          "derived": true
+        },
+        {
+          "start": "2025-12-01",
+          "end": "2026-02-28",
+          "value": 18635000000,
+          "derived": true
+        },
+        {
+          "start": "2026-03-01",
+          "end": "2026-05-31",
+          "value": 16493000000,
+          "derived": true
+        },
+        {
+          "start": "2026-06-01",
+          "end": "2026-08-31",
+          "value": 28499000000,
+          "derived": false
+        }
+      ],
+      "latest": {
+        "start": "2026-06-01",
+        "end": "2026-08-31",
+        "value": 28499000000,
+        "derived": false
+      },
+      "qoq": 0.7279451888680046,
+      "yoy": 2.3520348153375674,
+      "ttm": 75660000000,
+      "prior_ttm": 27414000000,
+      "ttm_growth": 1.759903698840009,
+      "guidance": {
+        "filed": "2026-09-10",
+        "accession": "0001193125-26-387905",
+        "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526387905/orcl-ex99_1.htm",
+        "forward": [],
+        "other": [
+          "Net cash outlay for capital expenditures is defined as capital expenditures, less (1) other short-term financing cash flow related to capital expenditures and (2) customer prepayments with significant financing component for capital expenditures.",
+          "We believe this supplemental presentation of net cash outlay for capital expenditures is useful because it provides additional information about the cash requirement for funding of our capital expenditures and is used by management when forecasting expected capital expenditures."
+        ]
+      }
+    }
+  },
+  "total": {
+    "ttm": 586363000000,
+    "prior_ttm": 318763000000,
+    "ttm_growth": 0.8394951735301777,
+    "run_rate": 774196000000
+  },
+  "physical": {
+    "ttm": {
+      "capex_usd": 586363000000,
+      "gw": 15.47131926121372,
+      "gpus": 6514239.688932093,
+      "hbm_gb": 1876101030.4124427,
+      "sqft": 51055353.56200528,
+      "turbines_7ha": 35.97981223538075
+    },
+    "run_rate": {
+      "capex_usd": 774196000000,
+      "gw": 20.427335092348287,
+      "gpus": 8600983.196778227,
+      "hbm_gb": 2477083160.672129,
+      "sqft": 67410205.80474934,
+      "turbines_7ha": 47.505430447321594
+    },
+    "added_vs_prior_ttm": {
+      "capex_usd": 267600000000,
+      "gw": 7.060686015831134,
+      "gpus": 2972920.4277183725,
+      "hbm_gb": 856201083.1828912,
+      "sqft": 23300263.85224274,
+      "turbines_7ha": 16.420200036816592
+    }
+  },
+  "assumptions": {
+    "datacenter_share_of_capex": {
+      "value": 1.0,
+      "status": "assumption",
+      "note": "Upper bound. Treats all hyperscaler capex as AI data center spend. Lower it when a better split turns up."
+    },
+    "capex_per_gw": {
+      "value": 37900000000,
+      "unit": "USD per GW of facility power",
+      "source": "Epoch AI, AI data center cost breakdown (May 2026, GB200 build)",
+      "url": "https://epoch.ai/data-insights/ai-datacenter-cost-breakdown",
+      "note": "Epoch splits it 69% IT and 30% facility. Nvidia quotes $50-60B per GW all-in on Vera Rubin (Aug 26 2026 call), a useful high case."
+    },
+    "it_power_share": {
+      "value": 0.8,
+      "status": "unverified",
+      "note": "Share of facility power that reaches IT load, which is 1/PUE at a PUE of 1.25."
+    },
+    "kw_per_gpu": {
+      "value": 1.9,
+      "status": "unverified",
+      "note": "All-in IT power per GPU, from a GB300 NVL72 rack at about 135 kW over 72 GPUs, CPUs and networking included."
+    },
+    "hbm_gb_per_gpu": {
+      "value": 288,
+      "unit": "GB of HBM per GPU",
+      "source": "NVIDIA Blackwell Ultra (GB300) and Vera Rubin NVL72 specs",
+      "url": "https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era/"
+    },
+    "sqft_per_mw": {
+      "value": 3300,
+      "status": "unverified",
+      "source": "Derived from Crusoe's Abilene campus, about 4M sq ft for 1.2 GW",
+      "url": "https://www.crusoe.ai/resources/newsroom/crusoe-expands-ai-data-center-campus-in-abilene-to-1-2-gigawatts",
+      "note": "One campus, gross building area over total power. No standard benchmark found."
+    },
+    "mw_per_turbine": {
+      "value": 430,
+      "unit": "MW per GE 7HA.03 in simple cycle",
+      "source": "GE Vernova 7HA.03 product sheet",
+      "url": "https://www.gevernova.com/content/dam/gepower-new/global/en_US/downloads/gas-new-site/products/gas-turbines/7ha.03-takeaway.pdf",
+      "note": "Turbine-equivalents if every new megawatt came from new simple-cycle units. An upper bound, since grid power and combined cycle need fewer turbines."
+    }
+  },
+  "notes": [
+    "Capex is cash paid for property and equipment (Amazon: productive assets). Finance leases are excluded.",
+    "Quarters end on different months: Oracle's fiscal quarters end in Feb, May, Aug and Nov."
+  ]
+}
