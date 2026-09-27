@@ -59,8 +59,9 @@ def summarize(series: list[tuple[str, float]]) -> dict[str, Any]:
     return out
 
 
-def fetch() -> dict[str, Any]:
+def fetch(history_months: int = 36) -> dict[str, Any]:
     result: dict[str, Any] = {"source": "Taiwan Ministry of Economic Affairs, Department of Statistics (data.gov.tw)"}
     for name, url in SERIES.items():
-        result[name] = {**summarize(parse_csv(get(url, browser=True, ttl_hours=24))), "url": url}
+        series = parse_csv(get(url, browser=True, ttl_hours=24))
+        result[name] = {**summarize(series), "url": url, "history": series[-history_months:]}
     return result

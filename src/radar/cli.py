@@ -20,13 +20,14 @@ def main(argv: list[str] | None = None) -> None:
     bottleneck.add_argument("--dry-run", action="store_true", help="save the prompt instead of calling the model")
     sub.add_parser("ibkr", help="pull positions from your IBKR Flex query into private/")
     sub.add_parser("exposure", help="Stage 4: your exposure to the bottleneck vs the consensus trade")
-    run = sub.add_parser("run", help="every stage in order; IBKR steps run only when Flex is configured")
+    sub.add_parser("site", help="render the public outputs in data/ into site/index.html")
+    run = sub.add_parser("run", help="every stage in order, then the site; IBKR steps run only when Flex is configured")
     run.add_argument("--dry-run", action="store_true", help="skip the model call")
 
     args = parser.parse_args(argv)
     from . import bottleneck as bottleneck_stage
     from . import clone as clone_stage
-    from . import demand, exposure, ibkr_flex, supply
+    from . import demand, exposure, ibkr_flex, site, supply
 
     if args.command == "clone":
         clone_stage.run(args.cik, args.account_value)
@@ -40,6 +41,8 @@ def main(argv: list[str] | None = None) -> None:
         ibkr_flex.run()
     elif args.command == "exposure":
         exposure.run()
+    elif args.command == "site":
+        site.run()
     elif args.command == "run":
         flex_ready = bool(env("IBKR_FLEX_TOKEN") and env("IBKR_FLEX_QUERY_ID"))
         if flex_ready:
@@ -50,6 +53,7 @@ def main(argv: list[str] | None = None) -> None:
         call = bottleneck_stage.run(dry_run=args.dry_run)
         if flex_ready and call:
             exposure.run()
+        site.run()
 
 
 if __name__ == "__main__":

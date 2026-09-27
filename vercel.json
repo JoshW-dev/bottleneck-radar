@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo 'nothing to install'",
+  "buildCommand": "echo 'site/ is rendered by radar site and committed'",
+  "outputDirectory": "site",
+  "cleanUrls": true
+}

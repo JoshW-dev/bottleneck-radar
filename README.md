@@ -15,6 +15,7 @@ It's for research. It doesn't give investment advice or place orders.
 | 3a. Supply | `radar supply` | Korean memory chip exports, Taiwan export orders, gas turbine backlogs and ERCOT's large-load queue | none |
 | 3b. Bottleneck | `radar bottleneck` | Ranks the four inputs, picks one, names who owns it and what would prove the call wrong, and writes `memo.md` | Claude Sonnet |
 | 4. Exposure | `radar ibkr`, `radar exposure` | Reads your positions through an IBKR Flex query and splits them into bottleneck owners, the consensus AI trade and everything else | none |
+| Dashboard | `radar site` | Renders the latest month in `data/` into `site/index.html` | none |
 
 `radar run` does all of it in order.
 
@@ -69,12 +70,18 @@ A Flex Web Service token can only download reports, so Stage 4 can't trade.
 | Grid connection queue | ERCOT's Batch Zero update, from `manual.yaml` | Monthly |
 | Prices for the order list | Yahoo's chart API | Daily |
 
+## Dashboard
+
+`radar site` renders one static page from `data/`: the monthly call, the four inputs, demand, supply and the fund's book, with a table view under every chart. Vercel serves `site/` as it is (see `vercel.json`), so there's no build step, and every push to `main` redeploys it. The page only reads `data/`, so account data can't reach it.
+
 ## Running it monthly
 
-`scripts/monthly.sh` pulls the latest code, runs every stage and commits `data/` if anything changed. This cron entry runs it on the 24th, after Taiwan publishes its export orders:
+GitHub Actions runs the public stages on the 24th of each month, after Taiwan publishes its export orders (`.github/workflows/monthly.yml`). The workflow commits `data/` and `site/`, and Vercel redeploys from that commit. It needs a repository variable named `SEC_USER_AGENT`, plus an `ANTHROPIC_API_KEY` secret for the memo. You can also start it by hand from the Actions tab.
+
+Stage 4 reads your brokerage account, so it never runs on GitHub, where Actions logs are public. `scripts/monthly.sh` pulls the refresh and runs it locally. This cron entry runs it two hours after the workflow:
 
 ```cron
-0 14 24 * * /path/to/bottleneck-radar/scripts/monthly.sh >> /var/log/bottleneck-radar.log 2>&1
+0 16 24 * * /path/to/bottleneck-radar/scripts/monthly.sh >> /var/log/bottleneck-radar.log 2>&1
 ```
 
 ## Caveats
