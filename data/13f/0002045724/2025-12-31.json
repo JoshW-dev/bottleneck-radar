@@ -1,0 +1,261 @@
+{
+  "fund": "Situational Awareness LP",
+  "cik": "0002045724",
+  "accession": "0002045724-26-000002",
+  "filed": "2026-02-11",
+  "period": "2025-12-31",
+  "source": "https://www.sec.gov/Archives/edgar/data/2045724/000204572426000002/SALP_13FQ425.xml",
+  "total_value": 5516758345,
+  "stock_value": 3913647375,
+  "stock_share": 0.709411,
+  "unmapped": [
+    "BITFARMS LTD"
+  ],
+  "options": [
+    {
+      "name": "COREWEAVE INC",
+      "title": "COM CL A",
+      "cusip": "21873S108",
+      "value": 774426345,
+      "shares": 10814500,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "CRWV"
+    },
+    {
+      "name": "INTEL CORP",
+      "title": "COM",
+      "cusip": "458140100",
+      "value": 746760060,
+      "shares": 20237400,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "INTC"
+    },
+    {
+      "name": "EQT CORP",
+      "title": "COM",
+      "cusip": "26884L109",
+      "value": 37520000,
+      "shares": 700000,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "EQT"
+    },
+    {
+      "name": "BLOOM ENERGY CORP",
+      "title": "COM CL A",
+      "cusip": "093712107",
+      "value": 35494565,
+      "shares": 408500,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "BE"
+    },
+    {
+      "name": "INFOSYS LTD",
+      "title": "SPONSORED ADR",
+      "cusip": "456788108",
+      "value": 8910000,
+      "shares": 500000,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "INFY"
+    }
+  ],
+  "amendments": [],
+  "weights": [
+    {
+      "ticker": "BE",
+      "name": "BLOOM ENERGY CORP",
+      "cusip": "093712107",
+      "value": 875505552,
+      "shares": 10076022,
+      "weight": 0.223706
+    },
+    {
+      "ticker": "LITE",
+      "name": "LUMENTUM HLDGS INC",
+      "cusip": "55024U109",
+      "value": 478577256,
+      "shares": 1298400,
+      "weight": 0.122284
+    },
+    {
+      "ticker": "CRWV",
+      "name": "COREWEAVE INC",
+      "cusip": "21873S108",
+      "value": 436735927,
+      "shares": 6098812,
+      "weight": 0.111593
+    },
+    {
+      "ticker": "CORZ",
+      "name": "CORE SCIENTIFIC INC NEW",
+      "cusip": "21874A106",
+      "value": 418694320,
+      "shares": 28756478,
+      "weight": 0.106983
+    },
+    {
+      "ticker": "IREN",
+      "name": "IREN LIMITED",
+      "cusip": "Q4982L109",
+      "value": 328622455,
+      "shares": 8700621,
+      "weight": 0.083968
+    },
+    {
+      "ticker": "APLD",
+      "name": "APPLIED DIGITAL CORP",
+      "cusip": "038169207",
+      "value": 278033751,
+      "shares": 11339060,
+      "weight": 0.071042
+    },
+    {
+      "ticker": "SNDK",
+      "name": "SANDISK CORP",
+      "cusip": "80004C200",
+      "value": 250245996,
+      "shares": 1054200,
+      "weight": 0.063942
+    },
+    {
+      "ticker": "CIFR",
+      "name": "CIPHER MINING INC",
+      "cusip": "17253J106",
+      "value": 154523813,
+      "shares": 10469093,
+      "weight": 0.039483
+    },
+    {
+      "ticker": "EQT",
+      "name": "EQT CORP",
+      "cusip": "26884L109",
+      "value": 133047260,
+      "shares": 2482225,
+      "weight": 0.033996
+    },
+    {
+      "ticker": "COHR",
+      "name": "COHERENT CORP",
+      "cusip": "19247G107",
+      "value": 88648971,
+      "shares": 480300,
+      "weight": 0.022651
+    },
+    {
+      "ticker": "SEI",
+      "name": "SOLARIS ENERGY INFRAS INC",
+      "cusip": "83418M103",
+      "value": 85803005,
+      "shares": 1866500,
+      "weight": 0.021924
+    },
+    {
+      "ticker": "TSEM",
+      "name": "TOWER SEMICONDUCTOR LTD",
+      "cusip": "M87915274",
+      "value": 84895130,
+      "shares": 723004,
+      "weight": 0.021692
+    },
+    {
+      "ticker": "RIOT",
+      "name": "RIOT PLATFORMS INC",
+      "cusip": "767292105",
+      "value": 78144759,
+      "shares": 6167700,
+      "weight": 0.019967
+    },
+    {
+      "ticker": "KRC",
+      "name": "KILROY RLTY CORP",
+      "cusip": "49427F108",
+      "value": 49616149,
+      "shares": 1327700,
+      "weight": 0.012678
+    },
+    {
+      "ticker": "HUT",
+      "name": "HUT 8 CORP",
+      "cusip": "44812J104",
+      "value": 39517588,
+      "shares": 860200,
+      "weight": 0.010097
+    },
+    {
+      "ticker": "WYFI",
+      "name": "WHITEFIBER INC",
+      "cusip": "G96115103",
+      "value": 27770080,
+      "shares": 1757600,
+      "weight": 0.007096
+    },
+    {
+      "ticker": "PSIX",
+      "name": "POWER SOLUTIONS INTL INC",
+      "cusip": "73933G202",
+      "value": 24701622,
+      "shares": 432300,
+      "weight": 0.006312
+    },
+    {
+      "ticker": "BTDR",
+      "name": "BITDEER TECHNOLOGIES GROUP",
+      "cusip": "G11448100",
+      "value": 20043480,
+      "shares": 1788000,
+      "weight": 0.005121
+    },
+    {
+      "ticker": "CLSK",
+      "name": "CLEANSPARK INC",
+      "cusip": "18452B209",
+      "value": 16600848,
+      "shares": 1640400,
+      "weight": 0.004242
+    },
+    {
+      "ticker": null,
+      "name": "BITFARMS LTD",
+      "cusip": "09173B107",
+      "value": 16208185,
+      "shares": 6897100,
+      "weight": 0.004141
+    },
+    {
+      "ticker": "LBRT",
+      "name": "LIBERTY ENERGY INC",
+      "cusip": "53115L104",
+      "value": 10470512,
+      "shares": 567200,
+      "weight": 0.002675
+    },
+    {
+      "ticker": "PUMP",
+      "name": "PROPETRO HLDG CORP",
+      "cusip": "74347M108",
+      "value": 8656953,
+      "shares": 910300,
+      "weight": 0.002212
+    },
+    {
+      "ticker": "BW",
+      "name": "BABCOCK & WILCOX ENTERPRISES",
+      "cusip": "05614L209",
+      "value": 8583726,
+      "shares": 1353900,
+      "weight": 0.002193
+    },
+    {
+      "ticker": "INTC",
+      "name": "INTEL CORP",
+      "cusip": "458140100",
+      "value": 37,
+      "shares": 1,
+      "weight": 0.0
+    }
+  ]
+}

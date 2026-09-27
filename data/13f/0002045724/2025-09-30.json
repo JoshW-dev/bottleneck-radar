@@ -1,0 +1,261 @@
+{
+  "fund": "Situational Awareness LP",
+  "cik": "0002045724",
+  "accession": "0002045724-25-000008",
+  "filed": "2025-11-14",
+  "period": "2025-09-30",
+  "source": "https://www.sec.gov/Archives/edgar/data/2045724/000204572425000008/SALP13FinfotableQ3.xml",
+  "total_value": 4138368748,
+  "stock_value": 2242916747,
+  "stock_share": 0.541981,
+  "unmapped": [
+    "BLOOM ENERGY CORP"
+  ],
+  "options": [
+    {
+      "name": "INTEL CORP",
+      "title": "COM",
+      "cusip": "458140100",
+      "value": 678964770,
+      "shares": 20237400,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "INTC"
+    },
+    {
+      "name": "COREWEAVE INC",
+      "title": "COM CL A",
+      "cusip": "21873S108",
+      "value": 316739325,
+      "shares": 2314500,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "CRWV"
+    },
+    {
+      "name": "NVIDIA CORPORATION",
+      "title": "COM",
+      "cusip": "67066G104",
+      "value": 298528000,
+      "shares": 1600000,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "NVDA"
+    },
+    {
+      "name": "VANECK ETF TRUST",
+      "title": "SEMICONDUCTR ETF",
+      "cusip": "92189F106",
+      "value": 195816000,
+      "shares": 600000,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "GDX"
+    },
+    {
+      "name": "COREWEAVE INC",
+      "title": "COM CL A",
+      "cusip": "21873S108",
+      "value": 191590000,
+      "shares": 1400000,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "CRWV"
+    },
+    {
+      "name": "BROADCOM INC",
+      "title": "COM",
+      "cusip": "11135F101",
+      "value": 75879300,
+      "shares": 230000,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "AVGO"
+    },
+    {
+      "name": "TAIWAN SEMICONDUCTOR MFG LTD",
+      "title": "SPONSORED ADS",
+      "cusip": "874039100",
+      "value": 75408300,
+      "shares": 270000,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "TSM"
+    },
+    {
+      "name": "MICRON TECHNOLOGY INC",
+      "title": "COM",
+      "cusip": "595112103",
+      "value": 50196000,
+      "shares": 300000,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "MU"
+    },
+    {
+      "name": "BLOOM ENERGY CORP",
+      "title": "COM CL A",
+      "cusip": "093712AH0",
+      "value": 12330306,
+      "shares": 145800,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": null
+    }
+  ],
+  "amendments": [],
+  "weights": [
+    {
+      "ticker": "CRWV",
+      "name": "COREWEAVE INC",
+      "cusip": "21873S108",
+      "value": 563200154,
+      "shares": 4115456,
+      "weight": 0.251102
+    },
+    {
+      "ticker": "CORZ",
+      "name": "CORE SCIENTIFIC INC NEW",
+      "cusip": "21874A106",
+      "value": 362038780,
+      "shares": 20180534,
+      "weight": 0.161414
+    },
+    {
+      "ticker": "IREN",
+      "name": "IREN LIMITED",
+      "cusip": "Q4982L109",
+      "value": 338854358,
+      "shares": 7220421,
+      "weight": 0.151078
+    },
+    {
+      "ticker": "VST",
+      "name": "VISTRA CORP",
+      "cusip": "92840M102",
+      "value": 252327327,
+      "shares": 1287910,
+      "weight": 0.1125
+    },
+    {
+      "ticker": "APLD",
+      "name": "APPLIED DIGITAL CORP",
+      "cusip": "038169207",
+      "value": 139111716,
+      "shares": 6064155,
+      "weight": 0.062023
+    },
+    {
+      "ticker": "GLXY",
+      "name": "GALAXY DIGITAL INC.",
+      "cusip": "36317J209",
+      "value": 92554875,
+      "shares": 2737500,
+      "weight": 0.041265
+    },
+    {
+      "ticker": "CIFR",
+      "name": "CIPHER MINING INC",
+      "cusip": "17253JAA4",
+      "value": 72272807,
+      "shares": 5740493,
+      "weight": 0.032223
+    },
+    {
+      "ticker": "RIOT",
+      "name": "RIOT PLATFORMS INC",
+      "cusip": "767292105",
+      "value": 68369062,
+      "shares": 3592699,
+      "weight": 0.030482
+    },
+    {
+      "ticker": "LITE",
+      "name": "LUMENTUM HLDGS INC",
+      "cusip": "55024UAD1",
+      "value": 67947696,
+      "shares": 417600,
+      "weight": 0.030294
+    },
+    {
+      "ticker": "EQT",
+      "name": "EQT CORP",
+      "cusip": "26884L109",
+      "value": 66262320,
+      "shares": 1217386,
+      "weight": 0.029543
+    },
+    {
+      "ticker": "SEI",
+      "name": "SOLARIS ENERGY INFRAS INC",
+      "cusip": "83418M103",
+      "value": 45977491,
+      "shares": 1150300,
+      "weight": 0.020499
+    },
+    {
+      "ticker": null,
+      "name": "BLOOM ENERGY CORP",
+      "cusip": "093712AH0",
+      "value": 43890344,
+      "shares": 3048002,
+      "weight": 0.019568
+    },
+    {
+      "ticker": "TSEM",
+      "name": "TOWER SEMICONDUCTOR LTD",
+      "cusip": "M87915274",
+      "value": 34024380,
+      "shares": 470600,
+      "weight": 0.01517
+    },
+    {
+      "ticker": "HUT",
+      "name": "HUT 8 CORP",
+      "cusip": "44812J104",
+      "value": 20851190,
+      "shares": 599000,
+      "weight": 0.009296
+    },
+    {
+      "ticker": "WDC",
+      "name": "WESTERN DIGITAL CORP",
+      "cusip": "958102AT2",
+      "value": 18347689,
+      "shares": 152821,
+      "weight": 0.00818
+    },
+    {
+      "ticker": "COHR",
+      "name": "COHERENT CORP",
+      "cusip": "19247G107",
+      "value": 16631968,
+      "shares": 154400,
+      "weight": 0.007415
+    },
+    {
+      "ticker": "BTDR",
+      "name": "BITDEER TECHNOLOGIES GROUP",
+      "cusip": "G11448100",
+      "value": 15886864,
+      "shares": 929600,
+      "weight": 0.007083
+    },
+    {
+      "ticker": "SNDK",
+      "name": "SANDISK CORP",
+      "cusip": "80004C200",
+      "value": 12903000,
+      "shares": 115000,
+      "weight": 0.005753
+    },
+    {
+      "ticker": "STX",
+      "name": "SEAGATE TECHNOLOGY HLDNGS PL",
+      "cusip": "G7997R103",
+      "value": 11464726,
+      "shares": 48567,
+      "weight": 0.005112
+    }
+  ]
+}

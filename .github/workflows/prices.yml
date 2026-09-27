@@ -1,0 +1,36 @@
+# Updates the picks tracker and the dashboard after each US trading day. It only reads public
+# prices from Yahoo's chart endpoint, so it needs no secrets. Vercel redeploys on the commit.
+name: daily prices
+on:
+  schedule:
+    - cron: "0 22 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data
+  cancel-in-progress: false
+
+jobs:
+  prices:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync
+      - name: Price the picks and render the site
+        run: uv run radar performance && uv run radar site
+      - name: Commit the new prices
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/performance.json site
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "data: prices to $(date -u +%F)"
+            git pull --rebase
+            git push
+          fi

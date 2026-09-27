@@ -1,0 +1,89 @@
+{
+  "month": "2026-09",
+  "published": "2026-09-27",
+  "bottleneck": "memory",
+  "label": "Memory chips (HBM, DRAM, NAND)",
+  "headline": "Contract prices for DRAM and NAND are almost nine times what they were a year ago.",
+  "rule": "Equal weight across the call's owners, bought at the first close after the call is published and held until the next call replaces it. Prices in US dollars, dividends included.",
+  "picks": [
+    {
+      "id": "sk_hynix",
+      "name": "SK Hynix",
+      "quote": "000660.KS",
+      "weight": 0.2,
+      "role": "The leading HBM supplier and a top DRAM maker. It sells almost nothing but memory, so memory prices reach its results directly."
+    },
+    {
+      "id": "micron",
+      "name": "Micron Technology",
+      "quote": "MU",
+      "weight": 0.2,
+      "role": "The largest US memory maker, selling DRAM, HBM and NAND. Memory is its whole business."
+    },
+    {
+      "id": "sandisk",
+      "name": "Sandisk",
+      "quote": "SNDK",
+      "weight": 0.2,
+      "role": "NAND flash and SSDs, spun out of Western Digital in February 2025. The only pure NAND maker listed in the US."
+    },
+    {
+      "id": "samsung",
+      "name": "Samsung Electronics",
+      "quote": "005930.KS",
+      "weight": 0.2,
+      "role": "A top DRAM, HBM and NAND maker, but phones, displays and its foundry dilute the memory exposure."
+    },
+    {
+      "id": "kioxia",
+      "name": "Kioxia",
+      "quote": "285A.T",
+      "weight": 0.2,
+      "role": "NAND flash, the former Toshiba Memory, listed in Tokyo since December 2024. It shares its fabs with Sandisk through a joint venture."
+    }
+  ],
+  "consensus": [
+    {
+      "id": "nvidia",
+      "name": "Nvidia",
+      "quote": "NVDA",
+      "weight": 0.166667,
+      "role": ""
+    },
+    {
+      "id": "broadcom",
+      "name": "Broadcom",
+      "quote": "AVGO",
+      "weight": 0.166667,
+      "role": ""
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "quote": "MSFT",
+      "weight": 0.166667,
+      "role": ""
+    },
+    {
+      "id": "alphabet",
+      "name": "Alphabet",
+      "quote": "GOOGL",
+      "weight": 0.166667,
+      "role": ""
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon",
+      "quote": "AMZN",
+      "weight": 0.166667,
+      "role": ""
+    },
+    {
+      "id": "meta",
+      "name": "Meta Platforms",
+      "quote": "META",
+      "weight": 0.166667,
+      "role": ""
+    }
+  ]
+}

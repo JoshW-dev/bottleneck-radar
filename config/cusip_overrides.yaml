@@ -1,0 +1,8 @@
+# 13F rows filed under a CUSIP that OpenFIGI can't map to the stock. Each entry was checked by
+# dividing the row's value by its share count and matching the stock's close on the report date.
+# Situational Awareness LP, 13F for 2025-09-30:
+17253JAA4: CIFR  # Cipher Mining common, filed under a note's CUSIP (implied $12.59, close $12.59)
+55024UAD1: LITE  # Lumentum common, filed under a note's CUSIP (implied $162.71, close $162.71)
+958102AT2: WDC   # Western Digital common, filed under a note's CUSIP (implied $120.06, close $119.84)
+# Left unmapped on purpose: 093712AH0 (Bloom Energy) implies $14.40 against a $84.57 close, so it's
+# most likely the convertible note itself. The tracker leaves it out and reports the gap.

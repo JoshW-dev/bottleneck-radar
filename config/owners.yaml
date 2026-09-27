@@ -1,6 +1,8 @@
 # Who makes each input. Stage 3 can only name companies listed here, which keeps its answer
 # matchable against your positions in Stage 4. Add companies freely; ids are just labels.
 # tickers: every symbol the company trades under (US ticker, ADR, home listing as IBKR shows it).
+# quote: the one listing the picks tracker prices, as Yahoo Finance spells it (home market for
+#   foreign companies, converted to dollars). role: what the company makes that ties it to the input.
 
 inputs:
   memory:
@@ -20,27 +22,91 @@ inputs:
 consensus_candidates: [nvidia, broadcom, amd, microsoft, alphabet, amazon, meta, oracle]
 
 companies:
-  sk_hynix: {name: SK Hynix, tickers: ["000660"]}
-  samsung: {name: Samsung Electronics, tickers: ["005930"]}
-  micron: {name: Micron Technology, tickers: [MU]}
-  sandisk: {name: Sandisk, tickers: [SNDK]}
-  kioxia: {name: Kioxia, tickers: ["285A"]}
-  tsmc: {name: TSMC, tickers: [TSM, "2330"]}
-  ase: {name: ASE Technology, tickers: [ASX, "3711"]}
-  amkor: {name: Amkor Technology, tickers: [AMKR]}
-  ge_vernova: {name: GE Vernova, tickers: [GEV]}
-  siemens_energy: {name: Siemens Energy, tickers: [ENR, SMNEY]}
-  mhi: {name: Mitsubishi Heavy Industries, tickers: ["7011", MHVYF]}
-  hitachi: {name: Hitachi, tickers: ["6501", HTHIY]}
-  schneider: {name: Schneider Electric, tickers: [SU, SBGSY]}
-  eaton: {name: Eaton, tickers: [ETN]}
-  quanta: {name: Quanta Services, tickers: [PWR]}
-  bloom: {name: Bloom Energy, tickers: [BE]}
-  nvidia: {name: Nvidia, tickers: [NVDA]}
-  broadcom: {name: Broadcom, tickers: [AVGO]}
-  amd: {name: AMD, tickers: [AMD]}
-  microsoft: {name: Microsoft, tickers: [MSFT]}
-  alphabet: {name: Alphabet, tickers: [GOOGL, GOOG]}
-  amazon: {name: Amazon, tickers: [AMZN]}
-  meta: {name: Meta Platforms, tickers: [META]}
-  oracle: {name: Oracle, tickers: [ORCL]}
+  sk_hynix:
+    name: SK Hynix
+    tickers: ["000660"]
+    quote: "000660.KS"
+    role: The leading HBM supplier and a top DRAM maker. It sells almost nothing but memory, so memory prices reach its results directly.
+  samsung:
+    name: Samsung Electronics
+    tickers: ["005930"]
+    quote: "005930.KS"
+    role: A top DRAM, HBM and NAND maker, but phones, displays and its foundry dilute the memory exposure.
+  micron:
+    name: Micron Technology
+    tickers: [MU]
+    quote: MU
+    role: The largest US memory maker, selling DRAM, HBM and NAND. Memory is its whole business.
+  sandisk:
+    name: Sandisk
+    tickers: [SNDK]
+    quote: SNDK
+    role: NAND flash and SSDs, spun out of Western Digital in February 2025. The only pure NAND maker listed in the US.
+  kioxia:
+    name: Kioxia
+    tickers: ["285A"]
+    quote: "285A.T"
+    role: NAND flash, the former Toshiba Memory, listed in Tokyo since December 2024. It shares its fabs with Sandisk through a joint venture.
+  tsmc:
+    name: TSMC
+    tickers: [TSM, "2330"]
+    quote: TSM
+    role: Makes nearly every leading-edge AI accelerator and most of the advanced packaging they need.
+  ase:
+    name: ASE Technology
+    tickers: [ASX, "3711"]
+    quote: ASX
+    role: The largest outsourced chip packaging and test company.
+  amkor:
+    name: Amkor Technology
+    tickers: [AMKR]
+    quote: AMKR
+    role: Outsourced packaging and test, including advanced packaging for AI chips.
+  ge_vernova:
+    name: GE Vernova
+    tickers: [GEV]
+    quote: GEV
+    role: The largest maker of heavy-duty gas turbines, with a grid equipment business alongside.
+  siemens_energy:
+    name: Siemens Energy
+    tickers: [ENR, SMNEY]
+    quote: ENR.DE
+    role: Gas turbines plus grid equipment such as transformers, switchgear and HVDC links.
+  mhi:
+    name: Mitsubishi Heavy Industries
+    tickers: ["7011", MHVYF]
+    quote: "7011.T"
+    role: Heavy-duty gas turbines, alongside shipbuilding, defense and aerospace.
+  hitachi:
+    name: Hitachi
+    tickers: ["6501", HTHIY]
+    quote: "6501.T"
+    role: Transformers and HVDC through Hitachi Energy, inside a broad industrial group.
+  schneider:
+    name: Schneider Electric
+    tickers: [SU, SBGSY]
+    quote: SU.PA
+    role: Power distribution and cooling equipment for data centers.
+  eaton:
+    name: Eaton
+    tickers: [ETN]
+    quote: ETN
+    role: Switchgear, UPS systems and transformers for data centers and utilities.
+  quanta:
+    name: Quanta Services
+    tickers: [PWR]
+    quote: PWR
+    role: Builds transmission lines, substations and grid connections.
+  bloom:
+    name: Bloom Energy
+    tickers: [BE]
+    quote: BE
+    role: Fuel cells that power data centers on site, without waiting for a grid connection.
+  nvidia: {name: Nvidia, tickers: [NVDA], quote: NVDA}
+  broadcom: {name: Broadcom, tickers: [AVGO], quote: AVGO}
+  amd: {name: AMD, tickers: [AMD], quote: AMD}
+  microsoft: {name: Microsoft, tickers: [MSFT], quote: MSFT}
+  alphabet: {name: Alphabet, tickers: [GOOGL, GOOG], quote: GOOGL}
+  amazon: {name: Amazon, tickers: [AMZN], quote: AMZN}
+  meta: {name: Meta Platforms, tickers: [META], quote: META}
+  oracle: {name: Oracle, tickers: [ORCL], quote: ORCL}

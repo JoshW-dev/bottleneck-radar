@@ -1,0 +1,85 @@
+{
+  "month": "2026-09",
+  "generated": "2026-09-27",
+  "bottleneck": "memory",
+  "headline": "Contract prices for DRAM and NAND are almost nine times what they were a year ago.",
+  "why": "Korea exported $40.9B of memory chips in August, up 290% from $10.5B a year earlier, while its system chip exports grew 24%. Most of the memory jump is price. The DDR5 16Gb contract price was $46.50, up 786%, and the NAND contract price was $30.48, up 793%. Hyperscaler capex grew 84% to $586.4B over the last four quarters, so the value of memory exports is growing more than three times as fast as the buildout behind it. Prices move this far only when buyers can't get the volume they ordered, and a new memory fab takes more than a year to add supply.",
+  "ranking": [
+    {
+      "input": "memory",
+      "tightness": 5,
+      "demand_signal": "Korean memory exports were $40.9B in August, up 290% y/y, against 24% growth for system chips.",
+      "supply_signal": "DDR5 16Gb contract $46.50 (+786% y/y) and NAND contract $30.48 (+793%). Prices are doing the adjusting because volume can't."
+    },
+    {
+      "input": "gas_turbines",
+      "tightness": 4,
+      "demand_signal": "The last four quarters of capex equal about 36 GE 7HA.03 turbines, 16 more than the year before, on assumed conversion factors.",
+      "supply_signal": "GE Vernova holds 116 GW of backlog and slot reservations, 9.7 years at the 3 GW it shipped in Q2. Siemens Energy holds 95 GW, about 4 years, entered by hand as of June 30."
+    },
+    {
+      "input": "grid_interconnection",
+      "tightness": 3,
+      "demand_signal": "ERCOT has qualified 66.4 GW of large loads as base load and 127.9 GW more as studied load (Sep 11 update).",
+      "supply_signal": "The data has no rate at which connections get built. An Aug 3 directive added an audit step with an unknown effect on the timeline."
+    },
+    {
+      "input": "advanced_chips",
+      "tightness": 3,
+      "demand_signal": "Taiwan's electronics export orders were $45.8B in August, up 84% y/y. ICT orders rose 101%.",
+      "supply_signal": "No direct supply series. Orders measure demand, and they're growing about as fast as capex (+84%), so the data shows no shortfall."
+    }
+  ],
+  "owners": [
+    "sk_hynix",
+    "micron",
+    "sandisk",
+    "samsung",
+    "kioxia"
+  ],
+  "consensus_trade": [
+    "nvidia",
+    "broadcom",
+    "microsoft",
+    "alphabet",
+    "amazon",
+    "meta"
+  ],
+  "falsifiers": [
+    {
+      "metric": "Korean memory chip exports for September, due from MOTIR on Oct 1",
+      "threshold": "Under +100% y/y",
+      "why": "A drop from +290% to under +100% in one month would mean prices or volumes are easing faster than a shortage allows."
+    },
+    {
+      "metric": "DDR5 16Gb contract price in the same release",
+      "threshold": "Below $46.50, August's level",
+      "why": "A falling contract price means supply has caught up with orders."
+    },
+    {
+      "metric": "NAND contract price in the same release",
+      "threshold": "Below $30.48",
+      "why": "The same test for flash, which is most of what Sandisk and Kioxia sell."
+    },
+    {
+      "metric": "Hyperscaler capex over the last four quarters, once the Q3 10-Qs are in",
+      "threshold": "Growth under +50% y/y",
+      "why": "The memory orders come from this buildout, so a sharp slowdown in capex would ease the shortage."
+    }
+  ],
+  "change_vs_last_month": "This is the first note.",
+  "data_gaps": [
+    "Siemens Energy and MHI turbine figures were entered by hand from June 30 results decks, 88 days old.",
+    "ERCOT's Batch Zero figures were entered by hand as of Sep 11, and the Aug 3 directive's effect on its timeline is unknown.",
+    "MHI doesn't report shipments in GW, so it has no years-of-backlog figure.",
+    "Leading-edge chips have no supply series. Taiwan's export orders measure demand for Taiwanese electronics.",
+    "Four conversion factors are unverified: data center share of capex, IT power share, kW per GPU and floor space per MW.",
+    "Only Meta states capex guidance in its filings. The others guide on earnings calls, which this data doesn't include."
+  ],
+  "usage": {
+    "model": "claude-opus-5-5",
+    "input_tokens": null,
+    "output_tokens": null,
+    "cost_usd": null
+  }
+}

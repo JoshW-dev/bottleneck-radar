@@ -35,6 +35,15 @@ def test_weights_cover_long_stock_only():
     assert {w["cusip"]: w["weight"] for w in weights} == {"595112103": 0.8, "093712107": 0.2}
 
 
+def test_weights_drop_convertible_notes():
+    rows = [
+        {"name": "MICRON TECHNOLOGY INC", "cusip": "595112103", "value": 750, "shares": 1, "share_type": "SH", "put_call": None},
+        {"name": "BLOOM ENERGY CORP", "cusip": "093712AH0", "value": 250, "shares": 250, "share_type": "PRN", "put_call": None},
+    ]
+    assert [w["cusip"] for w in clone.weights(rows)] == ["595112103"]
+    assert clone.weights(rows)[0]["weight"] == 1.0
+
+
 def test_order_list_uses_whole_shares(monkeypatch):
     monkeypatch.setattr(clone.prices, "last_price", lambda ticker: {"MU": 1000.0, "BE": 300.0}[ticker])
     book = {

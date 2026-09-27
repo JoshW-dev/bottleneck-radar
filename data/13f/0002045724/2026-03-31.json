@@ -1,0 +1,387 @@
+{
+  "fund": "Situational Awareness LP",
+  "cik": "0002045724",
+  "accession": "0002045724-26-000008",
+  "filed": "2026-05-18",
+  "period": "2026-03-31",
+  "source": "https://www.sec.gov/Archives/edgar/data/2045724/000204572426000008/salp13fq1xml.xml",
+  "total_value": 13676657577,
+  "stock_value": 3855771552,
+  "stock_share": 0.281924,
+  "unmapped": [
+    "BITFARMS LTD"
+  ],
+  "options": [
+    {
+      "name": "VANECK ETF TRUST",
+      "title": "SEMICONDUCTR ETF",
+      "cusip": "92189F676",
+      "value": 2042716860,
+      "shares": 5327900,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "SMH"
+    },
+    {
+      "name": "NVIDIA CORPORATION",
+      "title": "COM",
+      "cusip": "67066G104",
+      "value": 1568257120,
+      "shares": 8992300,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "NVDA"
+    },
+    {
+      "name": "ORACLE CORP",
+      "title": "COM",
+      "cusip": "68389X105",
+      "value": 1072873230,
+      "shares": 7293000,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "ORCL"
+    },
+    {
+      "name": "BROADCOM INC",
+      "title": "COM",
+      "cusip": "11135F101",
+      "value": 1006247961,
+      "shares": 3251100,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "AVGO"
+    },
+    {
+      "name": "ADVANCED MICRO DEVICES INC",
+      "title": "COM",
+      "cusip": "007903107",
+      "value": 969160863,
+      "shares": 4764100,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "AMD"
+    },
+    {
+      "name": "MICRON TECHNOLOGY INC",
+      "title": "COM",
+      "cusip": "595112103",
+      "value": 583686168,
+      "shares": 1727700,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "MU"
+    },
+    {
+      "name": "TAIWAN SEMICONDUCTOR MANUFAC",
+      "title": "SPONSORED ADS",
+      "cusip": "874039100",
+      "value": 535110030,
+      "shares": 1583400,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "TSM"
+    },
+    {
+      "name": "ASML HLDG NV N Y REGISTRY",
+      "title": "SHS",
+      "cusip": "N07059210",
+      "value": 494122503,
+      "shares": 374100,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "ASML"
+    },
+    {
+      "name": "MICRON TECHNOLOGY INC",
+      "title": "COM",
+      "cusip": "595112103",
+      "value": 422300000,
+      "shares": 1250000,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "MU"
+    },
+    {
+      "name": "SANDISK CORP",
+      "title": "COM",
+      "cusip": "80004C200",
+      "value": 388764546,
+      "shares": 611900,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "SNDK"
+    },
+    {
+      "name": "TAIWAN SEMICONDUCTOR MANUFAC",
+      "title": "SPONSORED ADS",
+      "cusip": "874039100",
+      "value": 354847500,
+      "shares": 1050000,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "TSM"
+    },
+    {
+      "name": "INTEL CORP",
+      "title": "COM",
+      "cusip": "458140100",
+      "value": 159106302,
+      "shares": 3605400,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "INTC"
+    },
+    {
+      "name": "COREWEAVE INC",
+      "title": "COM CL A",
+      "cusip": "21873S108",
+      "value": 140569315,
+      "shares": 1814500,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "CRWV"
+    },
+    {
+      "name": "BLOOM ENERGY CORP",
+      "title": "COM CL A",
+      "cusip": "093712107",
+      "value": 55347665,
+      "shares": 408500,
+      "share_type": "SH",
+      "put_call": "Call",
+      "ticker": "BE"
+    },
+    {
+      "name": "CORNING INC",
+      "title": "COM",
+      "cusip": "219350105",
+      "value": 21020962,
+      "shares": 154600,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "GLW"
+    },
+    {
+      "name": "INFOSYS LTD",
+      "title": "SPONSORED ADR",
+      "cusip": "456788108",
+      "value": 6755000,
+      "shares": 500000,
+      "share_type": "SH",
+      "put_call": "Put",
+      "ticker": "INFY"
+    }
+  ],
+  "amendments": [],
+  "weights": [
+    {
+      "ticker": "BE",
+      "name": "BLOOM ENERGY CORP",
+      "cusip": "093712107",
+      "value": 878707930,
+      "shares": 6485408,
+      "weight": 0.227894
+    },
+    {
+      "ticker": "SNDK",
+      "name": "SANDISK CORP",
+      "cusip": "80004C200",
+      "value": 724363205,
+      "shares": 1140119,
+      "weight": 0.187865
+    },
+    {
+      "ticker": "CRWV",
+      "name": "COREWEAVE INC",
+      "cusip": "21873S108",
+      "value": 556073385,
+      "shares": 7177919,
+      "weight": 0.144218
+    },
+    {
+      "ticker": "IREN",
+      "name": "IREN LIMITED",
+      "cusip": "Q4982L109",
+      "value": 401036064,
+      "shares": 11698835,
+      "weight": 0.104009
+    },
+    {
+      "ticker": "CORZ",
+      "name": "CORE SCIENTIFIC INC NEW",
+      "cusip": "21874A106",
+      "value": 389086756,
+      "shares": 26008473,
+      "weight": 0.10091
+    },
+    {
+      "ticker": "APLD",
+      "name": "APPLIED DIGITAL CORP",
+      "cusip": "038169207",
+      "value": 319978118,
+      "shares": 13478438,
+      "weight": 0.082987
+    },
+    {
+      "ticker": "RIOT",
+      "name": "RIOT PLATFORMS INC",
+      "cusip": "767292105",
+      "value": 142166413,
+      "shares": 11502137,
+      "weight": 0.036871
+    },
+    {
+      "ticker": "CLSK",
+      "name": "CLEANSPARK INC",
+      "cusip": "18452B209",
+      "value": 104469943,
+      "shares": 12276139,
+      "weight": 0.027094
+    },
+    {
+      "ticker": "SEI",
+      "name": "SOLARIS ENERGY INFRAS INC",
+      "cusip": "83418M103",
+      "value": 62474687,
+      "shares": 1105551,
+      "weight": 0.016203
+    },
+    {
+      "ticker": "TE",
+      "name": "T1 ENERGY INC",
+      "cusip": "35834F104",
+      "value": 43900000,
+      "shares": 10000000,
+      "weight": 0.011386
+    },
+    {
+      "ticker": null,
+      "name": "BITFARMS LTD",
+      "cusip": "09173B107",
+      "value": 38757888,
+      "shares": 19875840,
+      "weight": 0.010052
+    },
+    {
+      "ticker": "BTDR",
+      "name": "BITDEER TECHNOLOGIES GROUP",
+      "cusip": "G11448100",
+      "value": 29751243,
+      "shares": 3439450,
+      "weight": 0.007716
+    },
+    {
+      "ticker": "PSIX",
+      "name": "POWER SOLUTIONS INTL INC",
+      "cusip": "73933G202",
+      "value": 26318424,
+      "shares": 432300,
+      "weight": 0.006826
+    },
+    {
+      "ticker": "WYFI",
+      "name": "WHITEFIBER INC",
+      "cusip": "G96115103",
+      "value": 20933016,
+      "shares": 1757600,
+      "weight": 0.005429
+    },
+    {
+      "ticker": "AMD",
+      "name": "ADVANCED MICRO DEVICES INC",
+      "cusip": "007903107",
+      "value": 20167643,
+      "shares": 99138,
+      "weight": 0.005231
+    },
+    {
+      "ticker": "BW",
+      "name": "BABCOCK & WILCOX ENTERPRISES",
+      "cusip": "05614L209",
+      "value": 19888791,
+      "shares": 1353900,
+      "weight": 0.005158
+    },
+    {
+      "ticker": "SHAZ",
+      "name": "SHARONAI HOLDINGS INC",
+      "cusip": "778920306",
+      "value": 18095535,
+      "shares": 796108,
+      "weight": 0.004693
+    },
+    {
+      "ticker": "PUMP",
+      "name": "PROPETRO HLDG CORP",
+      "cusip": "74347M108",
+      "value": 13117423,
+      "shares": 910300,
+      "weight": 0.003402
+    },
+    {
+      "ticker": "SMH",
+      "name": "VANECK ETF TRUST",
+      "cusip": "92189F676",
+      "value": 10332630,
+      "shares": 26950,
+      "weight": 0.00268
+    },
+    {
+      "ticker": "INTC",
+      "name": "INTEL CORP",
+      "cusip": "458140100",
+      "value": 8929441,
+      "shares": 202344,
+      "weight": 0.002316
+    },
+    {
+      "ticker": "TSM",
+      "name": "TAIWAN SEMICONDUCTOR MANUFAC",
+      "cusip": "874039100",
+      "value": 7577853,
+      "shares": 22423,
+      "weight": 0.001965
+    },
+    {
+      "ticker": "HIVE",
+      "name": "HIVE DIGITAL TECHNOLOGIES LT",
+      "cusip": "433921103",
+      "value": 6443939,
+      "shares": 3391547,
+      "weight": 0.001671
+    },
+    {
+      "ticker": "ASML",
+      "name": "ASML HLDG NV N Y REGISTRY",
+      "cusip": "N07059210",
+      "value": 6119405,
+      "shares": 4633,
+      "weight": 0.001587
+    },
+    {
+      "ticker": "MU",
+      "name": "MICRON TECHNOLOGY INC",
+      "cusip": "595112103",
+      "value": 5865578,
+      "shares": 17362,
+      "weight": 0.001521
+    },
+    {
+      "ticker": "GLW",
+      "name": "CORNING INC",
+      "cusip": "219350105",
+      "value": 718330,
+      "shares": 5283,
+      "weight": 0.000186
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA CORPORATION",
+      "cusip": "67066G104",
+      "value": 497912,
+      "shares": 2855,
+      "weight": 0.000129
+    }
+  ]
+}

@@ -54,8 +54,9 @@ def aggregate(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def weights(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Weights across the long stock only. Calls and puts are dropped, as in the video's prompt."""
-    stock = [row for row in rows if row["put_call"] is None]
+    """Weights across the long stock only. Calls and puts are dropped, as in the video's prompt, and so are
+    convertible notes, which a 13F lists by principal amount (PRN) instead of shares."""
+    stock = [row for row in rows if row["put_call"] is None and row.get("share_type", "SH") == "SH"]
     total = sum(row["value"] for row in stock)
     return [
         {
@@ -79,9 +80,10 @@ def _info_table_url(cik: str, accession: str) -> str:
     return edgar.archive_url(cik, accession, tables[0])
 
 
-def build_book(cik: str = SITUATIONAL_AWARENESS) -> dict[str, Any]:
+def build_book(cik: str = SITUATIONAL_AWARENESS, filing: dict[str, Any] | None = None) -> dict[str, Any]:
+    """The long-stock book from one 13F-HR, the latest unless `filing` names another."""
     all_filings = edgar.filings(cik)
-    filing = next((f for f in all_filings if f["form"] == "13F-HR"), None)
+    filing = filing or next((f for f in all_filings if f["form"] == "13F-HR"), None)
     if filing is None:
         raise SystemExit(f"No 13F-HR found for CIK {cik}")
     accession = filing["accessionNumber"]
@@ -170,9 +172,28 @@ def latest_nav() -> float | None:
     return read_json(path).get("nav") if path else None
 
 
+def backfill(cik: str = SITUATIONAL_AWARENESS, since: str | None = None) -> list[str]:
+    """Save each original 13F-HR filed since `since` that data/ doesn't have yet.
+
+    The picks tracker replays these in filing order, so it needs the book the fund had
+    published before January as well as every one since. Defaults to October of last year.
+    """
+    since = since or f"{date.today().year - 1}-10-01"
+    saved = []
+    for filing in edgar.filings(cik):
+        path = DATA / "13f" / cik / f"{filing['reportDate']}.json"
+        if filing["form"] != "13F-HR" or filing["filingDate"] < since or path.exists():
+            continue
+        write_json(path, build_book(cik, filing))
+        saved.append(filing["reportDate"])
+    return saved
+
+
 def run(cik: str = SITUATIONAL_AWARENESS, account_value: float | None = None) -> dict[str, Any]:
     book = build_book(cik)
     path = write_json(DATA / "13f" / cik / f"{book['period']}.json", book)
+    if earlier := backfill(cik):
+        print(f"  saved earlier books for the tracker: {', '.join(earlier)}")
     top = ", ".join(f"{w['ticker'] or w['name']} {w['weight']:.1%}" for w in book["weights"][:3])
     print(f"13F {book['period']} (filed {book['filed']}): {len(book['weights'])} stock positions, "
           f"${book['stock_value'] / 1e9:.1f}B, {book['stock_share']:.1%} of reported value. Top: {top}")

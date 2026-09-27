@@ -18,6 +18,12 @@ def main(argv: list[str] | None = None) -> None:
     sub.add_parser("supply", help="Stage 3a: memory exports, export orders, turbine backlogs, grid queues")
     bottleneck = sub.add_parser("bottleneck", help="Stage 3b: the monthly call and memo")
     bottleneck.add_argument("--dry-run", action="store_true", help="save the prompt instead of calling the model")
+    bottleneck.add_argument("--import", dest="import_path", metavar="FILE", help="use a call made elsewhere from the saved prompt (JSON matching the schema)")
+    bottleneck.add_argument("--made-by", help="who made an imported call, for the record (a model name)")
+    bottleneck.add_argument("--force", action="store_true", help="make this month's call again even though one exists")
+    picks = sub.add_parser("picks", help="freeze the call's owners into this month's equal-weight picks")
+    picks.add_argument("--force", action="store_true", help="rewrite a month's picks that were already frozen")
+    sub.add_parser("performance", help="price the picks, the 13F clone and benchmarks for the year so far")
     sub.add_parser("ibkr", help="pull positions from your IBKR Flex query into private/")
     sub.add_parser("exposure", help="Stage 4: your exposure to the bottleneck vs the consensus trade")
     sub.add_parser("site", help="render the public outputs in data/ into site/index.html")
@@ -27,7 +33,8 @@ def main(argv: list[str] | None = None) -> None:
     args = parser.parse_args(argv)
     from . import bottleneck as bottleneck_stage
     from . import clone as clone_stage
-    from . import demand, exposure, ibkr_flex, site, supply
+    from . import demand, exposure, ibkr_flex, performance, site, supply
+    from . import picks as picks_stage
 
     if args.command == "clone":
         clone_stage.run(args.cik, args.account_value)
@@ -36,7 +43,11 @@ def main(argv: list[str] | None = None) -> None:
     elif args.command == "supply":
         supply.run()
     elif args.command == "bottleneck":
-        bottleneck_stage.run(dry_run=args.dry_run)
+        bottleneck_stage.run(dry_run=args.dry_run, import_path=args.import_path, made_by=args.made_by, force=args.force)
+    elif args.command == "picks":
+        picks_stage.run(force=args.force)
+    elif args.command == "performance":
+        performance.run()
     elif args.command == "ibkr":
         ibkr_flex.run()
     elif args.command == "exposure":
@@ -51,6 +62,12 @@ def main(argv: list[str] | None = None) -> None:
         demand.run()
         supply.run()
         call = bottleneck_stage.run(dry_run=args.dry_run)
+        if call:
+            picks_stage.run()
+        try:
+            performance.run()
+        except Exception as err:  # prices are a nice-to-have on the monthly run; the daily job retries them
+            print(f"Performance skipped: {err}")
         if flex_ready and call:
             exposure.run()
         site.run()

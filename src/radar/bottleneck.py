@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from datetime import date
+from pathlib import Path
 from typing import Any
 
 import yaml
@@ -122,6 +123,27 @@ def evidence(demand: dict, supply: dict, owners: dict, previous: dict | None) ->
     }
 
 
+def check(call: dict[str, Any], owners: dict[str, Any]) -> None:
+    """Hold an imported call to what structured output enforces on an API call: every field, known ids only."""
+    spec = schema(owners)
+    problems = []
+    if missing := [k for k in spec["required"] if k not in call]:
+        problems.append(f"missing {', '.join(missing)}")
+    if extra := [k for k in call if k not in spec["properties"]]:
+        problems.append(f"unexpected {', '.join(extra)}")
+    if call.get("bottleneck") not in INPUTS:
+        problems.append(f"bottleneck must be one of {', '.join(INPUTS)}")
+    if unknown := [i for i in call.get("owners", []) + call.get("consensus_trade", []) if i not in owners["companies"]]:
+        problems.append(f"unknown company ids: {', '.join(unknown)}")
+    ranking = call.get("ranking", [])
+    if sorted(r.get("input", "") for r in ranking) != sorted(INPUTS):
+        problems.append("the ranking must cover each input once")
+    if any(not isinstance(r.get("tightness"), int) or not 1 <= r["tightness"] <= 5 for r in ranking):
+        problems.append("tightness must be a whole number from 1 to 5")
+    if problems:
+        raise SystemExit("The call file doesn't fit the schema: " + "; ".join(problems))
+
+
 def validate(call: dict[str, Any], owners: dict[str, Any]) -> dict[str, Any]:
     """Keep owners to the chosen input's list and the consensus to its candidates."""
     allowed = owners["inputs"][call["bottleneck"]]["owners"]
@@ -206,35 +228,52 @@ def memo(result: dict[str, Any], demand: dict, supply: dict, owners: dict) -> st
     lines += ["", "## Since last month", "", result["change_vs_last_month"], "", "## Data gaps", ""]
     lines += [f"- {gap}" for gap in result["data_gaps"]] or ["- None"]
     lines += ["", "## The numbers", "", *numbers_table(demand, supply), "", "---", ""]
-    usage = result["usage"]
-    lines.append(
-        f"Generated {result['generated']} by bottleneck-radar with {usage['model']} "
-        f"({usage['input_tokens']:,} tokens in, {usage['output_tokens']:,} out, ${usage['cost_usd']:.2f}). "
-        "Research notes only. Nothing here is investment advice."
-    )
+    lines.append(f"Generated {result['generated']} by bottleneck-radar {provenance(result['usage'])}. "
+                 "Research notes only. Nothing here is investment advice.")
     return "\n".join(lines)
 
 
-def run(dry_run: bool = False) -> dict[str, Any] | None:
+def provenance(usage: dict[str, Any]) -> str:
+    if usage.get("input_tokens") is not None:
+        return (f"with {usage['model']} ({usage['input_tokens']:,} tokens in, {usage['output_tokens']:,} out, "
+                f"${usage['cost_usd']:.2f})")
+    return f"from a call {usage['model']} made on the saved evidence packet, outside the API run"
+
+
+def run(dry_run: bool = False, import_path: str | None = None, made_by: str | None = None, force: bool = False) -> dict[str, Any] | None:
+    """Make the month's call once. A published call (and the picks frozen from it) stays as it is unless forced.
+
+    `import_path` takes a call made elsewhere from the saved prompt, such as in a chat session before
+    an API key exists. It goes through the same checks, and `made_by` records who made it.
+    """
     month = month_key()
     folder = DATA / month
+    out = folder / "bottleneck.json"
+    if out.exists() and not (force or dry_run):
+        existing = read_json(out)
+        print(f"The {month} call was made on {existing['generated']}; keeping it. Pass --force to make it again.")
+        return existing
     demand, supply = read_json(folder / "demand.json"), read_json(folder / "supply.json")
     owners = load_owners()
     last = DATA / previous_month(month) / "bottleneck.json"
     previous = read_json(last) if last.exists() else None
     user = "This month's data:\n\n" + json.dumps(evidence(demand, supply, owners, previous), indent=1, ensure_ascii=False, default=str)
 
-    if dry_run or not llm.available():
+    if import_path:
+        call = json.loads(Path(import_path).read_text())
+        check(call, owners)
+        usage = {"model": made_by or "an unnamed model", "input_tokens": None, "output_tokens": None, "cost_usd": None}
+    elif dry_run or not llm.available():
         path = write_text(folder / "bottleneck-prompt.md", f"# System\n\n{SYSTEM}\n\n# User\n\n{user}")
         reason = "dry run" if dry_run else "no ANTHROPIC_API_KEY"
         print(f"Bottleneck call skipped ({reason}). Prompt saved to {path.relative_to(DATA.parent)}")
         return None
-
-    call, usage = llm.structured(SYSTEM, user, schema(owners))
+    else:
+        call, usage = llm.structured(SYSTEM, user, schema(owners))
     call = validate(_tidy_all(call), owners)
     result = {"month": month, "generated": date.today().isoformat(), **call, "usage": usage}
     write_json(folder / "bottleneck.json", result)
     path = write_text(folder / "memo.md", memo(result, demand, supply, owners))
     print(f"Bottleneck: {owners['inputs'][call['bottleneck']]['label']}. {call['headline']}")
-    print(f"  {usage['input_tokens']:,} tokens in, {usage['output_tokens']:,} out, ${usage['cost_usd']:.2f}; wrote {path.relative_to(DATA.parent)}")
+    print(f"  generated {provenance(usage)}; wrote {path.relative_to(DATA.parent)}")
     return result

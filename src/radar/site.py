@@ -13,7 +13,7 @@ import html
 import io
 import json
 import math
-from datetime import date
+from datetime import date, timedelta
 from typing import Any, Callable
 
 import yaml
@@ -53,7 +53,7 @@ PLACES = {  # where each input is made, and two big US data center markets
     "virginia": ("N. Virginia", 39.04, -77.49),
 }
 INDEX = [
-    ("Overview", [("call", "This month's call")]),
+    ("Overview", [("call", "This month's call"), ("picks", "Picks and tracking")]),
     ("Demand", [("physical", "What the capex buys"), ("capex", "Capex by company")]),
     ("Supply", [("memory", "Memory chips"), ("taiwan", "Taiwan export orders"), ("turbines", "Gas turbines"), ("grid", "Grid connections")]),
     ("Positioning", [("book", "The fund's book")]),
@@ -89,6 +89,10 @@ def short_month(period: str) -> str:
 
 def short_date(iso: str) -> str:
     return date.fromisoformat(iso[:10]).strftime("%b '%y")
+
+
+def day_label(iso: str) -> str:
+    return date.fromisoformat(iso[:10]).strftime("%b %-d")
 
 
 def link(url: str | None, text: str = "source") -> str:
@@ -164,14 +168,17 @@ def line_chart(
     compact: bool = False,
     tick_fmt: Callable[[float], str] | None = None,
     area: bool = False,
+    ticks: list[float] | None = None,
+    markers: list[tuple[int, str]] | None = None,
 ) -> str:
     """Lines in a stretched SVG with non-scaling strokes; every label is HTML so it stays readable on phones.
 
-    A series may set `dashed` (context lines) and `width`. With `area`, the first series gets a 8% wash.
+    A series may set `dashed` (context lines), `dashed_until` (an index: dashed up to it, solid after)
+    and `width`. With `area`, the first series gets a 8% wash. `markers` draws labeled vertical rules.
     """
     n = len(x_labels)
     top = y_max or nice_max(max(v for s in series for v in s["values"] if v is not None))
-    ticks = [top / 2, top] if compact else nice_ticks(top)
+    ticks = ticks or ([top / 2, top] if compact else nice_ticks(top))
     tick_fmt = tick_fmt or fmt
 
     def x(i: int) -> float:
@@ -180,20 +187,33 @@ def line_chart(
     def y(v: float) -> float:
         return 100 - v / top * 100
 
+    def polyline(pts: str, color: str, width: float, dashed: bool) -> str:
+        dash = ' stroke-dasharray="6 4"' if dashed else ""
+        return (f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="{width}"{dash} '
+                'stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>')
+
+    def coords(pairs: list[tuple[float, float]]) -> str:
+        return " ".join(f"{px * 10:.1f},{py * 10:.1f}" for px, py in pairs)
+
     shapes, dots, ends = [], [], []
     for k, s in enumerate(series):
         points = [(x(i), y(v)) for i, v in enumerate(s["values"]) if v is not None]
-        pts = " ".join(f"{px * 10:.1f},{py * 10:.1f}" for px, py in points)
+        pts = coords(points)
         if area and k == 0:
             shapes.append(
                 f'<polygon points="{points[0][0] * 10:.1f},1000 {pts} {points[-1][0] * 10:.1f},1000" '
                 f'fill="{s["color"]}" fill-opacity="0.08" stroke="none"/>'
             )
-        dash = ' stroke-dasharray="6 4"' if s.get("dashed") else ""
-        shapes.append(
-            f'<polyline points="{pts}" fill="none" stroke="{s["color"]}" stroke-width="{s.get("width", 2)}"{dash} '
-            'stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>'
-        )
+        width = s.get("width", 2)
+        split = s.get("dashed_until")
+        if split is None:
+            shapes.append(polyline(pts, s["color"], width, bool(s.get("dashed"))))
+        else:
+            head = [(x(i), y(v)) for i, v in enumerate(s["values"]) if v is not None and i <= split]
+            tail = [(x(i), y(v)) for i, v in enumerate(s["values"]) if v is not None and i >= split]
+            shapes.append(polyline(coords(head), s["color"], width, True))
+            if len(tail) > 1:
+                shapes.append(polyline(coords(tail), s["color"], width, False))
         px, py = points[-1]
         dots.append(f'<span class="lc-dot" style="left:{px:.2f}%;top:{py:.2f}%;background:{s["color"]}"></span>')
         ends.append([py, s, next(v for v in reversed(s["values"]) if v is not None)])
@@ -211,6 +231,7 @@ def line_chart(
         )
 
     grid = "".join(f'<div class="lc-grid" style="bottom:{t / top * 100:.2f}%"><span>{e(tick_fmt(t))}</span></div>' for t in ticks)
+    rules = "".join(f'<div class="lc-mark" style="left:{x(i):.2f}%"><span>{e(label)}</span></div>' for i, label in markers or [])
     marks = [0, n - 1] if compact or n < 5 else [0, n // 2, n - 1]
     xaxis = "".join(
         f'<span style="left:{x(i):.2f}%" class="{"first" if i == 0 else "last" if i == n - 1 else ""}">{e(x_labels[i])}</span>'
@@ -226,7 +247,7 @@ def line_chart(
     klass = "lc compact" if compact else "lc"
     return (
         f'<div class="{klass}" data-chart="{e(json.dumps(data))}">'
-        f'<div class="lc-plot" style="height:{height}px"><div class="lc-base"></div>{grid}'
+        f'<div class="lc-plot" style="height:{height}px"><div class="lc-base"></div>{grid}{rules}'
         f'<svg class="draw" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">{"".join(shapes)}</svg>'
         f'{"".join(dots)}{labels}<div class="lc-cross" hidden></div></div>'
         f'<div class="lc-x">{xaxis}</div></div>'
@@ -407,6 +428,15 @@ def call_section(call: dict[str, Any] | None, owners: dict[str, Any]) -> str:
         for r in call["ranking"]
     )
     falsifiers = table(["Figure", "Threshold", "Why it matters"], [[e(f["metric"]), e(f["threshold"]), e(f["why"])] for f in call["falsifiers"]])
+    usage = call.get("usage") or {}
+    when = f" on {day_label(call['generated'])}" if call.get("generated") else ""
+    if usage.get("input_tokens") is not None:
+        made = f"Made by {usage['model']}{when} ({usage['input_tokens']:,} tokens in, ${usage['cost_usd']:.2f})."
+    elif usage:
+        made = (f"Made by {usage['model']}{when} from this month's saved evidence packet, "
+                "outside the monthly API run, and checked against the same schema.")
+    else:
+        made = ""
     return (
         f'<section class="call" id="call">{eyebrow("This month" + chr(39) + "s call · " + month_name(call["month"]))}'
         f'<h2 class="call-title"><span>{e(INPUT_LABELS[call["bottleneck"]])}.</span> <span class="muted">{e(call["headline"])}</span></h2>'
@@ -414,15 +444,115 @@ def call_section(call: dict[str, Any] | None, owners: dict[str, Any]) -> str:
         f'<div><h3>Who makes it</h3><div class="chips">{chips(call["owners"])}</div>'
         f'<h3>The consensus trade</h3><div class="chips">{chips(call["consensus_trade"])}</div></div></div>'
         f'<h3>What would prove this wrong</h3>{falsifiers}'
-        f'<p class="note">Since last month: {e(call["change_vs_last_month"])}</p></section>'
+        f'<p class="note">Since last month: {e(call["change_vs_last_month"])} {e(made)}</p></section>'
     )
 
 
-def index_rail() -> str:
+def index_rail(skip: set[str] = frozenset()) -> str:
     groups = "".join(
-        f"<h4>{e(group)}</h4>" + "".join(f'<a href="#{anchor}">{e(label)}</a>' for anchor, label in items) for group, items in INDEX
+        f"<h4>{e(group)}</h4>" + "".join(f'<a href="#{anchor}">{e(label)}</a>' for anchor, label in items if anchor not in skip)
+        for group, items in INDEX
     )
     return f'<nav class="index" aria-label="Indicators">{groups}</nav>'
+
+
+STRATEGY_COLORS = {"picks": LIGHT["memory"], "clone": LIGHT["power"], "consensus": LIGHT["chips"], "sp500": CONTEXT}
+MAKERS = {"memory": "memory", "advanced_chips": "chip", "gas_turbines": "gas turbine", "grid_interconnection": "grid equipment"}
+COUNT_WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+
+
+def ret(value: float | None, digits: int = 0) -> str:
+    """A return as text; the page's own minus sign keeps negative numbers from reading as hyphens."""
+    if value is None:
+        return "n/a"
+    return f"{value:+.{digits}%}".replace("-", "\u2212")
+
+
+def next_weekday(iso: str) -> str:
+    day = date.fromisoformat(iso) + timedelta(days=1)
+    while day.weekday() >= 5:
+        day += timedelta(days=1)
+    return day.isoformat()
+
+
+def picks_section(perf: dict[str, Any] | None) -> str:
+    """The frozen picks with a reason for each, then this year's record against the 13F clone and two benchmarks."""
+    if not perf or not perf.get("picks"):
+        return ""
+    p, series, days = perf["picks"], perf["series"], perf["days"]
+    live = p["live_from"]
+    starts = day_label(p["entry"] or next_weekday(p["published"]))
+    rows = p["rows"]
+    count = COUNT_WORDS[len(rows)] if len(rows) < len(COUNT_WORDS) else str(len(rows))
+    maker = MAKERS.get(p.get("bottleneck", ""), "")
+    if live:
+        lead = (f"Since the {day_label(p['published'])} call the picks are {ret(series['picks']['since_call'], 1)}, against "
+                f"{ret(series['consensus']['since_call'], 1)} for the consensus basket and {ret(series['sp500']['since_call'], 1)} for the S&P 500.")
+    else:
+        lead = (f"The {count} {maker} makers named in the {month_name(p['month'])} call, at equal weight. "
+                f"They're up {ret(p['basket_ytd'])} this year in dollars, but the call came on {day_label(p['published'])}, after most of that move, "
+                f"so their live record starts at the {starts} close.")
+
+    table_rows = [
+        [f'<span class="tick">{e(r["quote"])}</span>', f'{e(r["name"])}<span class="why">{e(r["role"])}</span>', e(f"{r['weight']:.0%}"),
+         e(ret(r["ytd"])), e(ret(r["since_pick"], 1)) if r["since_pick"] is not None else f'<span class="muted">Starts {e(starts)}</span>']
+        for r in rows
+    ]
+    listing = sub_block(
+        "picks-list", "Who's in it",
+        f"{e(p['rule'])} Research notes only. Nothing here is investment advice.",
+        table(["Ticker", "Company and why it's in", "Weight", f"{perf['year']} so far", "Since the call"], table_rows, {2, 3, 4}),
+    )
+
+    order = ["picks", "clone", "consensus", "sp500"]
+    shown = [k for k in order if k in series and any(v is not None for v in series[k]["values"])]
+    live_index = days.index(live) if live else None
+    chart_series = []
+    for k in shown:
+        item = {"name": series[k]["label"], "color": STRATEGY_COLORS[k], "values": series[k]["values"], "width": 2.5 if k == "picks" else 2}
+        if k == "picks":
+            item["dashed_until"] = live_index if live_index is not None else len(days) - 1
+        if k == "sp500":
+            item["dashed"], item["width"] = True, 1.75
+        chart_series.append(item)
+    top = nice_max(max(v for s_ in chart_series for v in s_["values"] if v is not None))
+    step = nice_ticks(top - 100)[0] if top > 100 else top / 2
+    ticks = [100 + step * i for i in range(int((top - 100) / step + 1e-9) + 1)]
+    marker = (live_index, f"Called {day_label(p['published'])}") if live_index is not None else (len(days) - 1, f"Called {day_label(p['published'])}")
+    chart = line_chart(
+        [day_label(d) for d in days], chart_series, lambda v: ret(v / 100 - 1, 1),
+        y_max=top, height=300, tick_fmt=lambda v: "0%" if abs(v - 100) < 1e-9 else ret(v / 100 - 1), ticks=ticks, markers=[marker],
+    )
+    consensus_names = ", ".join(r["quote"] for r in (perf.get("consensus") or {}).get("rows", []))
+    labels = {"picks": "The picks, equal weight", "clone": "13F clone", "consensus": f"Consensus AI ({consensus_names})", "sp500": "S&P 500 (SPY)"}
+    score_rows = []
+    for k in shown:
+        dd = series[k].get("max_drawdown") or {}
+        drop = f"{ret(dd['change'])} ({day_label(dd['peak'])} to {day_label(dd['low'])})" if dd.get("peak") else "none"
+        since = ret(series[k]["since_call"], 1) if series[k].get("since_call") is not None else ("Starts " + starts if k == "picks" else "")
+        score_rows.append([f'<i class="key" style="background:{STRATEGY_COLORS[k]}"></i>{e(labels[k])}', e(ret(series[k]["ytd"])), e(drop), e(since)])
+    month_ends = [i for i, d in enumerate(days) if i == 0 or i == len(days) - 1 or d[:7] != days[i + 1][:7]]
+    tv_rows = [[e(days[i])] + [e(ret(series[k]["values"][i] / 100 - 1, 1)) if series[k]["values"][i] is not None else "" for k in shown] for i in month_ends]
+    csv_rows = [[d] + [series[k]["values"][i] for k in shown] for i, d in enumerate(days)]
+    books = (perf.get("clone") or {}).get("books", [])
+    book_rows = [[e(b["period"]), e(b["filed"]), e(day_label(b["bought_on"])), e(str(b["positions"])), e(f"{b['bought']:.0%}")] for b in books]
+    gaps = sorted({m for b in books for m in b["missing"]})
+    clone_note = (f" Left out for lack of a price: {e(', '.join(gaps))}." if gaps else "")
+    tracking = sub_block(
+        "tracking", f"{perf['year']} so far, in dollars",
+        f"The picks line is dashed before the call because nobody had picked those stocks yet. The 13F clone has no hindsight in it: "
+        f"it buys each of {e((perf.get('clone') or {}).get('fund') or 'the fund')}'s filings at the first close after the filing date.",
+        legend([(labels[k].split(" (")[0], STRATEGY_COLORS[k]) for k in shown], "line")
+        + chart
+        + table(["Line", f"{perf['year']} so far", "Largest drop", "Since the call"], score_rows, {1})
+        + table_view(["Date"] + [series[k]["label"] for k in shown], tv_rows, set(range(1, len(shown) + 1)))
+        + (f'<h3 class="gap">Filings the clone followed</h3>' + table(["Book", "Filed", "Bought at the close of", "Positions", "Priced"], book_rows, {3, 4})
+           if book_rows else "")
+        + prov(f"Daily closes from Yahoo Finance, adjusted for dividends and splits, to the {e(day_label(perf['as_of']))} close. Seoul and Tokyo "
+               f"listings are converted to dollars at each day's rate. 13F books from EDGAR.{clone_note}",
+               csv_text(["date"] + [f"{k}_index" for k in shown], csv_rows)),
+    )
+    return block("picks", f"Picks · updated each US trading day", "The picks", e(lead), listing + tracking)
 
 
 def demand_section(demand: dict[str, Any]) -> str:
@@ -719,6 +849,7 @@ h1,h2,h3{text-wrap:balance}
 .meter{display:flex;gap:2px}.meter i{flex:1;height:6px;background:#dbe5f3}.meter i.on{background:var(--ink)}.meter i:last-child{border-radius:0 3px 3px 0}
 .chips{display:flex;flex-wrap:wrap;gap:6px}.chip{border:1px solid var(--rule);border-radius:4px;padding:3px 9px;font-size:14px}.chip small{font-family:var(--mono);color:var(--muted)}
 .body{display:grid;grid-template-columns:200px minmax(0,1fr);gap:64px;padding-block:24px 96px;border-top:1px solid var(--rule)}
+.content{min-width:0}
 .index{position:sticky;top:84px;align-self:start;padding-top:48px;font-size:14px}
 .index h4{font:500 11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}.index h4:first-child{margin-top:0}
 .index a{display:block;padding:5px 0 5px 12px;border-left:1px solid var(--rule);color:var(--slate);text-decoration:none;transition:color .24s,border-color .24s}
@@ -756,6 +887,10 @@ blockquote cite{display:block;margin-top:8px;font:400 12px/1.5 var(--mono);font-
 .lc-end{position:absolute;left:calc(100% + 12px);transform:translateY(-50%);font:500 12px/1 var(--mono);white-space:nowrap;display:flex;align-items:center;gap:7px;font-variant-numeric:tabular-nums}
 .lc-end i{display:inline-block;width:12px;height:2px}.lc-end small{font:400 12px var(--mono);color:var(--slate)}
 .lc-cross{position:absolute;top:0;bottom:0;width:0;border-left:1px solid #b9c6d6;pointer-events:none}
+.lc-mark{position:absolute;top:0;bottom:0;width:0;border-left:1px dashed #9aabbf;pointer-events:none}
+.lc-mark span{position:absolute;top:0;right:8px;font:500 11px/1.4 var(--mono);color:var(--slate);white-space:nowrap;background:#fff;padding:0 4px}
+td .tick{font:500 13px var(--mono)}td .why{display:block;max-width:460px;margin-top:2px;font-size:13px;line-height:1.5;color:var(--slate)}td .muted{font-size:13px}
+td i.key{display:inline-block;width:12px;height:2px;margin-right:8px;vertical-align:4px}
 .lc-x{position:relative;height:20px;font:400 11px/1 var(--mono);color:var(--muted)}.lc-x span{position:absolute;top:6px;transform:translateX(-50%);white-space:nowrap}
 .lc-x span.first{transform:none}.lc-x span.last{transform:translateX(-100%)}
 .hb{display:grid;gap:4px;margin:6px 0}.hb-row{display:grid;grid-template-columns:minmax(110px,180px) 1fr;gap:14px;align-items:center;border-radius:4px;padding:4px 6px;margin:0 -6px;transition:background .24s}
@@ -859,14 +994,16 @@ if(panel){'requestIdleCallback' in window?requestIdleCallback(loadGlobe,{timeout
 """
 
 
-def render(month: str, demand: dict, supply: dict, book: dict | None, call: dict | None, owners: dict) -> str:
+def render(month: str, demand: dict, supply: dict, book: dict | None, call: dict | None, owners: dict, perf: dict | None = None) -> str:
     updated = supply.get("generated") or date.today().isoformat()
-    sections = [demand_section(demand), supply_section(supply)]
+    picks_html = picks_section(perf)
+    sections = [picks_html, demand_section(demand), supply_section(supply)]
     if book:
         sections.append(book_section(book, owners))
     sections.append(method_section(demand))
     description = "A monthly read on where AI data center demand is outrunning supply, built from SEC filings and Asian trade data."
-    nav_links = "".join(f'<a href="#{a}">{e(t)}</a>' for a, t in (("call", "The call"), ("demand", "Demand"), ("supply", "Supply"), ("book", "Book"), ("method", "Method")))
+    links = [("call", "The call"), ("picks", "Picks"), ("demand", "Demand"), ("supply", "Supply"), ("book", "Book"), ("method", "Method")]
+    nav_links = "".join(f'<a href="#{a}">{e(t)}</a>' for a, t in links if a != "picks" or picks_html)
     hero_html = hero(demand, supply, call, month).replace('id="globe-panel"', f'id="globe-panel" data-src="{GLOBE_JS}"', 1)
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -884,10 +1021,10 @@ def render(month: str, demand: dict, supply: dict, book: dict | None, call: dict
 {hero_html}
 <div class="frame">
 {call_section(call, owners)}
-<div class="body">{index_rail()}<div class="content">{"".join(sections)}</div></div>
+<div class="body">{index_rail(set() if picks_html else {"picks"})}<div class="content">{"".join(sections)}</div></div>
 </div>
 </main>
-<footer class="foot"><div class="frame"><p>Research notes only. Nothing here is investment advice. Data updated {e(updated)}; built with {link(REPO, "bottleneck-radar")}.</p>
+<footer class="foot"><div class="frame"><p>Research notes only. Nothing here is investment advice. Data updated {e(updated)}{f", prices to the {e(day_label(perf['as_of']))} close" if perf else ""}; built with {link(REPO, "bottleneck-radar")}.</p>
 <p>The idea comes from a TikTok by {link("https://www.tiktok.com/@angusthenontechnical", "Angus the Nontechnical")}.</p></div></footer>
 <div id="tip" class="tip" role="status" hidden></div><script>{JS}</script></body></html>
 """
@@ -901,6 +1038,7 @@ def run() -> None:
     folder = DATA / month
     books = sorted(DATA.glob("13f/*/*.json"))
     call_path = folder / "bottleneck.json"
+    perf_path = DATA / "performance.json"
     owners = yaml.safe_load((CONFIG / "owners.yaml").read_text())
     geo.ensure_land_dots(SITE / "land-dots.json")
     page = render(
@@ -910,6 +1048,7 @@ def run() -> None:
         read_json(books[-1]) if books else None,
         read_json(call_path) if call_path.exists() else None,
         owners,
+        read_json(perf_path) if perf_path.exists() else None,
     )
     path = write_text(SITE / "index.html", page)
     print(f"Dashboard for {month_name(month)}: {path.relative_to(ROOT)} ({len(page) / 1024:.0f} KB)")

@@ -17,9 +17,11 @@ The dashboard is live at [bottleneck-radar-two.vercel.app](https://bottleneck-ra
 | 3a. Supply | `radar supply` | Korean memory chip exports, Taiwan export orders, gas turbine backlogs and ERCOT's large-load queue | none |
 | 3b. Bottleneck | `radar bottleneck` | Ranks the four inputs, picks one, names who owns it and what would prove the call wrong, and writes `memo.md` | Claude Sonnet |
 | 4. Exposure | `radar ibkr`, `radar exposure` | Reads your positions through an IBKR Flex query and splits them into bottleneck owners, the consensus AI trade and everything else | none |
+| Picks | `radar picks` | Freezes the call's owners as that month's picks at equal weight, with the consensus trade kept as the comparison. A month's picks are never rewritten. | none |
+| Tracking | `radar performance` | Prices the picks, a point-in-time copy of the fund's 13F filings, the consensus basket and the S&P 500 for the year so far, in dollars | none |
 | Dashboard | `radar site` | Renders the latest month in `data/` into `site/index.html` | none |
 
-`radar run` does all of it in order.
+`radar run` does all of it in order. A month's call is made once: rerunning `radar bottleneck` keeps it unless you pass `--force`.
 
 ## Setup
 
@@ -52,11 +54,12 @@ A Flex Web Service token can only download reports, so Stage 4 can't trade.
 
 ## Where things go
 
-- `data/` holds the public outputs and is committed: `13f/<cik>/<period>.json`, plus `demand.json`, `supply.json`, `bottleneck.json` and `memo.md` for each month.
+- `data/` holds the public outputs and is committed: `13f/<cik>/<period>.json`, `picks/<month>.json`, `performance.json`, plus `demand.json`, `supply.json`, `bottleneck.json` and `memo.md` for each month.
 - `private/` holds anything about your account: positions, the order list and exposure. Git ignores it.
 - `config/` holds the inputs you maintain by hand:
   - `assumptions.yaml` has every factor that turns dollars into physical units, each with a source. Entries marked `unverified` still need one.
-  - `owners.yaml` lists which companies make each input. The model can only name companies from this list.
+  - `owners.yaml` lists which companies make each input, with the listing the tracker prices and a line on why each one is exposed. The model can only name companies from this list.
+  - `cusip_overrides.yaml` fixes 13F rows that a fund filed under the wrong CUSIP. Each entry says how it was checked.
   - `manual.yaml` has figures copied from PDFs that don't have a parser yet: Siemens Energy and MHI turbine backlogs and ERCOT's large-load queue. The memo flags entries older than 120 days.
 
 ## Data sources
@@ -78,9 +81,26 @@ A Flex Web Service token can only download reports, so Stage 4 can't trade.
 
 The design follows the two `/taste` studies in `docs/taste/`, of Stripe's homepage and Ramp's AI Index. Color is reserved for data, the four input figures light up one at a time, and the globe in the hero draws arcs from where each input is made to two US data center markets. The globe uses [globe.gl](https://github.com/vasturiano/globe.gl), and its land dots come from [Natural Earth](https://www.naturalearthdata.com/) (public domain). Motion switches off for readers who ask their system for reduced motion.
 
+## Picks and tracking
+
+Each month's call names the companies that own the bottleneck. `radar picks` saves them to `data/picks/<month>.json` at equal weight, and later runs leave that file alone, so the record can't be edited after the fact. `radar performance` then writes `data/performance.json` with four lines for the year so far:
+
+- The picks, bought at the first close after the call is published and held until the next call replaces them.
+- A 13F clone that buys each of the fund's filings at the first close after its filing date, starting from the book it had published before January. `radar clone` saves every filing the tracker needs.
+- The consensus trade named in the call, at equal weight.
+- The S&P 500, through SPY.
+
+Prices are Yahoo Finance daily closes adjusted for dividends and splits. Listings in Seoul and Tokyo are converted to dollars at each day's exchange rate.
+
+The dashboard shows the picks from January 1, even though September 2026 was the first call, so everything before the call date is hindsight. It draws that stretch dashed and marks the call. The 13F clone uses only filings that were public at the time, which makes it the fairer test of the year so far.
+
+The September 2026 call was made before the pipeline had an API key: claude-opus-5-5 read the saved prompt outside the API run, and `radar bottleneck --import` put its answer through the same checks as an API call. The call records who made it.
+
 ## Running it monthly
 
 GitHub Actions runs the public stages on the 24th of each month, after Taiwan publishes its export orders (`.github/workflows/monthly.yml`). The workflow commits `data/` and `site/`, and Vercel redeploys from that commit. It needs a repository variable named `SEC_USER_AGENT`, plus an `ANTHROPIC_API_KEY` secret for the memo. You can also start it by hand from the Actions tab.
+
+A second workflow (`.github/workflows/prices.yml`) updates the tracker and the dashboard after each US trading day. It only reads public prices, so it needs no secrets.
 
 Stage 4 reads your brokerage account, so it never runs on GitHub, where Actions logs are public. `scripts/monthly.sh` pulls the refresh and runs it locally. This cron entry runs it two hours after the workflow:
 
@@ -94,6 +114,8 @@ Stage 4 reads your brokerage account, so it never runs on GitHub, where Actions 
 - Capex here is cash paid for property and equipment. It leaves out finance leases and includes spending that isn't AI data centers.
 - The physical conversions are rough. Change the factors in `config/assumptions.yaml` and rerun.
 - Taiwan's export orders measure demand for Taiwanese electronics. Leading-edge chips have no direct supply series yet.
+- A pick's return for the year includes the months before the call that picked it. Judge the picks from the call date on.
+- The picks rebalance only when a new call arrives, and the tracker ignores trading costs and taxes.
 
 ## Tests
 
