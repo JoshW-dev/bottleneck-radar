@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07",
+  "generated": "2026-10-08",
   "as_of": "2026-10-06",
   "year": 2026,
   "base": "2025-12-31",
@@ -392,10 +392,10 @@
         443.21,
         438.67,
         436.26,
-        430.43
+        428.26
       ],
-      "ytd": 3.3043,
-      "since_call": 0.0127,
+      "ytd": 3.2826,
+      "since_call": 0.0076,
       "max_drawdown": {
         "change": -0.5392,
         "peak": "2026-06-22",
@@ -596,10 +596,10 @@
         178.07,
         177.68,
         175.82,
-        174.94
+        175.51
       ],
-      "ytd": 0.7493,
-      "since_call": 0.0094,
+      "ytd": 0.7551,
+      "since_call": 0.0127,
       "max_drawdown": {
         "change": -0.4862,
         "peak": "2026-06-22",
@@ -713,7 +713,7 @@
         111.14,
         111.81,
         112.28,
-        111.33,
+        111.34,
         110.04,
         108.61,
         103.78,
@@ -800,10 +800,10 @@
         109.45,
         111.02,
         112.58,
-        113.82
+        113.74
       ],
-      "ytd": 0.1382,
-      "since_call": 0.0417,
+      "ytd": 0.1374,
+      "since_call": 0.041,
       "max_drawdown": {
         "change": -0.1783,
         "peak": "2026-01-29",
@@ -1025,7 +1025,7 @@
     "first_published": "2026-09-27",
     "entry": "2026-09-28",
     "live_from": "2026-09-28",
-    "basket_ytd": 3.3017,
+    "basket_ytd": 3.2649,
     "rows": [
       {
         "id": "sk_hynix",
@@ -1051,8 +1051,8 @@
         "quote": "SNDK",
         "weight": 0.2,
         "role": "NAND flash and SSDs, spun out of Western Digital in February 2025. The only pure NAND maker listed in the US.",
-        "ytd": 6.179,
-        "since_pick": -0.0051
+        "ytd": 5.9949,
+        "since_pick": -0.0306
       },
       {
         "id": "samsung",
@@ -1127,8 +1127,8 @@
         "quote": "META",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.1268,
-        "since_pick": 0.0367
+        "ytd": 0.1222,
+        "since_pick": 0.0325
       }
     ]
   },
