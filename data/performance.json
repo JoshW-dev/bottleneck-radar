@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-10",
-  "as_of": "2026-10-08",
+  "generated": "2026-10-13",
+  "as_of": "2026-10-12",
   "year": 2026,
   "base": "2025-12-31",
   "days": [
@@ -197,7 +197,9 @@
     "2026-10-05",
     "2026-10-06",
     "2026-10-07",
-    "2026-10-08"
+    "2026-10-08",
+    "2026-10-09",
+    "2026-10-12"
   ],
   "series": {
     "picks": {
@@ -396,10 +398,12 @@
         436.26,
         428.26,
         426.08,
-        413.86
+        413.86,
+        410.05,
+        402.14
       ],
-      "ytd": 3.1386,
-      "since_call": -0.0263,
+      "ytd": 3.0214,
+      "since_call": -0.0538,
       "max_drawdown": {
         "change": -0.5392,
         "peak": "2026-06-22",
@@ -602,10 +606,12 @@
         175.82,
         175.51,
         175.79,
-        166.4
+        166.4,
+        165.62,
+        158.29
       ],
-      "ytd": 0.664,
-      "since_call": -0.0398,
+      "ytd": 0.5829,
+      "since_call": -0.0866,
       "max_drawdown": {
         "change": -0.4862,
         "peak": "2026-06-22",
@@ -719,7 +725,7 @@
         111.14,
         111.81,
         112.28,
-        111.33,
+        111.34,
         110.04,
         108.61,
         103.78,
@@ -808,10 +814,12 @@
         112.58,
         113.74,
         113.6,
-        111.38
+        111.38,
+        112.5,
+        112.58
       ],
-      "ytd": 0.1138,
-      "since_call": 0.0194,
+      "ytd": 0.1258,
+      "since_call": 0.0304,
       "max_drawdown": {
         "change": -0.1783,
         "peak": "2026-01-29",
@@ -1014,10 +1022,12 @@
         114.51,
         115.14,
         114.87,
-        114.38
+        114.38,
+        115.06,
+        115.0
       ],
-      "ytd": 0.1438,
-      "since_call": 0.0109,
+      "ytd": 0.15,
+      "since_call": 0.0163,
       "max_drawdown": {
         "change": -0.0888,
         "peak": "2026-01-27",
@@ -1035,7 +1045,7 @@
     "first_published": "2026-09-27",
     "entry": "2026-09-28",
     "live_from": "2026-09-28",
-    "basket_ytd": 3.1225,
+    "basket_ytd": 2.9643,
     "rows": [
       {
         "id": "sk_hynix",
@@ -1052,8 +1062,8 @@
         "quote": "MU",
         "weight": 0.2,
         "role": "The largest US memory maker, selling DRAM, HBM and NAND. Memory is its whole business.",
-        "ytd": 2.6314,
-        "since_pick": -0.0172
+        "ytd": 2.4673,
+        "since_pick": -0.0616
       },
       {
         "id": "sandisk",
@@ -1061,8 +1071,8 @@
         "quote": "SNDK",
         "weight": 0.2,
         "role": "NAND flash and SSDs, spun out of Western Digital in February 2025. The only pure NAND maker listed in the US.",
-        "ytd": 5.7801,
-        "since_pick": -0.0604
+        "ytd": 5.2656,
+        "since_pick": -0.1317
       },
       {
         "id": "samsung",
@@ -1079,8 +1089,8 @@
         "quote": "285A.T",
         "weight": 0.2,
         "role": "NAND flash, the former Toshiba Memory, listed in Tokyo since December 2024. It shares its fabs with Sandisk through a joint venture.",
-        "ytd": 4.0795,
-        "since_pick": 0.0029
+        "ytd": 3.9673,
+        "since_pick": -0.0192
       }
     ]
   },
@@ -1092,8 +1102,8 @@
         "quote": "NVDA",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.2387,
-        "since_pick": 0.0071
+        "ytd": 0.2164,
+        "since_pick": -0.0111
       },
       {
         "id": "broadcom",
@@ -1101,8 +1111,8 @@
         "quote": "AVGO",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.0463,
-        "since_pick": 0.0302
+        "ytd": 0.0306,
+        "since_pick": 0.0148
       },
       {
         "id": "microsoft",
@@ -1110,8 +1120,8 @@
         "quote": "MSFT",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.0875,
-        "since_pick": 0.0263
+        "ytd": 0.1261,
+        "since_pick": 0.0627
       },
       {
         "id": "alphabet",
@@ -1119,8 +1129,8 @@
         "quote": "GOOGL",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.1149,
-        "since_pick": 0.0162
+        "ytd": 0.1291,
+        "since_pick": 0.0291
       },
       {
         "id": "amazon",
@@ -1128,8 +1138,8 @@
         "quote": "AMZN",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.1007,
-        "since_pick": 0.0321
+        "ytd": 0.1244,
+        "since_pick": 0.0544
       },
       {
         "id": "meta",
@@ -1137,8 +1147,8 @@
         "quote": "META",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.0949,
-        "since_pick": 0.0074
+        "ytd": 0.1284,
+        "since_pick": 0.0382
       }
     ]
   },
