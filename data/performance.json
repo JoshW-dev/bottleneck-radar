@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13",
+  "generated": "2026-10-14",
   "as_of": "2026-10-12",
   "year": 2026,
   "base": "2025-12-31",
@@ -400,10 +400,10 @@
         426.08,
         413.86,
         410.05,
-        402.14
+        394.57
       ],
-      "ytd": 3.0214,
-      "since_call": -0.0538,
+      "ytd": 2.9457,
+      "since_call": -0.0716,
       "max_drawdown": {
         "change": -0.5392,
         "peak": "2026-06-22",
@@ -725,7 +725,7 @@
         111.14,
         111.81,
         112.28,
-        111.34,
+        111.33,
         110.04,
         108.61,
         103.78,
@@ -1045,7 +1045,7 @@
     "first_published": "2026-09-27",
     "entry": "2026-09-28",
     "live_from": "2026-09-28",
-    "basket_ytd": 2.9643,
+    "basket_ytd": 2.9174,
     "rows": [
       {
         "id": "sk_hynix",
@@ -1053,8 +1053,8 @@
         "quote": "000660.KS",
         "weight": 0.2,
         "role": "The leading HBM supplier and a top DRAM maker. It sells almost nothing but memory, so memory prices reach its results directly.",
-        "ytd": 1.7728,
-        "since_pick": -0.0383
+        "ytd": 1.6439,
+        "since_pick": -0.0829
       },
       {
         "id": "micron",
@@ -1080,8 +1080,8 @@
         "quote": "005930.KS",
         "weight": 0.2,
         "role": "A top DRAM, HBM and NAND maker, but phones, displays and its foundry dilute the memory exposure.",
-        "ytd": 1.3486,
-        "since_pick": -0.0184
+        "ytd": 1.2426,
+        "since_pick": -0.0628
       },
       {
         "id": "kioxia",
