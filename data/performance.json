@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-15",
-  "as_of": "2026-10-13",
+  "generated": "2026-10-16",
+  "as_of": "2026-10-14",
   "year": 2026,
   "base": "2025-12-31",
   "days": [
@@ -200,7 +200,8 @@
     "2026-10-08",
     "2026-10-09",
     "2026-10-12",
-    "2026-10-13"
+    "2026-10-13",
+    "2026-10-14"
   ],
   "series": {
     "picks": {
@@ -402,10 +403,11 @@
         413.86,
         410.05,
         394.57,
-        367.12
+        367.12,
+        355.99
       ],
-      "ytd": 2.6712,
-      "since_call": -0.1362,
+      "ytd": 2.5599,
+      "since_call": -0.1624,
       "max_drawdown": {
         "change": -0.5392,
         "peak": "2026-06-22",
@@ -611,10 +613,11 @@
         166.4,
         165.62,
         158.29,
-        156.08
+        156.08,
+        145.86
       ],
-      "ytd": 0.5608,
-      "since_call": -0.0993,
+      "ytd": 0.4586,
+      "since_call": -0.1584,
       "max_drawdown": {
         "change": -0.4862,
         "peak": "2026-06-22",
@@ -820,10 +823,11 @@
         111.38,
         112.5,
         112.58,
-        113.47
+        113.47,
+        110.66
       ],
-      "ytd": 0.1347,
-      "since_call": 0.0385,
+      "ytd": 0.1066,
+      "since_call": 0.0128,
       "max_drawdown": {
         "change": -0.1783,
         "peak": "2026-01-29",
@@ -1029,10 +1033,11 @@
         114.38,
         115.06,
         115.0,
-        114.98
+        114.98,
+        113.74
       ],
-      "ytd": 0.1498,
-      "since_call": 0.0162,
+      "ytd": 0.1374,
+      "since_call": 0.0052,
       "max_drawdown": {
         "change": -0.0888,
         "peak": "2026-01-27",
@@ -1050,7 +1055,7 @@
     "first_published": "2026-09-27",
     "entry": "2026-09-28",
     "live_from": "2026-09-28",
-    "basket_ytd": 2.6716,
+    "basket_ytd": 2.539,
     "rows": [
       {
         "id": "sk_hynix",
@@ -1058,8 +1063,8 @@
         "quote": "000660.KS",
         "weight": 0.2,
         "role": "The leading HBM supplier and a top DRAM maker. It sells almost nothing but memory, so memory prices reach its results directly.",
-        "ytd": 1.389,
-        "since_pick": -0.1714
+        "ytd": 1.3384,
+        "since_pick": -0.1889
       },
       {
         "id": "micron",
@@ -1067,8 +1072,8 @@
         "quote": "MU",
         "weight": 0.2,
         "role": "The largest US memory maker, selling DRAM, HBM and NAND. Memory is its whole business.",
-        "ytd": 2.3416,
-        "since_pick": -0.0956
+        "ytd": 2.2052,
+        "since_pick": -0.1326
       },
       {
         "id": "sandisk",
@@ -1076,8 +1081,8 @@
         "quote": "SNDK",
         "weight": 0.2,
         "role": "NAND flash and SSDs, spun out of Western Digital in February 2025. The only pure NAND maker listed in the US.",
-        "ytd": 5.2445,
-        "since_pick": -0.1346
+        "ytd": 4.9118,
+        "since_pick": -0.1807
       },
       {
         "id": "samsung",
@@ -1085,8 +1090,8 @@
         "quote": "005930.KS",
         "weight": 0.2,
         "role": "A top DRAM, HBM and NAND maker, but phones, displays and its foundry dilute the memory exposure.",
-        "ytd": 1.0874,
-        "since_pick": -0.1276
+        "ytd": 1.0778,
+        "since_pick": -0.1316
       },
       {
         "id": "kioxia",
@@ -1094,8 +1099,8 @@
         "quote": "285A.T",
         "weight": 0.2,
         "role": "NAND flash, the former Toshiba Memory, listed in Tokyo since December 2024. It shares its fabs with Sandisk through a joint venture.",
-        "ytd": 3.2951,
-        "since_pick": -0.1519
+        "ytd": 3.1617,
+        "since_pick": -0.1783
       }
     ]
   },
@@ -1107,8 +1112,8 @@
         "quote": "NVDA",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.2282,
-        "since_pick": -0.0015
+        "ytd": 0.1894,
+        "since_pick": -0.033
       },
       {
         "id": "broadcom",
@@ -1116,8 +1121,8 @@
         "quote": "AVGO",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.0381,
-        "since_pick": 0.0221
+        "ytd": 0.0059,
+        "since_pick": -0.0095
       },
       {
         "id": "microsoft",
@@ -1125,8 +1130,8 @@
         "quote": "MSFT",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.1308,
-        "since_pick": 0.0672
+        "ytd": 0.1105,
+        "since_pick": 0.0481
       },
       {
         "id": "alphabet",
@@ -1134,8 +1139,8 @@
         "quote": "GOOGL",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.1325,
-        "since_pick": 0.0322
+        "ytd": 0.1128,
+        "since_pick": 0.0143
       },
       {
         "id": "amazon",
@@ -1143,8 +1148,8 @@
         "quote": "AMZN",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.1203,
-        "since_pick": 0.0505
+        "ytd": 0.1008,
+        "since_pick": 0.0322
       },
       {
         "id": "meta",
@@ -1152,8 +1157,8 @@
         "quote": "META",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.1581,
-        "since_pick": 0.0655
+        "ytd": 0.1202,
+        "since_pick": 0.0306
       }
     ]
   },

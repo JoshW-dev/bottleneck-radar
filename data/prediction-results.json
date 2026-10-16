@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-15T00:16:46Z",
+  "checked_at": "2026-10-16T00:03:31Z",
   "sets": [
     {
       "set": "2026-09",
@@ -33,83 +33,85 @@
     "brier": null,
     "mean_confidence": 0.7308
   },
-  "waiting": {},
+  "waiting": {
+    "korea": "timed out"
+  },
   "results": {
     "ddr5-price-holds": {
       "id": "ddr5-price-holds",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open"
     },
     "korea-memory-double": {
       "id": "korea-memory-double",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open"
     },
     "nand-price-holds": {
       "id": "nand-price-holds",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open"
     },
     "taiwan-orders-60": {
       "id": "taiwan-orders-60",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open"
     },
     "ge-backlog-q3": {
       "id": "ge-backlog-q3",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open"
     },
     "october-call-memory": {
       "id": "october-call-memory",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open"
     },
     "capex-q3-up": {
       "id": "capex-q3-up",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open"
     },
     "fund-memory-40": {
       "id": "fund-memory-40",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open"
     },
     "gev-beats-sp500": {
       "id": "gev-beats-sp500",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open",
-      "so_far": 0.0409,
-      "observed": "2026-10-13",
-      "leaning": "right"
+      "so_far": -0.0136,
+      "observed": "2026-10-14",
+      "leaning": "wrong"
     },
     "picks-beat-consensus": {
       "id": "picks-beat-consensus",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open",
-      "so_far": -0.1756,
-      "observed": "2026-10-13",
+      "so_far": -0.1762,
+      "observed": "2026-10-14",
       "leaning": "wrong"
     },
     "picks-beat-sp500": {
       "id": "picks-beat-sp500",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open",
-      "so_far": -0.1524,
-      "observed": "2026-10-13",
+      "so_far": -0.1676,
+      "observed": "2026-10-14",
       "leaning": "wrong"
     },
     "picks-fall-25": {
       "id": "picks-fall-25",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open",
-      "so_far": -0.1717,
-      "observed": "2026-10-13",
+      "so_far": -0.1968,
+      "observed": "2026-10-14",
       "leaning": "wrong"
     },
     "ge-backlog-125": {
       "id": "ge-backlog-125",
-      "checked_at": "2026-10-15T00:16:46Z",
+      "checked_at": "2026-10-16T00:03:31Z",
       "status": "open"
     }
   }
