@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-30",
-  "as_of": "2026-10-28",
+  "generated": "2026-10-31",
+  "as_of": "2026-10-30",
   "year": 2026,
   "base": "2025-12-31",
   "days": [
@@ -211,7 +211,9 @@
     "2026-10-23",
     "2026-10-26",
     "2026-10-27",
-    "2026-10-28"
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30"
   ],
   "series": {
     "picks": {
@@ -424,10 +426,12 @@
         325.81,
         327.19,
         337.51,
-        368.36
+        368.36,
+        358.74,
+        333.7
       ],
-      "ytd": 2.6836,
-      "since_call": -0.1327,
+      "ytd": 2.337,
+      "since_call": -0.2143,
       "max_drawdown": {
         "change": -0.5372,
         "peak": "2026-06-22",
@@ -644,10 +648,12 @@
         131.31,
         134.08,
         140.48,
-        148.39
+        148.39,
+        141.96,
+        129.78
       ],
-      "ytd": 0.4839,
-      "since_call": -0.1438,
+      "ytd": 0.2978,
+      "since_call": -0.2511,
       "max_drawdown": {
         "change": -0.4862,
         "peak": "2026-06-22",
@@ -761,7 +767,7 @@
         111.14,
         111.81,
         112.28,
-        111.33,
+        111.34,
         110.04,
         108.61,
         103.78,
@@ -864,10 +870,12 @@
         103.92,
         104.61,
         105.6,
-        105.97
+        105.97,
+        102.78,
+        100.07
       ],
-      "ytd": 0.0597,
-      "since_call": -0.0302,
+      "ytd": 0.0007,
+      "since_call": -0.0841,
       "max_drawdown": {
         "change": -0.1783,
         "peak": "2026-01-29",
@@ -1084,10 +1092,12 @@
         112.32,
         113.11,
         113.75,
-        114.14
+        114.14,
+        113.7,
+        111.69
       ],
-      "ytd": 0.1414,
-      "since_call": 0.0088,
+      "ytd": 0.1169,
+      "since_call": -0.0129,
       "max_drawdown": {
         "change": -0.0888,
         "peak": "2026-01-27",
@@ -1105,7 +1115,7 @@
     "first_published": "2026-09-27",
     "entry": "2026-09-28",
     "live_from": "2026-09-28",
-    "basket_ytd": 2.6202,
+    "basket_ytd": 2.2277,
     "rows": [
       {
         "id": "sk_hynix",
@@ -1113,8 +1123,8 @@
         "quote": "000660.KS",
         "weight": 0.2,
         "role": "The leading HBM supplier and a top DRAM maker. It sells almost nothing but memory, so memory prices reach its results directly.",
-        "ytd": 1.4754,
-        "since_pick": -0.1382
+        "ytd": 1.3409,
+        "since_pick": -0.185
       },
       {
         "id": "micron",
@@ -1122,8 +1132,8 @@
         "quote": "MU",
         "weight": 0.2,
         "role": "The largest US memory maker, selling DRAM, HBM and NAND. Memory is its whole business.",
-        "ytd": 2.4475,
-        "since_pick": -0.067
+        "ytd": 2.1022,
+        "since_pick": -0.1604
       },
       {
         "id": "sandisk",
@@ -1131,8 +1141,8 @@
         "quote": "SNDK",
         "weight": 0.2,
         "role": "NAND flash and SSDs, spun out of Western Digital in February 2025. The only pure NAND maker listed in the US.",
-        "ytd": 4.9178,
-        "since_pick": -0.1799
+        "ytd": 3.8483,
+        "since_pick": -0.3281
       },
       {
         "id": "samsung",
@@ -1140,8 +1150,8 @@
         "quote": "005930.KS",
         "weight": 0.2,
         "role": "A top DRAM, HBM and NAND maker, but phones, displays and its foundry dilute the memory exposure.",
-        "ytd": 1.1894,
-        "since_pick": -0.0816
+        "ytd": 1.0186,
+        "since_pick": -0.1532
       },
       {
         "id": "kioxia",
@@ -1149,8 +1159,8 @@
         "quote": "285A.T",
         "weight": 0.2,
         "role": "NAND flash, the former Toshiba Memory, listed in Tokyo since December 2024. It shares its fabs with Sandisk through a joint venture.",
-        "ytd": 3.071,
-        "since_pick": -0.1967
+        "ytd": 2.8286,
+        "since_pick": -0.2445
       }
     ]
   },
@@ -1162,8 +1172,8 @@
         "quote": "NVDA",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.1576,
-        "since_pick": -0.0589
+        "ytd": 0.0998,
+        "since_pick": -0.1058
       },
       {
         "id": "broadcom",
@@ -1171,8 +1181,8 @@
         "quote": "AVGO",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.0221,
-        "since_pick": 0.0064
+        "ytd": -0.0527,
+        "since_pick": -0.0672
       },
       {
         "id": "microsoft",
@@ -1180,8 +1190,8 @@
         "quote": "MSFT",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.105,
-        "since_pick": 0.0428
+        "ytd": 0.086,
+        "since_pick": 0.0249
       },
       {
         "id": "alphabet",
@@ -1189,8 +1199,8 @@
         "quote": "GOOGL",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.04,
-        "since_pick": -0.0521
+        "ytd": -0.1042,
+        "since_pick": -0.1835
       },
       {
         "id": "amazon",
@@ -1198,8 +1208,8 @@
         "quote": "AMZN",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.103,
-        "since_pick": 0.0343
+        "ytd": 0.0413,
+        "since_pick": -0.0236
       },
       {
         "id": "meta",
@@ -1207,8 +1217,8 @@
         "quote": "META",
         "weight": 0.166667,
         "role": "",
-        "ytd": -0.0697,
-        "since_pick": -0.1441
+        "ytd": -0.0659,
+        "since_pick": -0.1406
       }
     ]
   },
