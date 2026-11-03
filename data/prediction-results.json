@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-31T01:24:49Z",
+  "checked_at": "2026-11-03T03:17:42Z",
   "sets": [
     {
       "set": "2026-09",
@@ -8,98 +8,107 @@
       "sha256": "1871c606ccb4d7a1915ababd646798c11d4752f15493798dda726689b4be2dcf",
       "intact": true,
       "summary": {
-        "right": 1,
+        "right": 2,
         "wrong": 0,
-        "open": 12,
-        "void": 0,
+        "open": 8,
+        "void": 3,
         "total": 13,
-        "resolved": 1,
+        "resolved": 2,
         "hit_rate": 1.0,
-        "expected_right": 0.7,
-        "brier": 0.09,
+        "expected_right": 1.45,
+        "brier": 0.0763,
         "mean_confidence": 0.7308
       }
     }
   ],
   "summary": {
-    "right": 1,
+    "right": 2,
     "wrong": 0,
-    "open": 12,
-    "void": 0,
+    "open": 8,
+    "void": 3,
     "total": 13,
-    "resolved": 1,
+    "resolved": 2,
     "hit_rate": 1.0,
-    "expected_right": 0.7,
-    "brier": 0.09,
+    "expected_right": 1.45,
+    "brier": 0.0763,
     "mean_confidence": 0.7308
   },
   "waiting": {
-    "taiwan": "HTTP 403 from https://service.moea.gov.tw/EE520/opendata/b.csv",
     "ge_vernova": "SEC_USER_AGENT is not set. SEC rejects scripts without a contact, so set it to 'Your Name you@example.com' in .env."
   },
   "results": {
     "ddr5-price-holds": {
       "id": "ddr5-price-holds",
-      "checked_at": "2026-10-31T01:24:49Z",
-      "status": "open"
+      "checked_at": "2026-11-03T03:17:42Z",
+      "status": "void",
+      "resolved_at": "2026-11-03T03:17:42Z",
+      "note": "No data to check it against by 2026-11-03."
     },
     "korea-memory-double": {
       "id": "korea-memory-double",
-      "checked_at": "2026-10-31T01:24:49Z",
-      "status": "open"
+      "checked_at": "2026-11-03T03:17:42Z",
+      "status": "void",
+      "resolved_at": "2026-11-03T03:17:42Z",
+      "note": "No data to check it against by 2026-11-03."
     },
     "nand-price-holds": {
       "id": "nand-price-holds",
-      "checked_at": "2026-10-31T01:24:49Z",
-      "status": "open"
+      "checked_at": "2026-11-03T03:17:42Z",
+      "status": "void",
+      "resolved_at": "2026-11-03T03:17:42Z",
+      "note": "No data to check it against by 2026-11-03."
     },
     "taiwan-orders-60": {
       "id": "taiwan-orders-60",
-      "checked_at": "2026-10-31T01:24:49Z",
-      "status": "open"
+      "checked_at": "2026-11-03T03:17:42Z",
+      "status": "right",
+      "value": 0.7097,
+      "observed": "2026-10-20",
+      "source": "https://service.moea.gov.tw/EE520/opendata/經濟部統計處_外銷訂單_電子產品.csv",
+      "resolved_at": "2026-11-03T03:17:42Z"
     },
     "ge-backlog-q3": {
       "id": "ge-backlog-q3",
-      "checked_at": "2026-10-31T01:24:49Z",
+      "checked_at": "2026-11-03T03:17:42Z",
       "status": "open"
     },
     "october-call-memory": {
       "id": "october-call-memory",
-      "checked_at": "2026-10-31T01:24:49Z",
+      "checked_at": "2026-11-03T03:17:42Z",
       "status": "open"
     },
     "capex-q3-up": {
       "id": "capex-q3-up",
-      "checked_at": "2026-10-31T01:24:49Z",
+      "checked_at": "2026-11-03T03:17:42Z",
       "status": "open"
     },
     "fund-memory-40": {
       "id": "fund-memory-40",
-      "checked_at": "2026-10-31T01:24:49Z",
+      "checked_at": "2026-11-03T03:17:42Z",
       "status": "open"
     },
     "gev-beats-sp500": {
       "id": "gev-beats-sp500",
-      "checked_at": "2026-10-31T01:24:49Z",
+      "checked_at": "2026-11-03T03:17:42Z",
       "status": "open",
-      "so_far": -0.0833,
-      "observed": "2026-10-30",
+      "so_far": -0.074,
+      "observed": "2026-11-02",
       "leaning": "wrong"
     },
     "picks-beat-consensus": {
       "id": "picks-beat-consensus",
-      "checked_at": "2026-10-31T01:24:49Z",
+      "checked_at": "2026-11-03T03:17:42Z",
       "status": "open",
-      "so_far": -0.1316,
-      "observed": "2026-10-30",
+      "so_far": -0.1542,
+      "observed": "2026-11-02",
       "leaning": "wrong"
     },
     "picks-beat-sp500": {
       "id": "picks-beat-sp500",
-      "checked_at": "2026-10-31T01:24:49Z",
+      "checked_at": "2026-11-03T03:17:42Z",
       "status": "open",
-      "so_far": -0.2013,
-      "observed": "2026-10-30",
+      "so_far": -0.2265,
+      "observed": "2026-11-02",
       "leaning": "wrong"
     },
     "picks-fall-25": {
@@ -113,7 +122,7 @@
     },
     "ge-backlog-125": {
       "id": "ge-backlog-125",
-      "checked_at": "2026-10-31T01:24:49Z",
+      "checked_at": "2026-11-03T03:17:42Z",
       "status": "open"
     }
   }
