@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-06T01:58:15Z",
+  "checked_at": "2026-11-07T01:35:35Z",
   "sets": [
     {
       "set": "2026-09",
@@ -73,46 +73,46 @@
     },
     "ge-backlog-q3": {
       "id": "ge-backlog-q3",
-      "checked_at": "2026-11-06T01:58:15Z",
+      "checked_at": "2026-11-07T01:35:35Z",
       "status": "open"
     },
     "october-call-memory": {
       "id": "october-call-memory",
-      "checked_at": "2026-11-06T01:58:15Z",
+      "checked_at": "2026-11-07T01:35:35Z",
       "status": "open"
     },
     "capex-q3-up": {
       "id": "capex-q3-up",
-      "checked_at": "2026-11-06T01:58:15Z",
+      "checked_at": "2026-11-07T01:35:35Z",
       "status": "open"
     },
     "fund-memory-40": {
       "id": "fund-memory-40",
-      "checked_at": "2026-11-06T01:58:15Z",
+      "checked_at": "2026-11-07T01:35:35Z",
       "status": "open"
     },
     "gev-beats-sp500": {
       "id": "gev-beats-sp500",
-      "checked_at": "2026-11-06T01:58:15Z",
+      "checked_at": "2026-11-07T01:35:35Z",
       "status": "open",
-      "so_far": -0.1242,
-      "observed": "2026-11-04",
+      "so_far": -0.1487,
+      "observed": "2026-11-06",
       "leaning": "wrong"
     },
     "picks-beat-consensus": {
       "id": "picks-beat-consensus",
-      "checked_at": "2026-11-06T01:58:15Z",
+      "checked_at": "2026-11-07T01:35:35Z",
       "status": "open",
-      "so_far": -0.2318,
-      "observed": "2026-11-04",
+      "so_far": -0.3128,
+      "observed": "2026-11-06",
       "leaning": "wrong"
     },
     "picks-beat-sp500": {
       "id": "picks-beat-sp500",
-      "checked_at": "2026-11-06T01:58:15Z",
+      "checked_at": "2026-11-07T01:35:35Z",
       "status": "open",
-      "so_far": -0.2832,
-      "observed": "2026-11-04",
+      "so_far": -0.3686,
+      "observed": "2026-11-06",
       "leaning": "wrong"
     },
     "picks-fall-25": {
@@ -126,7 +126,7 @@
     },
     "ge-backlog-125": {
       "id": "ge-backlog-125",
-      "checked_at": "2026-11-06T01:58:15Z",
+      "checked_at": "2026-11-07T01:35:35Z",
       "status": "open"
     }
   }
