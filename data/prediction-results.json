@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-14T01:57:39Z",
+  "checked_at": "2026-11-17T04:18:15Z",
   "sets": [
     {
       "set": "2026-09",
@@ -38,7 +38,8 @@
     "capex MSFT": "SEC_USER_AGENT is not set. SEC rejects scripts without a contact, so set it to 'Your Name you@example.com' in .env.",
     "capex AMZN": "SEC_USER_AGENT is not set. SEC rejects scripts without a contact, so set it to 'Your Name you@example.com' in .env.",
     "capex GOOGL": "SEC_USER_AGENT is not set. SEC rejects scripts without a contact, so set it to 'Your Name you@example.com' in .env.",
-    "capex META": "SEC_USER_AGENT is not set. SEC rejects scripts without a contact, so set it to 'Your Name you@example.com' in .env."
+    "capex META": "SEC_USER_AGENT is not set. SEC rejects scripts without a contact, so set it to 'Your Name you@example.com' in .env.",
+    "13f 0002045724": "SEC_USER_AGENT is not set. SEC rejects scripts without a contact, so set it to 'Your Name you@example.com' in .env."
   },
   "results": {
     "ddr5-price-holds": {
@@ -73,46 +74,46 @@
     },
     "ge-backlog-q3": {
       "id": "ge-backlog-q3",
-      "checked_at": "2026-11-14T01:57:39Z",
+      "checked_at": "2026-11-17T04:18:15Z",
       "status": "open"
     },
     "october-call-memory": {
       "id": "october-call-memory",
-      "checked_at": "2026-11-14T01:57:39Z",
+      "checked_at": "2026-11-17T04:18:15Z",
       "status": "open"
     },
     "capex-q3-up": {
       "id": "capex-q3-up",
-      "checked_at": "2026-11-14T01:57:39Z",
+      "checked_at": "2026-11-17T04:18:15Z",
       "status": "open"
     },
     "fund-memory-40": {
       "id": "fund-memory-40",
-      "checked_at": "2026-11-14T01:57:39Z",
+      "checked_at": "2026-11-17T04:18:15Z",
       "status": "open"
     },
     "gev-beats-sp500": {
       "id": "gev-beats-sp500",
-      "checked_at": "2026-11-14T01:57:39Z",
+      "checked_at": "2026-11-17T04:18:15Z",
       "status": "open",
-      "so_far": -0.123,
-      "observed": "2026-11-13",
+      "so_far": -0.1621,
+      "observed": "2026-11-16",
       "leaning": "wrong"
     },
     "picks-beat-consensus": {
       "id": "picks-beat-consensus",
-      "checked_at": "2026-11-14T01:57:39Z",
+      "checked_at": "2026-11-17T04:18:15Z",
       "status": "open",
-      "so_far": -0.2687,
-      "observed": "2026-11-13",
+      "so_far": -0.2961,
+      "observed": "2026-11-16",
       "leaning": "wrong"
     },
     "picks-beat-sp500": {
       "id": "picks-beat-sp500",
-      "checked_at": "2026-11-14T01:57:39Z",
+      "checked_at": "2026-11-17T04:18:15Z",
       "status": "open",
-      "so_far": -0.3289,
-      "observed": "2026-11-13",
+      "so_far": -0.362,
+      "observed": "2026-11-16",
       "leaning": "wrong"
     },
     "picks-fall-25": {
@@ -126,7 +127,7 @@
     },
     "ge-backlog-125": {
       "id": "ge-backlog-125",
-      "checked_at": "2026-11-14T01:57:39Z",
+      "checked_at": "2026-11-17T04:18:15Z",
       "status": "open"
     }
   }
