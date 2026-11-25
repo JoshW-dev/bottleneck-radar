@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-24",
-  "as_of": "2026-11-23",
+  "generated": "2026-11-25",
+  "as_of": "2026-11-24",
   "year": 2026,
   "base": "2025-12-31",
   "days": [
@@ -229,7 +229,8 @@
     "2026-11-18",
     "2026-11-19",
     "2026-11-20",
-    "2026-11-23"
+    "2026-11-23",
+    "2026-11-24"
   ],
   "series": {
     "picks": {
@@ -460,10 +461,11 @@
         252.83,
         254.65,
         233.97,
-        239.11
+        239.11,
+        244.11
       ],
-      "ytd": 1.3911,
-      "since_call": -0.437,
+      "ytd": 1.4411,
+      "since_call": -0.4252,
       "max_drawdown": {
         "change": -0.6205,
         "peak": "2026-06-22",
@@ -698,10 +700,11 @@
         104.11,
         100.98,
         90.16,
-        101.76
+        101.76,
+        94.34
       ],
-      "ytd": 0.0176,
-      "since_call": -0.4128,
+      "ytd": -0.0566,
+      "since_call": -0.4556,
       "max_drawdown": {
         "change": -0.616,
         "peak": "2026-06-22",
@@ -936,10 +939,11 @@
         98.3,
         95.4,
         88.99,
-        95.7
+        95.7,
+        93.77
       ],
-      "ytd": -0.043,
-      "since_call": -0.1241,
+      "ytd": -0.0623,
+      "since_call": -0.1418,
       "max_drawdown": {
         "change": -0.2176,
         "peak": "2026-10-06",
@@ -1174,10 +1178,11 @@
         107.92,
         105.8,
         101.95,
-        106.75
+        106.75,
+        106.23
       ],
-      "ytd": 0.0675,
-      "since_call": -0.0566,
+      "ytd": 0.0623,
+      "since_call": -0.0612,
       "max_drawdown": {
         "change": -0.1146,
         "peak": "2026-10-06",
@@ -1195,7 +1200,7 @@
     "first_published": "2026-09-27",
     "entry": "2026-09-28",
     "live_from": "2026-09-28",
-    "basket_ytd": 1.2227,
+    "basket_ytd": 1.2583,
     "rows": [
       {
         "id": "sk_hynix",
@@ -1203,8 +1208,8 @@
         "quote": "000660.KS",
         "weight": 0.2,
         "role": "The leading HBM supplier and a top DRAM maker. It sells almost nothing but memory, so memory prices reach its results directly.",
-        "ytd": 0.7827,
-        "since_pick": -0.3794
+        "ytd": 0.9073,
+        "since_pick": -0.336
       },
       {
         "id": "micron",
@@ -1212,8 +1217,8 @@
         "quote": "MU",
         "weight": 0.2,
         "role": "The largest US memory maker, selling DRAM, HBM and NAND. Memory is its whole business.",
-        "ytd": 1.4814,
-        "since_pick": -0.3284
+        "ytd": 1.2082,
+        "since_pick": -0.4024
       },
       {
         "id": "sandisk",
@@ -1230,8 +1235,8 @@
         "quote": "005930.KS",
         "weight": 0.2,
         "role": "A top DRAM, HBM and NAND maker, but phones, displays and its foundry dilute the memory exposure.",
-        "ytd": 0.6124,
-        "since_pick": -0.3236
+        "ytd": 0.7248,
+        "since_pick": -0.2765
       },
       {
         "id": "kioxia",
@@ -1239,8 +1244,8 @@
         "quote": "285A.T",
         "weight": 0.2,
         "role": "NAND flash, the former Toshiba Memory, listed in Tokyo since December 2024. It shares its fabs with Sandisk through a joint venture.",
-        "ytd": 1.0556,
-        "since_pick": -0.5944
+        "ytd": 1.27,
+        "since_pick": -0.5521
       }
     ]
   },
@@ -1252,8 +1257,8 @@
         "quote": "NVDA",
         "weight": 0.166667,
         "role": "",
-        "ytd": -0.1129,
-        "since_pick": -0.2788
+        "ytd": -0.1649,
+        "since_pick": -0.3211
       },
       {
         "id": "broadcom",
@@ -1261,8 +1266,8 @@
         "quote": "AVGO",
         "weight": 0.166667,
         "role": "",
-        "ytd": -0.0891,
-        "since_pick": -0.103
+        "ytd": -0.1253,
+        "since_pick": -0.1387
       },
       {
         "id": "microsoft",
@@ -1270,8 +1275,8 @@
         "quote": "MSFT",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.0268,
-        "since_pick": -0.031
+        "ytd": 0.0344,
+        "since_pick": -0.0238
       },
       {
         "id": "alphabet",
@@ -1279,8 +1284,8 @@
         "quote": "GOOGL",
         "weight": 0.166667,
         "role": "",
-        "ytd": -0.097,
-        "since_pick": -0.177
+        "ytd": -0.1067,
+        "since_pick": -0.1858
       },
       {
         "id": "amazon",
@@ -1288,8 +1293,8 @@
         "quote": "AMZN",
         "weight": 0.166667,
         "role": "",
-        "ytd": 0.1064,
-        "since_pick": 0.0375
+        "ytd": 0.093,
+        "since_pick": 0.0249
       },
       {
         "id": "meta",
@@ -1297,8 +1302,8 @@
         "quote": "META",
         "weight": 0.166667,
         "role": "",
-        "ytd": -0.0923,
-        "since_pick": -0.1649
+        "ytd": -0.1042,
+        "since_pick": -0.1758
       }
     ]
   },
