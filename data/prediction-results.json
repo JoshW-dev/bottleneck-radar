@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-26T03:55:53Z",
+  "checked_at": "2026-11-27T03:55:28Z",
   "sets": [
     {
       "set": "2026-09",
@@ -74,27 +74,27 @@
     },
     "ge-backlog-q3": {
       "id": "ge-backlog-q3",
-      "checked_at": "2026-11-26T03:55:53Z",
+      "checked_at": "2026-11-27T03:55:28Z",
       "status": "open"
     },
     "october-call-memory": {
       "id": "october-call-memory",
-      "checked_at": "2026-11-26T03:55:53Z",
+      "checked_at": "2026-11-27T03:55:28Z",
       "status": "open"
     },
     "capex-q3-up": {
       "id": "capex-q3-up",
-      "checked_at": "2026-11-26T03:55:53Z",
+      "checked_at": "2026-11-27T03:55:28Z",
       "status": "open"
     },
     "fund-memory-40": {
       "id": "fund-memory-40",
-      "checked_at": "2026-11-26T03:55:53Z",
+      "checked_at": "2026-11-27T03:55:28Z",
       "status": "open"
     },
     "gev-beats-sp500": {
       "id": "gev-beats-sp500",
-      "checked_at": "2026-11-26T03:55:53Z",
+      "checked_at": "2026-11-27T03:55:28Z",
       "status": "open",
       "so_far": -0.1829,
       "observed": "2026-11-25",
@@ -102,7 +102,7 @@
     },
     "picks-beat-consensus": {
       "id": "picks-beat-consensus",
-      "checked_at": "2026-11-26T03:55:53Z",
+      "checked_at": "2026-11-27T03:55:28Z",
       "status": "open",
       "so_far": -0.3259,
       "observed": "2026-11-25",
@@ -110,7 +110,7 @@
     },
     "picks-beat-sp500": {
       "id": "picks-beat-sp500",
-      "checked_at": "2026-11-26T03:55:53Z",
+      "checked_at": "2026-11-27T03:55:28Z",
       "status": "open",
       "so_far": -0.4088,
       "observed": "2026-11-25",
@@ -127,7 +127,7 @@
     },
     "ge-backlog-125": {
       "id": "ge-backlog-125",
-      "checked_at": "2026-11-26T03:55:53Z",
+      "checked_at": "2026-11-27T03:55:28Z",
       "status": "open"
     }
   }
